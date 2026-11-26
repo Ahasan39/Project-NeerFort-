@@ -341,7 +341,24 @@
     });
   }
 
-  // Render Featured Engineering Project Cards (Editorial Portfolio Composition)
+  // Render Selected Engineering Project Cards (Sprint 3 Asymmetric Editorial Portfolio)
+  function getEditorialSpanClass(index, total) {
+    if (total === 1) return 'project-card--span-12';
+    if (total === 2) return index === 0 ? 'project-card--span-7' : 'project-card--span-5';
+    if (total === 3) {
+      if (index === 0) return 'project-card--span-7';
+      if (index === 1) return 'project-card--span-5';
+      return 'project-card--span-12';
+    }
+    // Default 8-item asymmetric cadence: (7 + 5), (5 + 7), (7 + 5), (5 + 7)
+    const row = Math.floor(index / 2);
+    const isFirstInRow = index % 2 === 0;
+    if (row % 2 === 0) {
+      return isFirstInRow ? 'project-card--span-7' : 'project-card--span-5';
+    }
+    return isFirstInRow ? 'project-card--span-5' : 'project-card--span-7';
+  }
+
   function renderProjects(filter = 'all') {
     if (!projectsGrid) return;
     const list =
@@ -352,40 +369,86 @@
     projectsGrid.innerHTML = list
       .map((project, index) => {
         const hasPhotos = project.photos && project.photos.length > 0;
-        const isFeaturedLead = filter === 'all' && index === 0;
-        const delayMs = Math.min((index % 3) * 70, 160);
-        const mediaHtml = hasPhotos
-          ? `
+        const isDiptych = hasPhotos && project.photos.length >= 2;
+        const isPortraitSingle = project.id === 'mayors-residence';
+        const spanClass = getEditorialSpanClass(index, list.length);
+        const caseNumber = String(index + 1).padStart(2, '0');
+        const delayMs = Math.min((index % 3) * 65, 150);
+
+        let mediaHtml = '';
+        if (isDiptych) {
+          mediaHtml = `
+            <div class="project-card__diptych">
+              ${project.photos
+                .slice(0, 2)
+                .map(
+                  (photo) => `
+                    <div class="project-card__diptych-cell">
+                      <img
+                        src="${escapeHtml(photo.src)}"
+                        alt="${escapeHtml(photo.caption)}"
+                        loading="lazy"
+                        decoding="async"
+                      >
+                    </div>
+                  `
+                )
+                .join('')}
+            </div>
+            <span class="media-badge">${escapeHtml(project.categoryLabel)}</span>
+            <span class="media-photo-tag">${project.photos.length} Verified Site Photos</span>
+          `;
+        } else if (hasPhotos) {
+          mediaHtml = `
             <img
               src="${escapeHtml(project.photos[0].src)}"
               alt="${escapeHtml(project.photos[0].caption)}"
+              class="project-card__img${isPortraitSingle ? ' project-card__img--portrait' : ''}"
               loading="lazy"
               decoding="async"
             >
             <span class="media-badge">${escapeHtml(project.categoryLabel)}</span>
-            <span class="media-photo-tag">${project.photos.length > 1 ? `${project.photos.length} Site Photos` : 'Verified Site Photo'}</span>
-          `
-          : `
+            <span class="media-photo-tag">Verified Site Photo</span>
+          `;
+        } else {
+          mediaHtml = `
             <div class="project-card__placeholder">
               <div class="placeholder-grid-mark">
-                <span>${escapeHtml(project.categoryLabel)}</span>
-                <span>ARCHIVE READY</span>
+                <span>CASE ${caseNumber} &bull; ${escapeHtml(project.categoryLabel)}</span>
+                <span>VERIFIED RECORD</span>
               </div>
               <div class="placeholder-center">
+                <span class="placeholder-center__role">${escapeHtml(project.role)}</span>
                 <strong>${escapeHtml(project.metric)}</strong>
-                <span>Verified engineering record &bull; Site photo slot ready</span>
+                <span>Technical dossier &amp; scope verified &bull; Client archive record</span>
               </div>
             </div>
           `;
+        }
+
+        const previewSkills = (project.skills || [])
+          .slice(0, 3)
+          .map((skill) => `<span class="project-card__tag">${escapeHtml(skill)}</span>`)
+          .join('');
+
+        const cardLayoutClass = [
+          'project-card',
+          spanClass,
+          hasPhotos ? 'project-card--has-media' : 'project-card--dossier',
+          isPortraitSingle ? 'project-card--portrait-split' : ''
+        ]
+          .filter(Boolean)
+          .join(' ');
 
         return `
-          <article class="project-card${isFeaturedLead ? ' project-card--featured' : ''}" data-reveal data-reveal-delay="${delayMs}">
+          <article class="${cardLayoutClass}" data-reveal data-reveal-delay="${delayMs}">
             <div class="project-card__media">${mediaHtml}</div>
             <div class="project-card__body">
-              <div>
+              <div class="project-card__top">
                 <div class="project-card__meta">
-                  <span>${escapeHtml(project.location)}</span>
-                  <span>${escapeHtml(project.timeline)}</span>
+                  <span class="project-card__index">${caseNumber}</span>
+                  <span class="project-card__loc">${escapeHtml(project.location)}</span>
+                  <span class="project-card__time">${escapeHtml(project.timeline)}</span>
                 </div>
                 <h3 class="project-card__title">${escapeHtml(project.title)}</h3>
                 <div class="project-card__metric">
@@ -393,6 +456,7 @@
                   <span>${escapeHtml(project.metric)}</span>
                 </div>
                 <p class="project-card__summary">${escapeHtml(project.summary)}</p>
+                <div class="project-card__tags" aria-label="Key technical methods">${previewSkills}</div>
               </div>
               <div class="project-card__footer">
                 <span class="project-card__org">${escapeHtml(project.affiliation)}</span>
@@ -402,8 +466,8 @@
                   data-project-id="${escapeHtml(project.id)}"
                   aria-haspopup="dialog"
                 >
-                  <span>Project Details</span>
-                  <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  <span>Case Study</span>
+                  <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </button>
               </div>
             </div>
@@ -415,16 +479,28 @@
     observeRevealElements(projectsGrid.querySelectorAll('[data-reveal]'));
   }
 
-  // Filter Tabs
-  filterButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const selected = btn.getAttribute('data-filter') || 'all';
-      filterButtons.forEach((b) => {
-        const isCurrent = b === btn;
-        b.classList.toggle('is-active', isCurrent);
-        b.setAttribute('aria-selected', String(isCurrent));
-      });
-      renderProjects(selected);
+  // Filter Tabs (Click + Accessible Keyboard Arrow Navigation)
+  function activateFilterTab(btn) {
+    const selected = btn.getAttribute('data-filter') || 'all';
+    filterButtons.forEach((b) => {
+      const isCurrent = b === btn;
+      b.classList.toggle('is-active', isCurrent);
+      b.setAttribute('aria-selected', String(isCurrent));
+    });
+    renderProjects(selected);
+  }
+
+  filterButtons.forEach((btn, idx) => {
+    btn.addEventListener('click', () => activateFilterTab(btn));
+    btn.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        event.preventDefault();
+        const dir = event.key === 'ArrowRight' ? 1 : -1;
+        const nextIdx = (idx + dir + filterButtons.length) % filterButtons.length;
+        const nextBtn = filterButtons[nextIdx];
+        nextBtn?.focus();
+        if (nextBtn) activateFilterTab(nextBtn);
+      }
     });
   });
 
@@ -524,6 +600,7 @@
   function setDrawerOpen(open) {
     if (!mobileDrawer || !mobileMenuBtn) return;
     mobileDrawer.classList.toggle('is-open', open);
+    siteHeader?.classList.toggle('is-menu-open', open);
     mobileDrawer.setAttribute('aria-hidden', String(!open));
     mobileMenuBtn.setAttribute('aria-expanded', String(open));
     mobileMenuBtn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
@@ -831,38 +908,8 @@
     observedSections.forEach((sec) => observer.observe(sec));
   }
 
-  // Performant Scroll-Reveal & Verified Metric Counter Animation
+  // Performant Scroll-Reveal Observer (Verified Metrics Render Static Without Excessive Number-Counting Spin)
   let revealObserver = null;
-
-  function animateCounter(el) {
-    const target = Number(el.getAttribute('data-counter-target'));
-    const suffix = el.getAttribute('data-counter-suffix') || '';
-    if (!Number.isFinite(target) || el.dataset.counterDone === 'true') return;
-    el.dataset.counterDone = 'true';
-
-    if (prefersReducedMotion.matches) {
-      el.textContent = `${target.toLocaleString('en-US')}${suffix}`;
-      return;
-    }
-
-    const duration = 900;
-    const startTime = performance.now();
-
-    function step(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(target * eased);
-      el.textContent = `${current.toLocaleString('en-US')}${suffix}`;
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      } else {
-        el.textContent = `${target.toLocaleString('en-US')}${suffix}`;
-      }
-    }
-
-    window.requestAnimationFrame(step);
-  }
 
   function initMotionObservers() {
     const revealTargets = document.querySelectorAll('[data-reveal]');
@@ -882,10 +929,6 @@
 
           const revealNow = () => {
             el.classList.add('is-revealed');
-            const counterEl = el.querySelector('[data-counter-target]');
-            if (counterEl) {
-              animateCounter(counterEl);
-            }
           };
 
           if (delay > 0) {
