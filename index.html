@@ -46,7 +46,7 @@
     </div>
   </div>
 
-  <!-- STICKY CORPORATE HEADER -->
+  <!-- STICKY OVERLAY CORPORATE HEADER -->
   <header id="site-header" class="site-header">
     <div class="container header__inner">
       <a href="#top" class="brand-lockup" aria-label="NeerFort — Shield your Build Home">
@@ -70,12 +70,12 @@
       </a>
 
       <nav class="desktop-nav" aria-label="Primary Navigation">
+        <a href="#about" class="nav-link">About</a>
         <a href="#capabilities" class="nav-link">Capabilities</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#methodology" class="nav-link">Methodology</a>
         <a href="#leadership" class="nav-link">Leadership</a>
-        <a href="#compliance" class="nav-link">Compliance</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#locations" class="nav-link">Locations</a>
       </nav>
 
       <div class="header__actions">
@@ -107,12 +107,14 @@
     <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
       <div class="mobile-drawer__panel">
         <nav class="container mobile-drawer__nav" aria-label="Mobile Navigation">
-          <a href="#capabilities" class="mobile-nav-link" tabindex="-1">Capabilities</a>
-          <a href="#projects" class="mobile-nav-link" tabindex="-1">Projects</a>
+          <a href="#about" class="mobile-nav-link" tabindex="-1">About NeerFort</a>
+          <a href="#capabilities" class="mobile-nav-link" tabindex="-1">Core Capabilities</a>
+          <a href="#commitment" class="mobile-nav-link" tabindex="-1">Our Commitment</a>
+          <a href="#projects" class="mobile-nav-link" tabindex="-1">Featured Projects</a>
           <a href="#methodology" class="mobile-nav-link" tabindex="-1">Methodology</a>
           <a href="#leadership" class="mobile-nav-link" tabindex="-1">Leadership</a>
           <a href="#compliance" class="mobile-nav-link" tabindex="-1">Compliance</a>
-          <a href="#contact" class="mobile-nav-link" tabindex="-1">Contact</a>
+          <a href="#locations" class="mobile-nav-link" tabindex="-1">Project Locations</a>
           <div class="mobile-drawer__footer">
             <a href="#contact" class="btn btn--gold btn--full mobile-nav-link" tabindex="-1">
               <span>Discuss Your Project</span>
@@ -130,197 +132,111 @@
   </header>
 
   <main id="main-content">
-    <!-- 1. CINEMATIC ARCHITECTURAL HERO SECTION -->
-    <section id="top" class="hero" aria-label="NeerFort Engineering Overview">
-      <!-- Synchronized Full-Bleed Atmospheric Backdrop Slides -->
-      <div class="hero-backdrop" aria-hidden="true">
-        <div class="hero-backdrop__slide is-active" data-hero-bg-slide="0">
+    <!-- 1. CINEMATIC MINIMAL PHOTOGRAPHY-FIRST HERO -->
+    <section
+      id="top"
+      class="hero"
+      aria-roledescription="carousel"
+      aria-label="NeerFort Engineering Showcase"
+    >
+      <!-- Full-Bleed Architectural Background Image Slider -->
+      <div class="hero-stage" aria-hidden="true">
+        <div class="hero-stage__slide hero-stage__slide--industrial is-active" data-hero-slide="0">
           <img
-            src="assets/images/project-hsia-stormwater.jpg"
+            src="assets/images/hero-industrial-engineering.webp"
             alt=""
-            width="479"
-            height="359"
+            width="2400"
+            height="1350"
             loading="eager"
             fetchpriority="high"
             decoding="async"
           >
         </div>
-        <div class="hero-backdrop__slide" data-hero-bg-slide="1">
+        <div class="hero-stage__slide hero-stage__slide--structural" data-hero-slide="1">
           <img
-            src="assets/images/project-btcl-strengthening.jpg"
+            src="assets/images/hero-structural-retrofitting.webp"
             alt=""
-            width="396"
-            height="297"
+            width="2400"
+            height="1350"
             loading="lazy"
             decoding="async"
           >
         </div>
-        <div class="hero-backdrop__slide" data-hero-bg-slide="2">
+        <div class="hero-stage__slide hero-stage__slide--infrastructure" data-hero-slide="2">
           <img
-            src="assets/images/project-btcl-prep.jpg"
+            src="assets/images/hero-infrastructure-architecture.webp"
             alt=""
-            width="408"
-            height="306"
+            width="2400"
+            height="1350"
             loading="lazy"
             decoding="async"
           >
         </div>
       </div>
 
+      <!-- Subtle Localized Readability Scrims (Photo-First Composition) -->
       <div class="hero__scrim" aria-hidden="true"></div>
-      <div class="hero__grid-bg" aria-hidden="true"></div>
-      <div class="hero__glow" aria-hidden="true"></div>
 
-      <div class="container hero__layout">
-        <div class="hero__content" data-reveal>
-          <div class="eyebrow-badge">
-            <span class="status-dot status-dot--pulse" aria-hidden="true"></span>
-            <span>BNBC &amp; RAJUK Aligned &bull; IEB Accredited Leadership</span>
-          </div>
+      <!-- Minimal Bottom-Anchored Foreground Composition -->
+      <div class="container hero__inner">
+        <div class="hero__bottom">
+          <div class="hero__content" data-reveal>
+            <p class="hero__brand-label">NeerFort &mdash; Shield your Build.</p>
+            <h1 class="hero__title">Precision Civil Engineering</h1>
+            <p class="hero__subtitle">Structural Retrofitting &amp; Turnkey Execution.</p>
 
-          <h1 class="hero__title">
-            Precision Civil Engineering, Structural Retrofitting &amp; <span class="hero__title-accent">Turnkey Execution.</span>
-          </h1>
-
-          <p class="hero__lead">
-            <strong>NeerFort — Shield your Build.</strong> Delivering complex industrial facilities, high-rise structural retrofits, geotechnical ground stabilization, architectural facades, and corporate fit-outs across Bangladesh under 22+ years of MIEB-accredited engineering leadership.
-          </p>
-
-          <div class="hero__actions">
-            <a href="#contact" class="btn btn--gold btn--lg">
-              <span>Discuss Your Project</span>
-              <svg class="icon-sm btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </a>
-            <a href="#projects" class="btn btn--hero-outline btn--lg">
-              <span>Explore Verified Projects</span>
-              <svg class="icon-sm btn__icon btn__icon--down" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </a>
-          </div>
-
-          <ul class="trust-strip" aria-label="Core engineering verifications">
-            <li>
-              <svg class="icon-sm trust-strip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <span>BUET-Supervised Retrofits</span>
-            </li>
-            <li>
-              <svg class="icon-sm trust-strip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <span>Certified CPT / SCPT &amp; Seismic Testing</span>
-            </li>
-            <li>
-              <svg class="icon-sm trust-strip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <span>Govt, Aviation &amp; EPZ Experience</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- CINEMATIC ARCHITECTURAL FIELD SHOWCASE SLIDER -->
-        <aside
-          id="hero-slider"
-          class="hero-showcase"
-          aria-roledescription="carousel"
-          aria-label="Verified NeerFort engineering project highlights"
-          data-reveal
-          data-reveal-delay="120"
-        >
-          <div class="hero-showcase__header">
-            <div class="hero-showcase__tag">
-              <span class="status-dot status-dot--pulse" aria-hidden="true"></span>
-              <span id="hero-slide-kicker">AVIATION INFRASTRUCTURE &bull; CAAB</span>
-            </div>
-            <span id="hero-slide-counter" class="hero-showcase__counter" aria-live="polite">01 / 03</span>
-          </div>
-
-          <div class="hero-showcase__stage">
-            <figure class="hero-showcase__slide is-active" data-hero-slide="0" aria-hidden="false">
-              <img
-                src="assets/images/project-hsia-stormwater.jpg"
-                alt="Hazrat Shahjalal International Airport expansion reinforced stormwater culvert installation and technical supervision"
-                width="479"
-                height="359"
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-              >
-            </figure>
-            <figure class="hero-showcase__slide" data-hero-slide="1" aria-hidden="true">
-              <img
-                src="assets/images/project-btcl-strengthening.jpg"
-                alt="BTCL Headquarters Dhaka structural wrapping and seismic strengthening under BUET supervision"
-                width="396"
-                height="297"
-                loading="lazy"
-                decoding="async"
-              >
-            </figure>
-            <figure class="hero-showcase__slide" data-hero-slide="2" aria-hidden="true">
-              <img
-                src="assets/images/project-btcl-prep.jpg"
-                alt="BTCL Headquarters structural surface preparation under phased live-site PPE safety protocol"
-                width="408"
-                height="306"
-                loading="lazy"
-                decoding="async"
-              >
-            </figure>
-
-            <div class="hero-showcase__stage-scrim" aria-hidden="true"></div>
-            <div class="hero-showcase__caption">
-              <span id="hero-slide-location" class="hero-showcase__location">Dhaka &bull; Live International Airport Works</span>
-              <h2 id="hero-slide-title" class="hero-showcase__title">HSIA Expansion — Stormwater Drainage Package</h2>
-              <p id="hero-slide-desc" class="hero-showcase__desc">Reinforced stormwater culverts, balancing ponds, and treatment infrastructure phased around live flight schedules.</p>
+            <div class="hero__actions">
+              <a href="#contact" class="btn btn--gold btn--lg">
+                <span>Discuss Your Project</span>
+                <svg class="icon-sm btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
             </div>
           </div>
 
-          <!-- Accessible Slider Controls & Progress Indicators -->
-          <div class="hero-showcase__controls">
-            <div class="hero-showcase__indicators" role="tablist" aria-label="Select featured engineering highlight">
-              <button
-                type="button"
-                role="tab"
-                class="hero-dot is-active"
-                data-hero-dot="0"
-                aria-selected="true"
-                aria-label="Slide 1: HSIA Expansion Stormwater Package"
-              >
-                <span class="hero-dot__fill" aria-hidden="true"></span>
-              </button>
-              <button
-                type="button"
-                role="tab"
-                class="hero-dot"
-                data-hero-dot="1"
-                aria-selected="false"
-                aria-label="Slide 2: BTCL Headquarters Seismic Retrofitting"
-              >
-                <span class="hero-dot__fill" aria-hidden="true"></span>
-              </button>
-              <button
-                type="button"
-                role="tab"
-                class="hero-dot"
-                data-hero-dot="2"
-                aria-selected="false"
-                aria-label="Slide 3: BTCL HQ Live-Site Structural Preparation"
-              >
-                <span class="hero-dot__fill" aria-hidden="true"></span>
-              </button>
+          <!-- Compact Minimal Slider Controls -->
+          <div id="hero-slider-rail" class="hero-controls" aria-label="Hero slide controls">
+            <span id="hero-slide-title" class="sr-only" aria-live="polite">Modern Industrial &amp; Turnkey Engineering</span>
+            <div class="hero-controls__status">
+              <span id="hero-slide-counter" class="hero-controls__counter" aria-live="polite">01 / 03</span>
+              <div class="hero-controls__indicators" role="tablist" aria-label="Select featured engineering slide">
+                <button
+                  type="button"
+                  role="tab"
+                  class="hero-dot is-active"
+                  data-hero-dot="0"
+                  aria-selected="true"
+                  aria-label="Slide 1: Modern Industrial &amp; Turnkey Engineering"
+                >
+                  <span class="hero-dot__fill" aria-hidden="true"></span>
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="hero-dot"
+                  data-hero-dot="1"
+                  aria-selected="false"
+                  aria-label="Slide 2: Structural Engineering &amp; Seismic Retrofitting"
+                >
+                  <span class="hero-dot__fill" aria-hidden="true"></span>
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="hero-dot"
+                  data-hero-dot="2"
+                  aria-selected="false"
+                  aria-label="Slide 3: Commercial Infrastructure &amp; Architectural Facades"
+                >
+                  <span class="hero-dot__fill" aria-hidden="true"></span>
+                </button>
+              </div>
             </div>
 
-            <div class="hero-showcase__nav-btns">
-              <button
-                type="button"
-                id="hero-prev-btn"
-                class="hero-ctrl-btn"
-                aria-label="Previous slide"
-              >
+            <div class="hero-controls__nav-btns">
+              <button type="button" id="hero-prev-btn" class="hero-ctrl-btn" aria-label="Previous slide">
                 <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
               </button>
-              <button
-                type="button"
-                id="hero-next-btn"
-                class="hero-ctrl-btn"
-                aria-label="Next slide"
-              >
+              <button type="button" id="hero-next-btn" class="hero-ctrl-btn" aria-label="Next slide">
                 <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
               </button>
               <button
@@ -335,157 +251,310 @@
               </button>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="hero-showcase__telemetry" aria-label="Verified engineering compliance credentials">
-            <div class="telemetry-cell">
-              <span class="telemetry-cell__label">Standards</span>
-              <strong class="telemetry-cell__val">BNBC &bull; RAJUK</strong>
-            </div>
-            <div class="telemetry-cell">
-              <span class="telemetry-cell__label">Oversight</span>
-              <strong class="telemetry-cell__val">BUET &bull; CAAB</strong>
-            </div>
-            <div class="telemetry-cell">
-              <span class="telemetry-cell__label">Leadership</span>
-              <strong class="telemetry-cell__val">MIEB &bull; 22+ Yrs</strong>
+    <!-- 2. WHO WE ARE / COMPANY INTRODUCTION -->
+    <section id="about" class="section section--tinted">
+      <div class="container about-layout">
+        <div class="about-copy" data-reveal>
+          <span class="mono-label mono-label--accent section-kicker">Who We Are</span>
+          <h2 class="section-title">Engineering Certainty for Critical Structures Across Bangladesh</h2>
+          <p class="about-lead">
+            <strong>NeerFort — Shield your Build.</strong> We are a civil engineering, structural retrofitting, geotechnical stabilization, and turnkey construction firm led by 22+ years of MIEB-accredited hands-on engineering leadership.
+          </p>
+          <p class="about-body">
+            From occupied government headquarters and active international airport infrastructure to export-zone manufacturing complexes and commercial high-rises, our team pairs deep field execution with disciplined BOQ engineering, consultant coordination, and measurement-verified billing.
+          </p>
+
+          <ul class="about-strengths" aria-label="Core corporate engineering strengths">
+            <li>
+              <span class="about-strengths__num">01</span>
+              <div>
+                <strong>BUET &amp; Statutory Oversight Readiness</strong>
+                <span>Proven execution under BUET Dept. of Civil Engineering, CAAB, BEZA, BNBC, and RAJUK requirements.</span>
+              </div>
+            </li>
+            <li>
+              <span class="about-strengths__num">02</span>
+              <div>
+                <strong>Live-Site &amp; Occupied-Facility Discipline</strong>
+                <span>Phased safety isolation and off-hour works engineered to keep vital operations uninterrupted.</span>
+              </div>
+            </li>
+            <li>
+              <span class="about-strengths__num">03</span>
+              <div>
+                <strong>Integrated Diagnostics &amp; Cost Controls</strong>
+                <span>Certified CPT/SCPT soil testing, 3D laser scanning, MS Project scheduling, and CAPEX/OPEX governance.</span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="about-actions">
+            <a href="#capabilities" class="btn btn--primary btn--sm">
+              <span>Explore Our Capabilities</span>
+              <svg class="icon-sm btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#leadership" class="btn btn--outline btn--sm">
+              <span>Meet Our Leadership</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="about-visual" data-reveal data-reveal-delay="100">
+          <figure class="about-photo">
+            <img
+              src="assets/images/project-btcl-strengthening.jpg"
+              alt="BTCL Headquarters structural seismic strengthening and wrapping executed under BUET supervision"
+              width="396"
+              height="297"
+              loading="lazy"
+              decoding="async"
+            >
+            <figcaption class="about-photo__caption">
+              <span class="mono-label mono-label--gold">Verified Field Execution</span>
+              <strong>BTCL Headquarters — BUET-Supervised Seismic Strengthening, Dhaka</strong>
+            </figcaption>
+          </figure>
+          <div class="about-inset">
+            <img
+              src="assets/images/project-mayors-residence-rc4.jpg"
+              alt="Active RCC column jacketing RC4 by NeerFort site team under PPE protocol"
+              width="230"
+              height="306"
+              loading="lazy"
+              decoding="async"
+            >
+            <div class="about-inset__body">
+              <span class="mono-label mono-label--accent">Field QA/QC</span>
+              <p>Active RCC column jacketing (RC4) &amp; zero-deviation design conformance.</p>
             </div>
           </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- 2. KEY VERIFIED METRICS STRIP -->
-    <section class="metrics-strip" aria-label="Verified principal engineering milestones">
-      <div class="container metrics-grid">
-        <div class="metric-item" data-reveal data-reveal-delay="0">
-          <span class="mono-label mono-label--gold">01 / Leadership</span>
-          <div class="metric-item__value" data-counter-target="22" data-counter-suffix="+ Years">22+ Years</div>
-          <p class="metric-item__desc">Hands-on civil engineering &amp; project management across Bangladesh (2003–Present)</p>
-        </div>
-        <div class="metric-item" data-reveal data-reveal-delay="80">
-          <span class="mono-label mono-label--gold">02 / Industrial Scale</span>
-          <div class="metric-item__value" data-counter-target="190000" data-counter-suffix=" Sq. Ft.">190,000 Sq. Ft.</div>
-          <p class="metric-item__desc">164,000 sq. ft. factory complex plus 26,000 sq. ft. printing shade &amp; utilities delivered on schedule</p>
-        </div>
-        <div class="metric-item" data-reveal data-reveal-delay="160">
-          <span class="mono-label mono-label--gold">03 / Building Envelope</span>
-          <div class="metric-item__value" data-counter-target="67000" data-counter-suffix=" Sqm">67,000 Sqm</div>
-          <p class="metric-item__desc">50,000 sqm structural glazing, 16,000 sqm ACP cladding &amp; 1,000 sqm point-fixing glazing</p>
-        </div>
-        <div class="metric-item" data-reveal data-reveal-delay="240">
-          <span class="mono-label mono-label--gold">04 / High-Rise Retrofit</span>
-          <div class="metric-item__value" data-counter-target="17" data-counter-suffix="-Storey">17-Storey</div>
-          <p class="metric-item__desc">Anchor piling &amp; RCC structural strengthening completed in 6 months on a tight urban site</p>
         </div>
       </div>
     </section>
 
-    <!-- 3. CORE ENGINEERING CAPABILITIES -->
-    <section id="capabilities" class="section section--tinted">
+    <!-- 3. ENGINEERING TRACK RECORD / VERIFIED STATISTICS -->
+    <section id="track-record" class="metrics-strip" aria-label="Verified engineering track record statistics">
+      <div class="container">
+        <div class="metrics-strip__head" data-reveal>
+          <span class="mono-label mono-label--gold section-kicker section-kicker--gold">Engineering Track Record</span>
+          <h2 class="metrics-strip__title">Verified Principal Delivery Milestones</h2>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-item" data-reveal data-reveal-delay="0">
+            <span class="mono-label mono-label--gold">01 / Leadership</span>
+            <div class="metric-item__value" data-counter-target="22" data-counter-suffix="+ Years">22+ Years</div>
+            <p class="metric-item__desc">Hands-on civil engineering &amp; project management across Bangladesh (2003–Present)</p>
+          </div>
+          <div class="metric-item" data-reveal data-reveal-delay="80">
+            <span class="mono-label mono-label--gold">02 / Industrial Scale</span>
+            <div class="metric-item__value" data-counter-target="190000" data-counter-suffix=" Sq. Ft.">190,000 Sq. Ft.</div>
+            <p class="metric-item__desc">164,000 sq. ft. factory complex plus 26,000 sq. ft. printing shade &amp; utilities delivered on schedule</p>
+          </div>
+          <div class="metric-item" data-reveal data-reveal-delay="160">
+            <span class="mono-label mono-label--gold">03 / Building Envelope</span>
+            <div class="metric-item__value" data-counter-target="67000" data-counter-suffix=" Sqm">67,000 Sqm</div>
+            <p class="metric-item__desc">50,000 sqm structural glazing, 16,000 sqm ACP cladding &amp; 1,000 sqm point-fixing glazing</p>
+          </div>
+          <div class="metric-item" data-reveal data-reveal-delay="240">
+            <span class="mono-label mono-label--gold">04 / High-Rise Retrofit</span>
+            <div class="metric-item__value" data-counter-target="17" data-counter-suffix="-Storey">17-Storey</div>
+            <p class="metric-item__desc">Anchor piling &amp; RCC structural strengthening completed in 6 months on a tight urban site</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CORE ENGINEERING CAPABILITIES (EDITORIAL SHOWCASE) -->
+    <section id="capabilities" class="section section--white section--bordered">
       <div class="container">
         <div class="section-header" data-reveal>
           <span class="mono-label mono-label--accent section-kicker">Core Engineering Capabilities</span>
-          <h2 class="section-title">One Accountable Partner Across the Full Build Journey</h2>
+          <h2 class="section-title">Four Specialized Disciplines. One Accountable Engineering Partner.</h2>
           <p class="section-subtitle">
             From sub-soil investigation and live-facility structural retrofitting to turnkey factory construction, architectural envelopes, and commercial interiors — executed under strict QA/QC and cost governance.
           </p>
         </div>
 
-        <div class="capabilities-grid">
-          <article class="cap-card" data-reveal data-reveal-delay="0">
-            <div class="cap-card__body">
-              <div class="cap-card__head">
-                <span class="cap-index">01</span>
-                <div class="cap-icon" aria-hidden="true">
-                  <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                </div>
-              </div>
-              <h3 class="cap-card__title">Building Construction &amp; Structural Retrofitting</h3>
-              <p class="cap-card__desc">
-                New-build multi-storey commercial, residential, industrial, and resort structures alongside code-compliant seismic and structural strengthening for occupied facilities.
-              </p>
+        <div class="capabilities-editorial">
+          <article class="cap-panel" data-reveal data-reveal-delay="0">
+            <div class="cap-panel__media">
+              <img
+                src="assets/images/project-btcl-strengthening.jpg"
+                alt="RCC and seismic structural strengthening at BTCL Headquarters"
+                width="396"
+                height="297"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="cap-panel__index">01</span>
             </div>
-            <div class="cap-card__tags">
-              <span class="tag">RCC Column &amp; Beam Jacketing</span>
-              <span class="tag">Steel Plate Strengthening</span>
-              <span class="tag">URM Steel-Mesh Retrofit</span>
-              <span class="tag">Micro-Concrete &amp; NDT</span>
+            <div class="cap-panel__body">
+              <div>
+                <span class="mono-label mono-label--accent">Structural &amp; Turnkey Works</span>
+                <h3 class="cap-panel__title">Building Construction &amp; Structural Retrofitting</h3>
+                <p class="cap-panel__desc">
+                  New-build multi-storey commercial, residential, industrial, and resort structures alongside code-compliant seismic and structural strengthening for occupied facilities.
+                </p>
+              </div>
+              <div class="cap-card__tags">
+                <span class="tag">RCC Column &amp; Beam Jacketing</span>
+                <span class="tag">Steel Plate Strengthening</span>
+                <span class="tag">URM Steel-Mesh Retrofit</span>
+                <span class="tag">Micro-Concrete &amp; NDT</span>
+              </div>
             </div>
           </article>
 
-          <article class="cap-card" data-reveal data-reveal-delay="80">
-            <div class="cap-card__body">
-              <div class="cap-card__head">
-                <span class="cap-index">02</span>
-                <div class="cap-icon" aria-hidden="true">
-                  <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                </div>
-              </div>
-              <h3 class="cap-card__title">Geotechnical &amp; Ground Engineering</h3>
-              <p class="cap-card__desc">
-                Sub-soil investigation, high-pressure ground improvement, and building anchoring technology to stabilize foundations on challenging alluvial and coastal soils.
-              </p>
+          <article class="cap-panel" data-reveal data-reveal-delay="80">
+            <div class="cap-panel__media">
+              <img
+                src="assets/images/project-beza-jetgrout.jpg"
+                alt="Ground improvement and anchor piling rig mobilized at BEZA Bridge-2 Mirsarai"
+                width="226"
+                height="169"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="cap-panel__index">02</span>
             </div>
-            <div class="cap-card__tags">
-              <span class="tag">Jet Grouting</span>
-              <span class="tag">Anchor Piling</span>
-              <span class="tag">Foundation Rehabilitation</span>
-              <span class="tag">Certified CPT &amp; SCPT</span>
-              <span class="tag">Seismic Down-Hole Testing</span>
+            <div class="cap-panel__body">
+              <div>
+                <span class="mono-label mono-label--accent">Sub-Surface Stabilization</span>
+                <h3 class="cap-panel__title">Geotechnical &amp; Ground Engineering</h3>
+                <p class="cap-panel__desc">
+                  Sub-soil investigation, high-pressure ground improvement, and building anchoring technology to stabilize foundations on challenging alluvial and coastal soils.
+                </p>
+              </div>
+              <div class="cap-card__tags">
+                <span class="tag">Jet Grouting</span>
+                <span class="tag">Anchor Piling</span>
+                <span class="tag">Foundation Rehabilitation</span>
+                <span class="tag">Certified CPT &amp; SCPT</span>
+                <span class="tag">Seismic Down-Hole Testing</span>
+              </div>
             </div>
           </article>
 
-          <article class="cap-card" data-reveal data-reveal-delay="140">
-            <div class="cap-card__body">
-              <div class="cap-card__head">
-                <span class="cap-index">03</span>
-                <div class="cap-icon" aria-hidden="true">
-                  <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
-                </div>
-              </div>
-              <h3 class="cap-card__title">Civil Infrastructure &amp; Architectural Facades</h3>
-              <p class="cap-card__desc">
-                Airport drainage packages and bridge substructure reconstruction paired with high-tolerance curtain wall glazing, ACP cladding, and aluminium fabrication.
-              </p>
+          <article class="cap-panel" data-reveal data-reveal-delay="120">
+            <div class="cap-panel__media">
+              <img
+                src="assets/images/project-hsia-stormwater.jpg"
+                alt="Stormwater culvert civil infrastructure package at Hazrat Shahjalal International Airport"
+                width="479"
+                height="359"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="cap-panel__index">03</span>
             </div>
-            <div class="cap-card__tags">
-              <span class="tag">Stormwater &amp; Retention Ponds</span>
-              <span class="tag">Bridge Abutment Works</span>
-              <span class="tag">Stick Curtain Walls</span>
-              <span class="tag">ACP Cladding &amp; Point-Fixing</span>
+            <div class="cap-panel__body">
+              <div>
+                <span class="mono-label mono-label--accent">Infrastructure &amp; Envelopes</span>
+                <h3 class="cap-panel__title">Civil Infrastructure &amp; Architectural Facades</h3>
+                <p class="cap-panel__desc">
+                  Airport drainage packages and bridge substructure reconstruction paired with high-tolerance curtain wall glazing, ACP cladding, and aluminium fabrication.
+                </p>
+              </div>
+              <div class="cap-card__tags">
+                <span class="tag">Stormwater &amp; Retention Ponds</span>
+                <span class="tag">Bridge Abutment Works</span>
+                <span class="tag">Stick Curtain Walls</span>
+                <span class="tag">ACP Cladding &amp; Point-Fixing</span>
+              </div>
             </div>
           </article>
 
-          <article class="cap-card" data-reveal data-reveal-delay="200">
-            <div class="cap-card__body">
-              <div class="cap-card__head">
-                <span class="cap-index">04</span>
-                <div class="cap-icon" aria-hidden="true">
-                  <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-                </div>
-              </div>
-              <h3 class="cap-card__title">Interiors, Fit-Outs &amp; Project Controls</h3>
-              <p class="cap-card__desc">
-                Factory, showroom, retail, café, and residential interiors with landscaping — backed by BOQ engineering, CAPEX/OPEX control, MS Project scheduling, and bill verification.
-              </p>
+          <article class="cap-panel" data-reveal data-reveal-delay="160">
+            <div class="cap-panel__media">
+              <img
+                src="assets/images/project-mayors-residence-rc4.jpg"
+                alt="Site engineering supervision and interior structural execution"
+                width="230"
+                height="306"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="cap-panel__index">04</span>
             </div>
-            <div class="cap-card__tags">
-              <span class="tag">Showroom &amp; Retail Fit-Outs</span>
-              <span class="tag">Home D&eacute;cor &amp; Landscaping</span>
-              <span class="tag">BOQ &amp; Rate Analysis</span>
-              <span class="tag">CAPEX/OPEX &amp; Bill Verification</span>
+            <div class="cap-panel__body">
+              <div>
+                <span class="mono-label mono-label--accent">Fit-Outs &amp; Governance</span>
+                <h3 class="cap-panel__title">Interiors, Fit-Outs &amp; Project Controls</h3>
+                <p class="cap-panel__desc">
+                  Factory, showroom, retail, café, and residential interiors with landscaping — backed by BOQ engineering, CAPEX/OPEX control, MS Project scheduling, and bill verification.
+                </p>
+              </div>
+              <div class="cap-card__tags">
+                <span class="tag">Showroom &amp; Retail Fit-Outs</span>
+                <span class="tag">Home D&eacute;cor &amp; Landscaping</span>
+                <span class="tag">BOQ &amp; Rate Analysis</span>
+                <span class="tag">CAPEX/OPEX &amp; Bill Verification</span>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 4. VERIFIED FLAGSHIP PROJECTS SHOWCASE -->
-    <section id="projects" class="section section--white section--bordered">
+    <!-- 5. OUR COMMITMENT -->
+    <section id="commitment" class="section section--charcoal">
+      <div class="container">
+        <div class="commitment-header" data-reveal>
+          <div class="section-header section-header--compact">
+            <span class="mono-label mono-label--gold section-kicker section-kicker--gold">Our Commitment</span>
+            <h2 class="section-title section-title--light">Disciplined Standards That Govern Every Site We Mobilize</h2>
+          </div>
+          <p class="commitment-header__lead">
+            Every NeerFort engagement is structured around verifiable technical rigor, protected live-site environments, and transparent commercial governance from mobilization to final handover.
+          </p>
+        </div>
+
+        <div class="commitment-grid">
+          <article class="commitment-card" data-reveal data-reveal-delay="0">
+            <span class="commitment-card__code">01 / PRECISION</span>
+            <h3>Engineering Precision</h3>
+            <p>Zero-deviation conformance to BUET, CAAB, and structural consultant drawings backed by Faro 3D laser scanning and accurate shop drawings.</p>
+          </article>
+          <article class="commitment-card" data-reveal data-reveal-delay="60">
+            <span class="commitment-card__code">02 / QA/QC</span>
+            <h3>Quality Assurance</h3>
+            <p>Material and rebar verification, concrete core testing, non-destructive testing (NDT), and stage-gate inspection prior to every pour.</p>
+          </article>
+          <article class="commitment-card" data-reveal data-reveal-delay="120">
+            <span class="commitment-card__code">03 / HSE</span>
+            <h3>Site Safety</h3>
+            <p>Strict PPE enforcement, regular toolbox talks, safety-isolated work zones, and off-hour execution to protect occupied facilities and active factories.</p>
+          </article>
+          <article class="commitment-card" data-reveal data-reveal-delay="180">
+            <span class="commitment-card__code">04 / COMMERCIAL</span>
+            <h3>Cost Governance</h3>
+            <p>Detailed BOQ rate analysis, vetted supplier procurement, CAPEX/OPEX monitoring, and strict budget adherence under market volatility.</p>
+          </article>
+          <article class="commitment-card" data-reveal data-reveal-delay="240">
+            <span class="commitment-card__code">05 / OWNERSHIP</span>
+            <h3>Single-Point Accountability</h3>
+            <p>Direct principal-level coordination across architects, structural consultants, regulatory authorities, and site subcontractors.</p>
+          </article>
+          <article class="commitment-card" data-reveal data-reveal-delay="300">
+            <span class="commitment-card__code">06 / CLARITY</span>
+            <h3>Transparent Project Execution</h3>
+            <p>Daily and weekly technical progress reports, recorded site decisions, and contractor billing reconciled strictly against verified measurement books.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FEATURED ENGINEERING PROJECTS -->
+    <section id="projects" class="section section--tinted section--bordered">
       <div class="container">
         <div class="projects-header" data-reveal>
           <div class="section-header section-header--compact">
-            <span class="mono-label mono-label--accent section-kicker">Principal Leadership Portfolio</span>
+            <span class="mono-label mono-label--accent section-kicker">Featured Engineering Projects</span>
             <h2 class="section-title">Verified Execution Across Critical Sectors</h2>
             <p class="section-subtitle">
               Flagship engagements led by Managing Director Md. Saiful Haque, MIEB across government, aviation, economic zones, industrial factories, and commercial towers. Select any project for verified technical scope, site photography, and challenge resolution.
@@ -511,7 +580,7 @@
           </div>
         </div>
 
-        <div id="projects-grid" class="projects-grid" aria-live="polite">
+        <div id="projects-grid" class="projects-grid projects-grid--editorial" aria-live="polite">
           <!-- Dynamically populated by assets/js/main.js -->
         </div>
 
@@ -551,81 +620,142 @@
       </div>
     </section>
 
-    <!-- 5. 5-STEP ENGINEERING DELIVERY METHODOLOGY -->
+    <!-- 7. ENGINEERING EXPERTISE & EXECUTION METHODOLOGY -->
     <section id="methodology" class="section section--navy">
       <div class="container">
-        <div class="section-header" data-reveal>
-          <span class="mono-label mono-label--gold section-kicker section-kicker--gold">Execution Governance</span>
-          <h2 class="section-title section-title--light">Clear Accountability From First Meeting to Handover</h2>
-          <p class="section-subtitle section-subtitle--light">
-            A defined 5-step sequence keeps technical decisions visible, budgets controlled, and live client sites protected throughout construction.
-          </p>
-        </div>
+        <div class="methodology-layout">
+          <div class="methodology-intro" data-reveal>
+            <span class="mono-label mono-label--gold section-kicker section-kicker--gold">Engineering Expertise &amp; Methodology</span>
+            <h2 class="section-title section-title--light">Structured Delivery From Site Diagnostics to Verified Handover</h2>
+            <p class="section-subtitle section-subtitle--light">
+              A disciplined five-phase engineering timeline keeps structural decisions documented, schedules controlled via MS Project, and live client sites protected throughout execution.
+            </p>
 
-        <ol class="workflow-grid">
-          <li class="workflow-step" data-reveal data-reveal-delay="0">
-            <div class="workflow-step__num" aria-hidden="true">01</div>
-            <div class="workflow-step__content">
-              <h3>Understand the Brief &amp; Site</h3>
-              <p>Align on project needs, structural/soil diagnostics, site constraints, and real conditions on the ground before quoting or mobilizing.</p>
+            <div class="visibility-stack">
+              <div class="visibility-bar__item">
+                <strong>Regular Communication</strong>
+                <span>Daily &amp; weekly technical updates keep stakeholders aligned</span>
+              </div>
+              <div class="visibility-bar__item">
+                <strong>Recorded Decisions</strong>
+                <span>Site anomalies resolved promptly with BUET/CAAB consultants</span>
+              </div>
+              <div class="visibility-bar__item">
+                <strong>Verified Billing</strong>
+                <span>Every payment reconciled against measurement-book audits</span>
+              </div>
+              <div class="visibility-bar__item">
+                <strong>Early Risk Resolution</strong>
+                <span>Soil and existing-rebar variances addressed before delay</span>
+              </div>
             </div>
-          </li>
-          <li class="workflow-step" data-reveal data-reveal-delay="70">
-            <div class="workflow-step__num" aria-hidden="true">02</div>
-            <div class="workflow-step__content">
-              <h3>Plan Scope, Budget &amp; Sequence</h3>
-              <p>Establish detailed BOQ, rate analysis, CAPEX/OPEX budget, phased work sequencing, and MS Project programme prior to mobilization.</p>
-            </div>
-          </li>
-          <li class="workflow-step" data-reveal data-reveal-delay="140">
-            <div class="workflow-step__num" aria-hidden="true">03</div>
-            <div class="workflow-step__content">
-              <h3>Coordinate Design, Approvals &amp; Procurement</h3>
-              <p>Bridge architects, structural consultants (BUET/CAAB), statutory compliance (BNBC/RAJUK/FSCD/DoE), and vetted material procurement.</p>
-            </div>
-          </li>
-          <li class="workflow-step" data-reveal data-reveal-delay="210">
-            <div class="workflow-step__num" aria-hidden="true">04</div>
-            <div class="workflow-step__content">
-              <h3>Build, Inspect &amp; Communicate Progress</h3>
-              <p>Enforce rebar and concrete QA/QC, NDT audits, site safety toolbox talks, and transparent daily/weekly technical progress reporting.</p>
-            </div>
-          </li>
-          <li class="workflow-step workflow-step--final" data-reveal data-reveal-delay="280">
-            <div class="workflow-step__num" aria-hidden="true">05</div>
-            <div class="workflow-step__content">
-              <h3>Complete Handover &amp; Closeout</h3>
-              <p>Verify finishing quality, reconcile measurement books and final bills against verified work, and deliver clean closeout documentation.</p>
-            </div>
-          </li>
-        </ol>
+          </div>
 
-        <div class="visibility-bar" data-reveal>
-          <div class="visibility-bar__item">
-            <strong>Regular Communication</strong>
-            <span>Stakeholders stay informed as site work develops</span>
-          </div>
-          <div class="visibility-bar__item">
-            <strong>Recorded Decisions</strong>
-            <span>Technical clarifications resolved promptly with consultants</span>
-          </div>
-          <div class="visibility-bar__item">
-            <strong>Verified Billing</strong>
-            <span>Every contractor payment backed by measurement-book audits</span>
-          </div>
-          <div class="visibility-bar__item">
-            <strong>Early Risk Resolution</strong>
-            <span>Site anomalies escalated early with practical engineering fixes</span>
-          </div>
+          <ol class="timeline-list" aria-label="Five-phase engineering execution timeline">
+            <li class="timeline-item" data-reveal data-reveal-delay="0">
+              <div class="timeline-item__marker" aria-hidden="true">01</div>
+              <div class="timeline-item__body">
+                <span class="mono-label mono-label--gold">Phase 01 &bull; Diagnostics</span>
+                <h3>Understand the Brief &amp; Site</h3>
+                <p>Align on project needs, structural and sub-soil diagnostics (CPT/SCPT, NDT, core testing), site constraints, and real conditions on the ground before quoting or mobilizing.</p>
+              </div>
+            </li>
+            <li class="timeline-item" data-reveal data-reveal-delay="70">
+              <div class="timeline-item__marker" aria-hidden="true">02</div>
+              <div class="timeline-item__body">
+                <span class="mono-label mono-label--gold">Phase 02 &bull; Planning</span>
+                <h3>Plan Scope, Budget &amp; Sequence</h3>
+                <p>Establish detailed BOQ, rate analysis, CAPEX/OPEX budget, phased work sequencing for live facilities, and MS Project programme prior to mobilization.</p>
+              </div>
+            </li>
+            <li class="timeline-item" data-reveal data-reveal-delay="140">
+              <div class="timeline-item__marker" aria-hidden="true">03</div>
+              <div class="timeline-item__body">
+                <span class="mono-label mono-label--gold">Phase 03 &bull; Coordination</span>
+                <h3>Coordinate Design, Approvals &amp; Procurement</h3>
+                <p>Bridge architects, structural consultants (BUET/CAAB), statutory compliance (BNBC/RAJUK/FSCD/DoE), and vetted material procurement.</p>
+              </div>
+            </li>
+            <li class="timeline-item" data-reveal data-reveal-delay="210">
+              <div class="timeline-item__marker" aria-hidden="true">04</div>
+              <div class="timeline-item__body">
+                <span class="mono-label mono-label--gold">Phase 04 &bull; Execution &amp; QA/QC</span>
+                <h3>Build, Inspect &amp; Communicate Progress</h3>
+                <p>Enforce rebar and concrete QA/QC, NDT audits, site safety toolbox talks, and transparent daily/weekly technical progress reporting.</p>
+              </div>
+            </li>
+            <li class="timeline-item timeline-item--final" data-reveal data-reveal-delay="280">
+              <div class="timeline-item__marker" aria-hidden="true">05</div>
+              <div class="timeline-item__body">
+                <span class="mono-label mono-label--gold">Phase 05 &bull; Handover</span>
+                <h3>Complete Handover &amp; Closeout</h3>
+                <p>Verify finishing quality, reconcile measurement books and final bills against verified work, and deliver clean closeout documentation.</p>
+              </div>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
 
-    <!-- 6. LEADERSHIP, BOARD & CREDENTIALS -->
+    <!-- 8. WHY CHOOSE NEERFORT -->
+    <section id="why-neerfort" class="section section--white section--bordered">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="mono-label mono-label--accent section-kicker">Why Choose NeerFort</span>
+          <h2 class="section-title">Built for Complex Sites Where Engineering Judgment Matters Most</h2>
+          <p class="section-subtitle">
+            Institutional clients, industrial groups, and property owners choose NeerFort for field-tested leadership, technical transparency, and dependable delivery under pressure.
+          </p>
+        </div>
+
+        <div class="why-grid">
+          <article class="why-card" data-reveal data-reveal-delay="0">
+            <span class="why-card__num">01</span>
+            <h3>22+ Years Principal Field Leadership</h3>
+            <p>Direct oversight by Managing Director Md. Saiful Haque, MIEB across government, aviation, industrial, and high-rise projects since 2003.</p>
+          </article>
+          <article class="why-card" data-reveal data-reveal-delay="60">
+            <span class="why-card__num">02</span>
+            <h3>BUET, CAAB &amp; BEZA Execution Pedigree</h3>
+            <p>Demonstrated ability to satisfy rigorous university supervision, civil aviation protocols, and national economic zone standards.</p>
+          </article>
+          <article class="why-card" data-reveal data-reveal-delay="120">
+            <span class="why-card__num">03</span>
+            <h3>Zero-Disruption Live-Site Phasing</h3>
+            <p>Proven retrofit delivery inside active export garment factories, an operating international airport, and occupied government headquarters.</p>
+          </article>
+          <article class="why-card" data-reveal data-reveal-delay="180">
+            <span class="why-card__num">04</span>
+            <h3>Certified Soil &amp; 3D Survey Capability</h3>
+            <p>Backed by CPT/SCPT soil testing, seismic down-hole certification, and Faro 3D Terrestrial Laser Scanning for accurate as-built verification.</p>
+          </article>
+          <article class="why-card" data-reveal data-reveal-delay="240">
+            <span class="why-card__num">05</span>
+            <h3>Disciplined BOQ &amp; Bill Verification</h3>
+            <p>Transparent rate analysis, vetted supplier relationships, and measurement-book verification protect client budgets from hidden overruns.</p>
+          </article>
+          <article class="why-card" data-reveal data-reveal-delay="300">
+            <span class="why-card__num">06</span>
+            <h3>Full-Lifecycle Civil &amp; Envelope Depth</h3>
+            <p>Integrated capability spanning jet grouting, anchor piling, RCC retrofitting, turnkey factories, curtain walls, and commercial fit-outs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. LEADERSHIP & MANAGEMENT -->
     <section id="leadership" class="section section--tinted section--bordered-bottom">
       <div class="container">
-        <div class="leadership-layout">
-          <!-- Principal Profile Column -->
+        <div class="section-header" data-reveal>
+          <span class="mono-label mono-label--accent section-kicker">Leadership &amp; Management</span>
+          <h2 class="section-title">MIEB-Accredited Engineering Leadership &amp; Corporate Board</h2>
+          <p class="section-subtitle">
+            Accountable governance combining principal civil engineering expertise with accessible executive leadership.
+          </p>
+        </div>
+
+        <div class="leadership-editorial">
+          <!-- Principal Profile Card -->
           <div class="principal-card" data-reveal>
             <div class="principal-card__head">
               <div class="principal-avatar">
@@ -635,11 +765,12 @@
                   width="96"
                   height="118"
                   loading="lazy"
+                  decoding="async"
                 >
               </div>
               <div>
                 <span class="mono-label mono-label--accent">Managing Director &amp; Principal Engineer</span>
-                <h2 class="principal-card__name">Md. Saiful Haque, MIEB</h2>
+                <h3 class="principal-card__name">Md. Saiful Haque, MIEB</h3>
                 <p class="principal-card__role">Civil Engineer &amp; Project Manager &bull; 22+ Years Experience</p>
                 <a href="https://linkedin.com/in/engrsaifulhaque" target="_blank" rel="noopener noreferrer" class="principal-linkedin">
                   <svg class="icon-xs" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -653,7 +784,7 @@
             </p>
 
             <div class="credentials-block">
-              <h3 class="mono-label mono-label--navy">Academic &amp; Professional Credentials</h3>
+              <h4 class="mono-label mono-label--navy">Academic &amp; Professional Credentials</h4>
               <ul class="check-list">
                 <li><strong>Member (MIEB)</strong> — The Institution of Engineers, Bangladesh (IEB)</li>
                 <li><strong>B.Sc. in Civil Engineering</strong> — Stamford University Bangladesh (2008)</li>
@@ -661,93 +792,37 @@
                 <li><strong>Professional Certification</strong> — CPT &amp; SCPT Soil Testing and Seismic Down-Hole Testing</li>
               </ul>
             </div>
-
-            <!-- Corporate Board Directory (Verified from Official NeerFort Cards) -->
-            <div class="board-block">
-              <h3 class="mono-label mono-label--navy">NeerFort Leadership Directory</h3>
-              <div class="board-grid">
-                <div class="board-member">
-                  <div class="board-member__name">Naznin Akter</div>
-                  <div class="board-member__title">Chairperson</div>
-                  <a href="tel:+8801874648400" class="board-member__phone">+880 1874 648400</a>
-                </div>
-                <div class="board-member">
-                  <div class="board-member__name">Md. Saiful Haque, MIEB</div>
-                  <div class="board-member__title">Managing Director</div>
-                  <a href="tel:+8801873353827" class="board-member__phone">+880 1873 353827</a>
-                </div>
-                <div class="board-member">
-                  <div class="board-member__name">Rajib Ahmed</div>
-                  <div class="board-member__title">Director</div>
-                  <a href="tel:+8801820007128" class="board-member__phone">+880 1820 007128</a>
-                </div>
-              </div>
-            </div>
           </div>
 
-          <!-- Compliance, Technical Stack & References Column -->
-          <div id="compliance" class="compliance-col" data-reveal data-reveal-delay="100">
-            <div class="section-header section-header--compact">
-              <span class="mono-label mono-label--accent section-kicker">Compliance, Stack &amp; References</span>
-              <h2 class="section-title">Regulatory Governance &amp; Engineering Precision</h2>
-              <p class="section-subtitle">
-                Every NeerFort project is planned and documented to satisfy statutory reviews, safety protocols, and independent structural verification.
-              </p>
-            </div>
+          <!-- Board Directory Column -->
+          <div class="board-directory-panel" data-reveal data-reveal-delay="100">
+            <span class="mono-label mono-label--navy">Executive Board Directory</span>
+            <h3 class="board-directory-panel__title">Direct Access to NeerFort Corporate Leadership</h3>
+            <p class="board-directory-panel__desc">
+              Clients and project consultants work directly with NeerFort's executive leadership for commercial clarity, technical decision-making, and rapid mobilization.
+            </p>
 
-            <div class="panel-card">
-              <h3 class="mono-label mono-label--navy">Statutory &amp; Safety Frameworks</h3>
-              <div class="compliance-badges">
-                <div class="compliance-badge">
-                  <strong>BNBC</strong>
-                  <span>National Building Code</span>
+            <div class="board-stack">
+              <div class="board-member board-member--row">
+                <div>
+                  <div class="board-member__name">Naznin Akter</div>
+                  <div class="board-member__title">Chairperson</div>
                 </div>
-                <div class="compliance-badge">
-                  <strong>RAJUK</strong>
-                  <span>Development Authority</span>
-                </div>
-                <div class="compliance-badge">
-                  <strong>FSCD</strong>
-                  <span>Fire Service &amp; Civil Defence</span>
-                </div>
-                <div class="compliance-badge">
-                  <strong>DoE</strong>
-                  <span>Dept. of Environment</span>
-                </div>
+                <a href="tel:+8801874648400" class="board-member__phone">+880 1874 648400</a>
               </div>
-              <p class="panel-note">
-                Proven consultant and agency liaison across <strong>BUET</strong> (Dept. of Civil Engineering), <strong>CAAB</strong>, and <strong>BEZA</strong>.
-              </p>
-            </div>
-
-            <div class="panel-card">
-              <h3 class="mono-label mono-label--navy">Design Software, Survey Hardware &amp; Project Controls</h3>
-              <div class="stack-pills">
-                <span class="pill pill--navy">AutoCAD 2D</span>
-                <span class="pill pill--navy">Google SketchUp 3D</span>
-                <span class="pill pill--navy">MS Project Scheduling</span>
-                <span class="pill pill--gold">Faro 3D Terrestrial Laser Scanner</span>
-                <span class="pill pill--light">Advanced MS Excel BOQ &amp; Cost Analytics</span>
-                <span class="pill pill--light">ERP Project Controls</span>
-                <span class="pill pill--light">Zoho Operations</span>
+              <div class="board-member board-member--row">
+                <div>
+                  <div class="board-member__name">Md. Saiful Haque, MIEB</div>
+                  <div class="board-member__title">Managing Director &amp; Principal Civil Engineer</div>
+                </div>
+                <a href="tel:+8801873353827" class="board-member__phone">+880 1873 353827</a>
               </div>
-            </div>
-
-            <div class="panel-card">
-              <h3 class="mono-label mono-label--navy">Institutional &amp; Academic References (Available Upon Formal Request)</h3>
-              <div class="references-list">
-                <div class="reference-item">
-                  <div class="reference-item__name">Dr. Mehadi Hossain Ansari</div>
-                  <div class="reference-item__role">Professor, Department of Civil Engineering (Earthquake Specialist), BUET, Dhaka</div>
+              <div class="board-member board-member--row">
+                <div>
+                  <div class="board-member__name">Rajib Ahmed</div>
+                  <div class="board-member__title">Director</div>
                 </div>
-                <div class="reference-item">
-                  <div class="reference-item__name">Brig. Gen. Md. Khalequzzaman (Retd.)</div>
-                  <div class="reference-item__role">Chief Executive Officer (Admin), Fortis Group Ltd.</div>
-                </div>
-                <div class="reference-item">
-                  <div class="reference-item__name">Engr. Syed Ahsanul Haque</div>
-                  <div class="reference-item__role">Chief Business Operation Manager, EIMS Ltd.</div>
-                </div>
+                <a href="tel:+8801820007128" class="board-member__phone">+880 1820 007128</a>
               </div>
             </div>
           </div>
@@ -755,8 +830,219 @@
       </div>
     </section>
 
-    <!-- 7. CONSULTATION & DIRECT CONTACT SECTION -->
-    <section id="contact" class="section section--white">
+    <!-- 10. COMPLIANCE & PROFESSIONAL CREDENTIALS -->
+    <section id="compliance" class="section section--white section--bordered-bottom">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="mono-label mono-label--accent section-kicker">Compliance &amp; Professional Credentials</span>
+          <h2 class="section-title">Regulatory Governance, Technical Stack &amp; Institutional References</h2>
+          <p class="section-subtitle">
+            Every NeerFort project is planned and documented to satisfy statutory reviews, safety protocols, and independent structural verification.
+          </p>
+        </div>
+
+        <div class="compliance-grid">
+          <div class="panel-card" data-reveal data-reveal-delay="0">
+            <h3 class="mono-label mono-label--navy">Statutory &amp; Safety Frameworks</h3>
+            <div class="compliance-badges">
+              <div class="compliance-badge">
+                <strong>BNBC</strong>
+                <span>National Building Code</span>
+              </div>
+              <div class="compliance-badge">
+                <strong>RAJUK</strong>
+                <span>Development Authority</span>
+              </div>
+              <div class="compliance-badge">
+                <strong>FSCD</strong>
+                <span>Fire Service &amp; Civil Defence</span>
+              </div>
+              <div class="compliance-badge">
+                <strong>DoE</strong>
+                <span>Dept. of Environment</span>
+              </div>
+            </div>
+            <p class="panel-note">
+              Proven consultant and agency liaison across <strong>BUET</strong> (Dept. of Civil Engineering), <strong>CAAB</strong>, and <strong>BEZA</strong>.
+            </p>
+          </div>
+
+          <div class="panel-card" data-reveal data-reveal-delay="80">
+            <h3 class="mono-label mono-label--navy">Design Software, Survey Hardware &amp; Project Controls</h3>
+            <div class="stack-pills">
+              <span class="pill pill--navy">AutoCAD 2D</span>
+              <span class="pill pill--navy">Google SketchUp 3D</span>
+              <span class="pill pill--navy">MS Project Scheduling</span>
+              <span class="pill pill--gold">Faro 3D Terrestrial Laser Scanner</span>
+              <span class="pill pill--light">Advanced MS Excel BOQ &amp; Cost Analytics</span>
+              <span class="pill pill--light">ERP Project Controls</span>
+              <span class="pill pill--light">Zoho Operations</span>
+            </div>
+          </div>
+
+          <div class="panel-card panel-card--wide" data-reveal data-reveal-delay="140">
+            <h3 class="mono-label mono-label--navy">Institutional &amp; Academic References (Available Upon Formal Request)</h3>
+            <div class="references-grid">
+              <div class="reference-item">
+                <div class="reference-item__name">Dr. Mehadi Hossain Ansari</div>
+                <div class="reference-item__role">Professor, Department of Civil Engineering (Earthquake Specialist), BUET, Dhaka</div>
+              </div>
+              <div class="reference-item">
+                <div class="reference-item__name">Brig. Gen. Md. Khalequzzaman (Retd.)</div>
+                <div class="reference-item__role">Chief Executive Officer (Admin), Fortis Group Ltd.</div>
+              </div>
+              <div class="reference-item">
+                <div class="reference-item__name">Engr. Syed Ahsanul Haque</div>
+                <div class="reference-item__role">Chief Business Operation Manager, EIMS Ltd.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. PROJECT LOCATIONS / BANGLADESH MAP -->
+    <section id="locations" class="section section--navy">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="mono-label mono-label--gold section-kicker section-kicker--gold">Nationwide Project Footprint</span>
+          <h2 class="section-title section-title--light">Verified Engineering Execution Across Bangladesh</h2>
+          <p class="section-subtitle section-subtitle--light">
+            Explore NeerFort's verified operational footprint across government, aviation, industrial export zones, commercial corridors, and geotechnical survey regions. Select any hub to inspect verified engagements.
+          </p>
+        </div>
+
+        <div class="locations-layout">
+          <!-- Interactive Schematic Bangladesh Map (Verified Locations Only) -->
+          <div class="map-panel" data-reveal>
+            <div class="map-panel__header">
+              <span class="mono-label mono-label--gold">BANGLADESH ENGINEERING FOOTPRINT</span>
+              <span class="map-panel__legend">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>7 Verified Project Hubs</span>
+              </span>
+            </div>
+
+            <div class="bd-map-wrap">
+              <svg class="bd-map-svg" viewBox="0 0 360 440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic map of Bangladesh showing verified NeerFort project locations in Dhaka, Gazipur, Savar DEPZ, Manikganj, Narayanganj Kanchpur and Adamjee EPZ, Chattogram Mirsarai BEZA and CEPZ, and Bandarban">
+                <!-- Subtle Coordinate Grid -->
+                <g stroke="rgba(245, 245, 242, 0.06)" stroke-width="1">
+                  <line x1="0" y1="88" x2="360" y2="88"/>
+                  <line x1="0" y1="176" x2="360" y2="176"/>
+                  <line x1="0" y1="264" x2="360" y2="264"/>
+                  <line x1="0" y1="352" x2="360" y2="352"/>
+                  <line x1="90" y1="0" x2="90" y2="440"/>
+                  <line x1="180" y1="0" x2="180" y2="440"/>
+                  <line x1="270" y1="0" x2="270" y2="440"/>
+                </g>
+
+                <!-- Stylized Schematic Silhouette of Bangladesh -->
+                <path
+                  d="M95 34 L122 26 L154 44 L178 62 L212 86 L258 96 L296 112 L310 132 L286 154 L254 166 L246 192 L262 214 L256 238 L272 266 L296 296 L316 336 L326 378 L314 410 L294 396 L282 356 L264 318 L244 294 L218 286 L202 316 L176 328 L142 326 L112 312 L94 282 L88 242 L74 206 L62 174 L74 138 L66 102 L82 64 Z"
+                  fill="rgba(23, 28, 34, 0.88)"
+                  stroke="rgba(201, 166, 107, 0.42)"
+                  stroke-width="1.6"
+                  stroke-linejoin="round"
+                />
+
+                <!-- Major River Axis Hints (Padma / Jamuna / Meghna) -->
+                <path d="M158 58 Q154 128 164 186 T194 276" stroke="rgba(201, 166, 107, 0.16)" stroke-width="1.2" stroke-dasharray="4 4"/>
+                <path d="M98 162 Q142 198 188 232" stroke="rgba(201, 166, 107, 0.14)" stroke-width="1.2" stroke-dasharray="4 4"/>
+                <path d="M254 142 Q226 196 202 256" stroke="rgba(201, 166, 107, 0.14)" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+                <!-- Verified Project Hub Pins -->
+                <g class="map-pin is-active" data-location-pin="dhaka" tabindex="0" role="button" aria-label="Dhaka Metropolitan project hub">
+                  <circle cx="182" cy="212" r="14" class="map-pin__ring"/>
+                  <circle cx="182" cy="212" r="5.5" class="map-pin__core"/>
+                  <text x="198" y="210" class="map-pin__label">DHAKA (HQ)</text>
+                </g>
+
+                <g class="map-pin" data-location-pin="gazipur" tabindex="0" role="button" aria-label="Gazipur industrial project hub">
+                  <circle cx="184" cy="184" r="11" class="map-pin__ring"/>
+                  <circle cx="184" cy="184" r="4.5" class="map-pin__core"/>
+                  <text x="198" y="182" class="map-pin__label">GAZIPUR</text>
+                </g>
+
+                <g class="map-pin" data-location-pin="savar" tabindex="0" role="button" aria-label="Savar DEPZ project hub">
+                  <circle cx="164" cy="200" r="10" class="map-pin__ring"/>
+                  <circle cx="164" cy="200" r="4.5" class="map-pin__core"/>
+                  <text x="90" y="196" class="map-pin__label">SAVAR / DEPZ</text>
+                </g>
+
+                <g class="map-pin" data-location-pin="manikganj" tabindex="0" role="button" aria-label="Manikganj industrial project hub">
+                  <circle cx="144" cy="218" r="10" class="map-pin__ring"/>
+                  <circle cx="144" cy="218" r="4.5" class="map-pin__core"/>
+                  <text x="78" y="234" class="map-pin__label">MANIKGANJ</text>
+                </g>
+
+                <g class="map-pin" data-location-pin="narayanganj" tabindex="0" role="button" aria-label="Narayanganj, Kanchpur and Adamjee EPZ hub">
+                  <circle cx="204" cy="228" r="11" class="map-pin__ring"/>
+                  <circle cx="204" cy="228" r="4.5" class="map-pin__core"/>
+                  <text x="218" y="236" class="map-pin__label">ADAMJEE / KANCHPUR</text>
+                </g>
+
+                <g class="map-pin" data-location-pin="chattogram" tabindex="0" role="button" aria-label="Chattogram, Mirsarai BEZA and CEPZ project hub">
+                  <circle cx="274" cy="306" r="13" class="map-pin__ring"/>
+                  <circle cx="274" cy="306" r="5" class="map-pin__core"/>
+                  <text x="254" y="310" text-anchor="end" class="map-pin__label">MIRSARAI / CHATTOGRAM</text>
+                </g>
+
+                <g class="map-pin" data-location-pin="bandarban" tabindex="0" role="button" aria-label="Bandarban geotechnical survey hub">
+                  <circle cx="304" cy="356" r="10" class="map-pin__ring"/>
+                  <circle cx="304" cy="356" r="4.5" class="map-pin__core"/>
+                  <text x="216" y="366" class="map-pin__label">BANDARBAN</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Interactive Verified Location Directory -->
+          <div class="locations-panel" data-reveal data-reveal-delay="100">
+            <div id="location-detail" class="location-spotlight" aria-live="polite">
+              <span id="loc-sector" class="mono-label mono-label--gold">Corporate HQ &bull; Govt, Aviation &amp; High-Rise</span>
+              <h3 id="loc-name" class="location-spotlight__title">Dhaka Metropolitan</h3>
+              <p id="loc-projects" class="location-spotlight__desc">
+                BTCL Headquarters seismic retrofitting, HSIA Expansion stormwater package, DNCC Mayor’s Residence retrofit, Sikder Center (17-storey Banani), Abdul Monem Business District facade, multi-storey residential developments, and NeerFort Corporate Office (Elephant Road).
+              </p>
+            </div>
+
+            <div class="location-buttons" role="tablist" aria-label="Verified Bangladesh project hubs">
+              <button type="button" role="tab" class="location-chip is-active" data-location-btn="dhaka" aria-selected="true">
+                <strong>Dhaka</strong>
+                <span>HQ, Govt, Aviation &amp; Towers</span>
+              </button>
+              <button type="button" role="tab" class="location-chip" data-location-btn="gazipur" aria-selected="false">
+                <strong>Gazipur</strong>
+                <span>190,000 Sq. Ft. Factory Complex</span>
+              </button>
+              <button type="button" role="tab" class="location-chip" data-location-btn="chattogram" aria-selected="false">
+                <strong>Mirsarai &amp; Chattogram (CEPZ)</strong>
+                <span>BEZA Bridge-2 &amp; Export Plants</span>
+              </button>
+              <button type="button" role="tab" class="location-chip" data-location-btn="narayanganj" aria-selected="false">
+                <strong>Adamjee EPZ &amp; Kanchpur</strong>
+                <span>Sinha Spinning Mill &amp; EPZ Retrofits</span>
+              </button>
+              <button type="button" role="tab" class="location-chip" data-location-btn="savar" aria-selected="false">
+                <strong>Savar (DEPZ)</strong>
+                <span>South China Dyeing Steel Retrofit</span>
+              </button>
+              <button type="button" role="tab" class="location-chip" data-location-btn="manikganj" aria-selected="false">
+                <strong>Manikganj</strong>
+                <span>5-Storey Industrial Retrofit</span>
+              </button>
+              <button type="button" role="tab" class="location-chip" data-location-btn="bandarban" aria-selected="false">
+                <strong>Bandarban</strong>
+                <span>Chandra-Pahar Seismic Survey</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. TECHNICAL CONSULTATION / INQUIRY CTA -->
+    <section id="contact" class="section section--tinted">
       <div class="container contact-layout">
         <!-- Direct Engineering Desk Card -->
         <aside class="contact-desk" aria-label="NeerFort corporate contact information" data-reveal>
@@ -875,7 +1161,7 @@
             <div class="form-actions">
               <button type="submit" class="btn btn--primary btn--lg">
                 <span>Prepare &amp; Log Inquiry</span>
-                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <svg class="icon-sm btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </button>
               <a id="direct-email-btn" href="mailto:neerfort@gmail.com?subject=NeerFort%20Technical%20Consultation%20Inquiry" class="btn btn--outline btn--lg">
                 <span>Email Directly</span>
@@ -890,7 +1176,7 @@
     </section>
   </main>
 
-  <!-- CORPORATE FOOTER -->
+  <!-- 13. ORGANIZED CORPORATE FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -902,6 +1188,7 @@
             width="178"
             height="48"
             loading="lazy"
+            decoding="async"
           >
           <p class="footer-brand__tagline">&mdash; Shield your Build</p>
           <p class="footer-brand__desc">
@@ -917,12 +1204,15 @@
         <div class="footer-col">
           <h3 class="footer-col__title">Navigation</h3>
           <ul class="footer-links">
-            <li><a href="#capabilities">Engineering Capabilities</a></li>
-            <li><a href="#projects">Verified Projects</a></li>
-            <li><a href="#methodology">5-Step Methodology</a></li>
+            <li><a href="#about">Who We Are</a></li>
+            <li><a href="#capabilities">Core Capabilities</a></li>
+            <li><a href="#commitment">Our Commitment</a></li>
+            <li><a href="#projects">Featured Projects</a></li>
+            <li><a href="#methodology">Execution Methodology</a></li>
             <li><a href="#leadership">Leadership &amp; Board</a></li>
-            <li><a href="#compliance">Compliance &amp; References</a></li>
-            <li><a href="#contact">Request Consultation</a></li>
+            <li><a href="#compliance">Compliance &amp; Credentials</a></li>
+            <li><a href="#locations">Project Locations</a></li>
+            <li><a href="#contact">Discuss Your Project</a></li>
           </ul>
         </div>
 
@@ -966,15 +1256,15 @@
         <div class="modal-meta-grid">
           <div class="modal-meta-item">
             <span class="mono-label mono-label--muted">Location</span>
-            <strong id="modal-location">—</strong>
+            <strong id="modal-location">&mdash;</strong>
           </div>
           <div class="modal-meta-item">
             <span class="mono-label mono-label--muted">Role / Affiliation</span>
-            <strong id="modal-role">—</strong>
+            <strong id="modal-role">&mdash;</strong>
           </div>
           <div class="modal-meta-item">
             <span class="mono-label mono-label--muted">Verified Milestone</span>
-            <strong id="modal-metric" class="text-gold-dark">—</strong>
+            <strong id="modal-metric" class="text-gold-dark">&mdash;</strong>
           </div>
         </div>
 
@@ -999,7 +1289,7 @@
           <span class="mono-label mono-label--muted">BNBC &amp; QA/QC Verified Record</span>
           <a href="#contact" id="modal-inquire-btn" class="btn btn--primary btn--sm">
             <span>Discuss Similar Scope</span>
-            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            <svg class="icon-sm btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
         </div>
       </div>

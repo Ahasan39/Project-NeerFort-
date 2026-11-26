@@ -1,36 +1,75 @@
 /* ==========================================================================
    NEERFORT — Modular Client-Side Interactions
-   Verified portfolio data from Md. Saiful Haque, MIEB & NeerFort source files
+   Centralized static data (Laravel + MySQL migration ready)
+   100% verified portfolio & location records from Md. Saiful Haque, MIEB
    ========================================================================== */
 
 (() => {
   'use strict';
 
-  // Decoupled Hero Slider Data (Laravel/JSON migration ready; 100% verified NeerFort assets)
+  // 1. Cinematic Hero Slides Data (Illustrative engineering discipline visuals)
   const HERO_SLIDES = [
     {
-      kicker: 'AVIATION INFRASTRUCTURE • CAAB',
-      location: 'Dhaka • Live International Airport Works',
-      title: 'HSIA Expansion — Stormwater Drainage Package',
-      description:
-        'Reinforced stormwater culverts, balancing ponds, and treatment infrastructure phased around live flight schedules.'
+      kicker: 'Industrial & Turnkey Construction',
+      title: 'Modern Industrial & Turnkey Engineering'
     },
     {
-      kicker: 'STRUCTURAL RETROFITTING • BUET SUPERVISED',
-      location: 'Dhaka • Occupied Government HQ',
-      title: 'BTCL Headquarters — Seismic & Structural Retrofit',
-      description:
-        'RCC column jacketing, beam strengthening, and NDT verification executed without disrupting active government operations.'
+      kicker: 'Structural & Seismic Strengthening',
+      title: 'Structural Engineering & Seismic Retrofitting'
     },
     {
-      kicker: 'LIVE-SITE SAFETY • ZERO-DISRUPTION PROTOCOL',
-      location: 'Dhaka • Phased Structural Execution',
-      title: 'BTCL HQ — Controlled Structural Preparation',
-      description:
-        'Evening and weekend structural cutting, chipping, and core verification delivered under strict PPE and safety isolation.'
+      kicker: 'Civil Infrastructure & Building Envelopes',
+      title: 'Commercial Infrastructure & Architectural Facades'
     }
   ];
 
+  // 2. Verified Bangladesh Project Locations Data
+  const PROJECT_LOCATIONS = {
+    dhaka: {
+      name: 'Dhaka Metropolitan',
+      sector: 'Corporate HQ • Govt, Aviation & High-Rise',
+      projects:
+        'BTCL Headquarters seismic retrofitting, HSIA Expansion stormwater package, DNCC Mayor’s Residence retrofit, Sikder Center (17-storey Banani), Abdul Monem Business District facade, multi-storey residential apartments, and NeerFort Corporate Office (Elephant Road).'
+    },
+    gazipur: {
+      name: 'Gazipur Industrial Belt',
+      sector: 'Turnkey Industrial & Commercial Fit-Outs',
+      projects:
+        'Rapida Shoes & Bags Ltd. 164,000 sq. ft. manufacturing complex plus 26,000 sq. ft. printing shade and utility buildings, alongside Arabi Fashion display room interiors.'
+    },
+    chattogram: {
+      name: 'Mirsarai (BEZA) & Chattogram (CEPZ)',
+      sector: 'Geotechnical Stabilization & Export Facilities',
+      projects:
+        'BEZA Bridge-2 abutment reconstruction with high-pressure jet grouting and deep anchor piling at Mirsarai; structural retrofits for YNA Youngone (5-storey) and Kenpark inside CEPZ.'
+    },
+    narayanganj: {
+      name: 'Adamjee EPZ, Kanchpur & Shanarpar',
+      sector: 'EPZ Industrial Retrofitting & Ground Engineering',
+      projects:
+        'Sinha Spinning Mill URM steel-mesh program across 17 garment buildings (33 stairs) and 3-storey generator building; steel plate and micro-concrete retrofits at Kwun Tong Apparels & Fashion City (Adamjee EPZ); jet grouting at Shanarpar.'
+    },
+    savar: {
+      name: 'Savar (DEPZ)',
+      sector: 'Export Manufacturing Strengthening',
+      projects:
+        'Steel plate strengthening of structural columns and rafters at South China Dyeing inside Dhaka Export Processing Zone (DEPZ) under live-factory safety controls.'
+    },
+    manikganj: {
+      name: 'Manikganj',
+      sector: 'Multi-Storey Factory Retrofit',
+      projects:
+        'Steel-mesh and micro-concrete structural strengthening across the 5-storey Beautiful Jackets industrial facility without halting export production.'
+    },
+    bandarban: {
+      name: 'Bandarban (Chandra-Pahar)',
+      sector: 'Certified Geotechnical & Seismic Investigation',
+      projects:
+        'Chandra-Pahar seismic down-hole geotechnical testing and sub-soil investigation supporting hillside and challenging terrain engineering.'
+    }
+  };
+
+  // 3. Verified Flagship Projects Dataset
   const FLAGSHIP_PROJECTS = [
     {
       id: 'btcl-hq',
@@ -302,7 +341,7 @@
     });
   }
 
-  // Render Project Cards
+  // Render Featured Engineering Project Cards (Editorial Portfolio Composition)
   function renderProjects(filter = 'all') {
     if (!projectsGrid) return;
     const list =
@@ -313,13 +352,15 @@
     projectsGrid.innerHTML = list
       .map((project, index) => {
         const hasPhotos = project.photos && project.photos.length > 0;
-        const delayMs = Math.min((index % 3) * 75, 180);
+        const isFeaturedLead = filter === 'all' && index === 0;
+        const delayMs = Math.min((index % 3) * 70, 160);
         const mediaHtml = hasPhotos
           ? `
             <img
               src="${escapeHtml(project.photos[0].src)}"
               alt="${escapeHtml(project.photos[0].caption)}"
               loading="lazy"
+              decoding="async"
             >
             <span class="media-badge">${escapeHtml(project.categoryLabel)}</span>
             <span class="media-photo-tag">${project.photos.length > 1 ? `${project.photos.length} Site Photos` : 'Verified Site Photo'}</span>
@@ -338,7 +379,7 @@
           `;
 
         return `
-          <article class="project-card" data-reveal data-reveal-delay="${delayMs}">
+          <article class="project-card${isFeaturedLead ? ' project-card--featured' : ''}" data-reveal data-reveal-delay="${delayMs}">
             <div class="project-card__media">${mediaHtml}</div>
             <div class="project-card__body">
               <div>
@@ -361,7 +402,7 @@
                   data-project-id="${escapeHtml(project.id)}"
                   aria-haspopup="dialog"
                 >
-                  <span>Technical Specs</span>
+                  <span>Project Details</span>
                   <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </button>
               </div>
@@ -532,40 +573,36 @@
     }
   });
 
-  // Cinematic Hero Slider (Accessible, lightweight, reduced-motion aware)
+  // Full-Bleed Cinematic Hero Slider (Accessible, keyboard & reduced-motion aware)
   function initHeroSlider() {
-    const slider = document.getElementById('hero-slider');
-    if (!slider || HERO_SLIDES.length === 0) return;
+    const heroSection = document.getElementById('top');
+    const rail = document.getElementById('hero-slider-rail');
+    if (!heroSection || !rail || HERO_SLIDES.length === 0) return;
 
-    const stageSlides = Array.from(slider.querySelectorAll('[data-hero-slide]'));
-    const bgSlides = Array.from(document.querySelectorAll('[data-hero-bg-slide]'));
-    const dots = Array.from(slider.querySelectorAll('[data-hero-dot]'));
+    const slides = Array.from(heroSection.querySelectorAll('[data-hero-slide]'));
+    const dots = Array.from(rail.querySelectorAll('[data-hero-dot]'));
     const prevBtn = document.getElementById('hero-prev-btn');
     const nextBtn = document.getElementById('hero-next-btn');
     const pauseBtn = document.getElementById('hero-pause-btn');
     const iconPause = document.getElementById('hero-icon-pause');
     const iconPlay = document.getElementById('hero-icon-play');
-    const kickerEl = document.getElementById('hero-slide-kicker');
     const counterEl = document.getElementById('hero-slide-counter');
-    const locationEl = document.getElementById('hero-slide-location');
+    const kickerEl = document.getElementById('hero-slide-kicker');
     const titleEl = document.getElementById('hero-slide-title');
-    const descEl = document.getElementById('hero-slide-desc');
 
     const INTERVAL_MS = 6500;
     let currentIndex = 0;
     let userPaused = prefersReducedMotion.matches;
-    let hoverOrFocusPaused = false;
+    let focusPaused = false;
     let timerId = null;
 
     function formatSlideCounter(index) {
-      const current = String(index + 1).padStart(2, '0');
-      const total = String(HERO_SLIDES.length).padStart(2, '0');
-      return `${current} / ${total}`;
+      return `${String(index + 1).padStart(2, '0')} / ${String(HERO_SLIDES.length).padStart(2, '0')}`;
     }
 
     function syncPauseState() {
-      const effectivelyPaused = userPaused || hoverOrFocusPaused || document.hidden;
-      slider.classList.toggle('is-paused', effectivelyPaused);
+      const effectivelyPaused = userPaused || focusPaused || document.hidden;
+      heroSection.classList.toggle('is-paused', effectivelyPaused);
       if (pauseBtn) {
         pauseBtn.setAttribute('aria-pressed', String(userPaused));
         pauseBtn.setAttribute(
@@ -586,7 +623,7 @@
 
     function startAutoplay() {
       stopAutoplay();
-      if (userPaused || hoverOrFocusPaused || document.hidden || prefersReducedMotion.matches) {
+      if (userPaused || focusPaused || document.hidden || prefersReducedMotion.matches) {
         syncPauseState();
         return;
       }
@@ -601,13 +638,7 @@
       currentIndex = ((nextIndex % count) + count) % count;
       const slideData = HERO_SLIDES[currentIndex];
 
-      stageSlides.forEach((el, idx) => {
-        const active = idx === currentIndex;
-        el.classList.toggle('is-active', active);
-        el.setAttribute('aria-hidden', String(!active));
-      });
-
-      bgSlides.forEach((el, idx) => {
+      slides.forEach((el, idx) => {
         el.classList.toggle('is-active', idx === currentIndex);
       });
 
@@ -616,17 +647,14 @@
         dot.classList.remove('is-active');
         dot.setAttribute('aria-selected', String(active));
         if (active) {
-          // Force reflow so the subtle progress bar restarts cleanly on slide change
           void dot.offsetWidth;
           dot.classList.add('is-active');
         }
       });
 
-      if (kickerEl) kickerEl.textContent = slideData.kicker;
       if (counterEl) counterEl.textContent = formatSlideCounter(currentIndex);
-      if (locationEl) locationEl.textContent = slideData.location;
+      if (kickerEl) kickerEl.textContent = slideData.kicker;
       if (titleEl) titleEl.textContent = slideData.title;
-      if (descEl) descEl.textContent = slideData.description;
     }
 
     prevBtn?.addEventListener('click', () => {
@@ -659,26 +687,27 @@
       }
     });
 
-    slider.addEventListener('mouseenter', () => {
-      hoverOrFocusPaused = true;
+    rail.addEventListener('focusin', () => {
+      focusPaused = true;
       stopAutoplay();
       syncPauseState();
     });
 
-    slider.addEventListener('mouseleave', () => {
-      hoverOrFocusPaused = false;
-      startAutoplay();
+    rail.addEventListener('focusout', (event) => {
+      if (!rail.contains(event.relatedTarget)) {
+        focusPaused = false;
+        startAutoplay();
+      }
     });
 
-    slider.addEventListener('focusin', () => {
-      hoverOrFocusPaused = true;
-      stopAutoplay();
-      syncPauseState();
-    });
-
-    slider.addEventListener('focusout', (event) => {
-      if (!slider.contains(event.relatedTarget)) {
-        hoverOrFocusPaused = false;
+    rail.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goToSlide(currentIndex - 1);
+        startAutoplay();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goToSlide(currentIndex + 1);
         startAutoplay();
       }
     });
@@ -704,6 +733,51 @@
 
     goToSlide(0);
     startAutoplay();
+  }
+
+  // Interactive Bangladesh Verified Project Locations Map
+  function initLocationsMap() {
+    const pins = Array.from(document.querySelectorAll('[data-location-pin]'));
+    const buttons = Array.from(document.querySelectorAll('[data-location-btn]'));
+    const sectorEl = document.getElementById('loc-sector');
+    const nameEl = document.getElementById('loc-name');
+    const projectsEl = document.getElementById('loc-projects');
+
+    if (pins.length === 0 && buttons.length === 0) return;
+
+    function selectLocation(key) {
+      const info = PROJECT_LOCATIONS[key];
+      if (!info) return;
+
+      pins.forEach((pin) => {
+        pin.classList.toggle('is-active', pin.getAttribute('data-location-pin') === key);
+      });
+      buttons.forEach((btn) => {
+        const active = btn.getAttribute('data-location-btn') === key;
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-selected', String(active));
+      });
+
+      if (sectorEl) sectorEl.textContent = info.sector;
+      if (nameEl) nameEl.textContent = info.name;
+      if (projectsEl) projectsEl.textContent = info.projects;
+    }
+
+    pins.forEach((pin) => {
+      const key = pin.getAttribute('data-location-pin');
+      pin.addEventListener('click', () => selectLocation(key));
+      pin.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          selectLocation(key);
+        }
+      });
+    });
+
+    buttons.forEach((btn) => {
+      const key = btn.getAttribute('data-location-btn');
+      btn.addEventListener('click', () => selectLocation(key));
+    });
   }
 
   // Header scroll elevation, gold scroll-progress line & active nav highlight
@@ -910,8 +984,9 @@
     form.reset();
   });
 
-  // Initial Render & Motion Setup
+  // Initial Render & Interactive Module Bootstrap
   initHeroSlider();
+  initLocationsMap();
   initMotionObservers();
   syncFilterCounts();
   renderProjects('all');
