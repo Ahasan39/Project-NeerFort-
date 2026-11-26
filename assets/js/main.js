@@ -207,10 +207,13 @@
 
   // DOM References
   const siteHeader = document.getElementById('site-header');
+  const scrollProgressBar = document.getElementById('scroll-progress-bar');
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileDrawer = document.getElementById('mobile-drawer');
   const menuIconOpen = document.getElementById('menu-icon-open');
   const menuIconClose = document.getElementById('menu-icon-close');
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const projectsGrid = document.getElementById('projects-grid');
   const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
@@ -283,8 +286,9 @@
         : FLAGSHIP_PROJECTS.filter((project) => project.category === filter);
 
     projectsGrid.innerHTML = list
-      .map((project) => {
+      .map((project, index) => {
         const hasPhotos = project.photos && project.photos.length > 0;
+        const delayMs = Math.min((index % 3) * 75, 180);
         const mediaHtml = hasPhotos
           ? `
             <img
@@ -309,7 +313,7 @@
           `;
 
         return `
-          <article class="project-card">
+          <article class="project-card" data-reveal data-reveal-delay="${delayMs}">
             <div class="project-card__media">${mediaHtml}</div>
             <div class="project-card__body">
               <div>
@@ -341,6 +345,8 @@
         `;
       })
       .join('');
+
+    observeRevealElements(projectsGrid.querySelectorAll('[data-reveal]'));
   }
 
   // Filter Tabs
@@ -482,7 +488,7 @@
     }
   });
 
-  // Header scroll elevation & active nav highlight
+  // Header scroll elevation, gold scroll-progress line & active nav highlight
   const navLinks = Array.from(document.querySelectorAll('.desktop-nav .nav-link'));
   const observedSections = navLinks
     .map((link) => {
@@ -491,12 +497,30 @@
     })
     .filter(Boolean);
 
-  function updateHeaderScroll() {
-    siteHeader?.classList.toggle('is-scrolled', window.scrollY > 12);
+  let scrollTicking = false;
+
+  function syncScrollUI() {
+    scrollTicking = false;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+    siteHeader?.classList.toggle('is-scrolled', scrollTop > 28);
+
+    if (scrollProgressBar) {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0;
+      scrollProgressBar.style.transform = `scaleX(${progress.toFixed(4)})`;
+    }
   }
 
-  window.addEventListener('scroll', updateHeaderScroll, { passive: true });
-  updateHeaderScroll();
+  function requestScrollSync() {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      window.requestAnimationFrame(syncScrollUI);
+    }
+  }
+
+  window.addEventListener('scroll', requestScrollSync, { passive: true });
+  window.addEventListener('resize', requestScrollSync, { passive: true });
+  syncScrollUI();
 
   if ('IntersectionObserver' in window && observedSections.length > 0) {
     const observer = new IntersectionObserver(
@@ -513,6 +537,91 @@
       { rootMargin: '-25% 0px -60% 0px', threshold: 0.01 }
     );
     observedSections.forEach((sec) => observer.observe(sec));
+  }
+
+  // Performant Scroll-Reveal & Verified Metric Counter Animation
+  let revealObserver = null;
+
+  function animateCounter(el) {
+    const target = Number(el.getAttribute('data-counter-target'));
+    const suffix = el.getAttribute('data-counter-suffix') || '';
+    if (!Number.isFinite(target) || el.dataset.counterDone === 'true') return;
+    el.dataset.counterDone = 'true';
+
+    if (prefersReducedMotion.matches) {
+      el.textContent = `${target.toLocaleString('en-US')}${suffix}`;
+      return;
+    }
+
+    const duration = 900;
+    const startTime = performance.now();
+
+    function step(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(target * eased);
+      el.textContent = `${current.toLocaleString('en-US')}${suffix}`;
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        el.textContent = `${target.toLocaleString('en-US')}${suffix}`;
+      }
+    }
+
+    window.requestAnimationFrame(step);
+  }
+
+  function initMotionObservers() {
+    const revealTargets = document.querySelectorAll('[data-reveal]');
+    if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) {
+      revealTargets.forEach((el) => el.classList.add('is-revealed'));
+      return;
+    }
+
+    document.documentElement.classList.add('js-motion-ready');
+
+    revealObserver = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const delay = Number(el.getAttribute('data-reveal-delay')) || 0;
+
+          const revealNow = () => {
+            el.classList.add('is-revealed');
+            const counterEl = el.querySelector('[data-counter-target]');
+            if (counterEl) {
+              animateCounter(counterEl);
+            }
+          };
+
+          if (delay > 0) {
+            window.setTimeout(revealNow, delay);
+          } else {
+            revealNow();
+          }
+
+          obs.unobserve(el);
+        });
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
+    );
+
+    observeRevealElements(revealTargets);
+  }
+
+  function observeRevealElements(elements) {
+    if (!elements || elements.length === 0) return;
+    if (!revealObserver || prefersReducedMotion.matches) {
+      elements.forEach((el) => el.classList.add('is-revealed'));
+      return;
+    }
+    elements.forEach((el) => {
+      if (!el.classList.contains('is-revealed')) {
+        revealObserver.observe(el);
+      }
+    });
   }
 
   // Toast Notification Helpers
@@ -583,7 +692,8 @@
     form.reset();
   });
 
-  // Initial Render
+  // Initial Render & Motion Setup
+  initMotionObservers();
   syncFilterCounts();
   renderProjects('all');
 })();

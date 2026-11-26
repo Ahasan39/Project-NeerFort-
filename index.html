@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NeerFort — Shield your Build | Civil Engineering, Structural Retrofitting &amp; Turnkey Construction</title>
   <meta name="description" content="NeerFort delivers civil engineering, structural retrofitting, geotechnical stabilization, architectural facades, and turnkey construction across Bangladesh under MIEB-accredited leadership.">
-  <meta name="theme-color" content="#0B1933">
+  <meta name="theme-color" content="#0B132B">
   <meta property="og:title" content="NeerFort — Shield your Build | Civil Engineering &amp; Construction">
   <meta property="og:description" content="Precision civil engineering, BUET-supervised structural retrofitting, geotechnical stabilization, and turnkey execution led by Md. Saiful Haque, MIEB.">
   <meta property="og:type" content="website">
@@ -51,9 +51,17 @@
     <div class="container header__inner">
       <a href="#top" class="brand-lockup" aria-label="NeerFort — Shield your Build Home">
         <img
-          src="assets/logo/neerfort-logo-light.png"
+          src="assets/logo/neerfort-logo-dark.png"
           alt="NeerFort — Shield your Build"
-          class="brand-lockup__img"
+          class="brand-lockup__img brand-lockup__img--dark"
+          width="178"
+          height="48"
+        >
+        <img
+          src="assets/logo/neerfort-logo-light.png"
+          alt=""
+          aria-hidden="true"
+          class="brand-lockup__img brand-lockup__img--light"
           width="172"
           height="64"
         >
@@ -69,7 +77,7 @@
       </nav>
 
       <div class="header__actions">
-        <a href="#contact" class="btn btn--primary btn--sm header__cta">
+        <a href="#contact" class="btn btn--header-cta btn--sm header__cta">
           <span>Request Consultation</span>
           <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
@@ -88,6 +96,11 @@
       </div>
     </div>
 
+    <!-- Subtle Gold Scroll-Progress Line -->
+    <div class="scroll-progress" aria-hidden="true">
+      <div id="scroll-progress-bar" class="scroll-progress__bar"></div>
+    </div>
+
     <!-- RESPONSIVE MOBILE DRAWER -->
     <div id="mobile-drawer" class="mobile-drawer" hidden>
       <nav class="container mobile-drawer__nav" aria-label="Mobile Navigation">
@@ -98,7 +111,7 @@
         <a href="#compliance" class="mobile-nav-link">Compliance</a>
         <a href="#contact" class="mobile-nav-link">Contact</a>
         <div class="mobile-drawer__footer">
-          <a href="#contact" class="btn btn--primary btn--full mobile-nav-link">
+          <a href="#contact" class="btn btn--gold btn--full mobile-nav-link">
             <span>Schedule Technical Consultation</span>
             <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -113,18 +126,29 @@
   </header>
 
   <main id="main-content">
-    <!-- 1. HERO SECTION -->
+    <!-- 1. FULL-BLEED ARCHITECTURAL DARK HERO -->
     <section id="top" class="hero">
+      <div class="hero__media-bg" aria-hidden="true">
+        <img
+          src="assets/images/project-hsia-stormwater.jpg"
+          alt=""
+          loading="eager"
+          decoding="async"
+        >
+      </div>
+      <div class="hero__scrim" aria-hidden="true"></div>
       <div class="hero__grid-bg" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true"></div>
+
       <div class="container hero__layout">
-        <div class="hero__content">
+        <div class="hero__content" data-reveal>
           <div class="eyebrow-badge">
-            <span class="status-dot" aria-hidden="true"></span>
+            <span class="status-dot status-dot--pulse" aria-hidden="true"></span>
             <span>BNBC &amp; RAJUK Aligned &bull; IEB Accredited Leadership</span>
           </div>
 
           <h1 class="hero__title">
-            Precision Civil Engineering, Structural Retrofitting &amp; Turnkey Execution.
+            Precision Civil Engineering, Structural Retrofitting &amp; <span class="hero__title-accent">Turnkey Execution.</span>
           </h1>
 
           <p class="hero__lead">
@@ -132,12 +156,13 @@
           </p>
 
           <div class="hero__actions">
-            <a href="#projects" class="btn btn--primary btn--lg">
+            <a href="#projects" class="btn btn--gold btn--lg">
               <span>Explore Verified Projects</span>
-              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              <svg class="icon-sm btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </a>
-            <a href="#contact" class="btn btn--outline btn--lg">
+            <a href="#contact" class="btn btn--hero-outline btn--lg">
               <span>Schedule Technical Consultation</span>
+              <svg class="icon-sm btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
           </div>
 
@@ -157,14 +182,29 @@
           </ul>
         </div>
 
-        <!-- ARCHITECTURAL DOSSIER CARD -->
-        <aside class="hero-card" aria-label="NeerFort structural engineering overview">
+        <!-- GLASSMORPHIC ARCHITECTURAL TELEMETRY SHOWCASE -->
+        <aside class="hero-card" aria-label="NeerFort structural engineering overview" data-reveal data-reveal-delay="120">
           <div class="hero-card__header">
             <div class="hero-card__tag">
-              <span class="status-dot" aria-hidden="true"></span>
+              <span class="status-dot status-dot--pulse" aria-hidden="true"></span>
               <span>STRUCTURAL ELEVATION &bull; DWG-NF-01</span>
             </div>
             <span class="hero-card__scale">SCALE 1:100</span>
+          </div>
+
+          <div class="hero-card__telemetry" aria-label="Engineering compliance telemetry">
+            <div class="telemetry-cell">
+              <span class="telemetry-cell__label">Code Base</span>
+              <strong class="telemetry-cell__val">BNBC &bull; RAJUK</strong>
+            </div>
+            <div class="telemetry-cell">
+              <span class="telemetry-cell__label">Oversight</span>
+              <strong class="telemetry-cell__val">BUET &bull; CAAB</strong>
+            </div>
+            <div class="telemetry-cell">
+              <span class="telemetry-cell__label">Principal</span>
+              <strong class="telemetry-cell__val">MIEB &bull; 22+ Yrs</strong>
+            </div>
           </div>
 
           <div class="hero-card__blueprint">
@@ -190,12 +230,12 @@
                 <rect x="150" y="202" width="16" height="50" fill="#162647" fill-opacity="0.7"/>
                 <rect x="215" y="202" width="16" height="50" fill="#162647" fill-opacity="0.7"/>
                 <rect x="280" y="202" width="16" height="44" fill="#162647" fill-opacity="0.7"/>
-                <ellipse cx="93" cy="236" rx="14" ry="7" stroke="#C48A28" stroke-dasharray="2 2"/>
-                <ellipse cx="158" cy="242" rx="14" ry="7" stroke="#C48A28" stroke-dasharray="2 2"/>
-                <ellipse cx="223" cy="242" rx="14" ry="7" stroke="#C48A28" stroke-dasharray="2 2"/>
-                <ellipse cx="288" cy="236" rx="14" ry="7" stroke="#C48A28" stroke-dasharray="2 2"/>
+                <ellipse cx="93" cy="236" rx="14" ry="7" stroke="#C58B2A" stroke-dasharray="2 2"/>
+                <ellipse cx="158" cy="242" rx="14" ry="7" stroke="#C58B2A" stroke-dasharray="2 2"/>
+                <ellipse cx="223" cy="242" rx="14" ry="7" stroke="#C58B2A" stroke-dasharray="2 2"/>
+                <ellipse cx="288" cy="236" rx="14" ry="7" stroke="#C58B2A" stroke-dasharray="2 2"/>
               </g>
-              <rect x="80" y="38" width="220" height="164" stroke="#E2E8F0" stroke-width="1.6" fill="#0B1933" fill-opacity="0.55"/>
+              <rect x="80" y="38" width="220" height="164" stroke="#E2E8F0" stroke-width="1.6" fill="#0B132B" fill-opacity="0.55"/>
               <rect x="88" y="38" width="10" height="164" stroke="#DDA23A" stroke-width="1.4" fill="#DDA23A" fill-opacity="0.2"/>
               <rect x="153" y="38" width="10" height="164" stroke="#DDA23A" stroke-width="1.4" fill="#DDA23A" fill-opacity="0.2"/>
               <rect x="218" y="38" width="10" height="164" stroke="#DDA23A" stroke-width="1.4" fill="#DDA23A" fill-opacity="0.2"/>
@@ -251,24 +291,24 @@
     <!-- 2. KEY VERIFIED METRICS STRIP -->
     <section class="metrics-strip" aria-label="Verified principal engineering milestones">
       <div class="container metrics-grid">
-        <div class="metric-item">
+        <div class="metric-item" data-reveal data-reveal-delay="0">
           <span class="mono-label mono-label--gold">01 / Leadership</span>
-          <div class="metric-item__value">22+ Years</div>
+          <div class="metric-item__value" data-counter-target="22" data-counter-suffix="+ Years">22+ Years</div>
           <p class="metric-item__desc">Hands-on civil engineering &amp; project management across Bangladesh (2003–Present)</p>
         </div>
-        <div class="metric-item">
+        <div class="metric-item" data-reveal data-reveal-delay="80">
           <span class="mono-label mono-label--gold">02 / Industrial Scale</span>
-          <div class="metric-item__value">190,000 Sq. Ft.</div>
+          <div class="metric-item__value" data-counter-target="190000" data-counter-suffix=" Sq. Ft.">190,000 Sq. Ft.</div>
           <p class="metric-item__desc">164,000 sq. ft. factory complex plus 26,000 sq. ft. printing shade &amp; utilities delivered on schedule</p>
         </div>
-        <div class="metric-item">
+        <div class="metric-item" data-reveal data-reveal-delay="160">
           <span class="mono-label mono-label--gold">03 / Building Envelope</span>
-          <div class="metric-item__value">67,000 Sqm</div>
+          <div class="metric-item__value" data-counter-target="67000" data-counter-suffix=" Sqm">67,000 Sqm</div>
           <p class="metric-item__desc">50,000 sqm structural glazing, 16,000 sqm ACP cladding &amp; 1,000 sqm point-fixing glazing</p>
         </div>
-        <div class="metric-item">
+        <div class="metric-item" data-reveal data-reveal-delay="240">
           <span class="mono-label mono-label--gold">04 / High-Rise Retrofit</span>
-          <div class="metric-item__value">17-Storey</div>
+          <div class="metric-item__value" data-counter-target="17" data-counter-suffix="-Storey">17-Storey</div>
           <p class="metric-item__desc">Anchor piling &amp; RCC structural strengthening completed in 6 months on a tight urban site</p>
         </div>
       </div>
@@ -277,8 +317,8 @@
     <!-- 3. CORE ENGINEERING CAPABILITIES -->
     <section id="capabilities" class="section section--tinted">
       <div class="container">
-        <div class="section-header">
-          <span class="mono-label mono-label--accent">Core Engineering Capabilities</span>
+        <div class="section-header" data-reveal>
+          <span class="mono-label mono-label--accent section-kicker">Core Engineering Capabilities</span>
           <h2 class="section-title">One Accountable Partner Across the Full Build Journey</h2>
           <p class="section-subtitle">
             From sub-soil investigation and live-facility structural retrofitting to turnkey factory construction, architectural envelopes, and commercial interiors — executed under strict QA/QC and cost governance.
@@ -286,7 +326,7 @@
         </div>
 
         <div class="capabilities-grid">
-          <article class="cap-card">
+          <article class="cap-card" data-reveal data-reveal-delay="0">
             <div class="cap-card__body">
               <div class="cap-card__head">
                 <span class="cap-index">01</span>
@@ -307,7 +347,7 @@
             </div>
           </article>
 
-          <article class="cap-card">
+          <article class="cap-card" data-reveal data-reveal-delay="80">
             <div class="cap-card__body">
               <div class="cap-card__head">
                 <span class="cap-index">02</span>
@@ -329,7 +369,7 @@
             </div>
           </article>
 
-          <article class="cap-card">
+          <article class="cap-card" data-reveal data-reveal-delay="140">
             <div class="cap-card__body">
               <div class="cap-card__head">
                 <span class="cap-index">03</span>
@@ -350,7 +390,7 @@
             </div>
           </article>
 
-          <article class="cap-card">
+          <article class="cap-card" data-reveal data-reveal-delay="200">
             <div class="cap-card__body">
               <div class="cap-card__head">
                 <span class="cap-index">04</span>
@@ -377,9 +417,9 @@
     <!-- 4. VERIFIED FLAGSHIP PROJECTS SHOWCASE -->
     <section id="projects" class="section section--white section--bordered">
       <div class="container">
-        <div class="projects-header">
+        <div class="projects-header" data-reveal>
           <div class="section-header section-header--compact">
-            <span class="mono-label mono-label--accent">Principal Leadership Portfolio</span>
+            <span class="mono-label mono-label--accent section-kicker">Principal Leadership Portfolio</span>
             <h2 class="section-title">Verified Execution Across Critical Sectors</h2>
             <p class="section-subtitle">
               Flagship engagements led by Managing Director Md. Saiful Haque, MIEB across government, aviation, economic zones, industrial factories, and commercial towers. Select any project for verified technical scope, site photography, and challenge resolution.
@@ -410,10 +450,10 @@
         </div>
 
         <!-- ADDITIONAL VERIFIED TRACK RECORD -->
-        <div class="additional-record">
+        <div class="additional-record" data-reveal>
           <div class="additional-record__header">
             <div>
-              <span class="mono-label mono-label--accent">Additional Verified Experience</span>
+              <span class="mono-label mono-label--accent section-kicker">Additional Verified Experience</span>
               <h3 class="additional-record__title">Hospitality, Residential, Interior Fit-Out &amp; Glazing Engagements</h3>
             </div>
             <span class="mono-label mono-label--muted">Dhaka &bull; Gazipur &bull; Chattogram &bull; Bandarban</span>
@@ -448,8 +488,8 @@
     <!-- 5. 5-STEP ENGINEERING DELIVERY METHODOLOGY -->
     <section id="methodology" class="section section--navy">
       <div class="container">
-        <div class="section-header">
-          <span class="mono-label mono-label--gold">Execution Governance</span>
+        <div class="section-header" data-reveal>
+          <span class="mono-label mono-label--gold section-kicker section-kicker--gold">Execution Governance</span>
           <h2 class="section-title section-title--light">Clear Accountability From First Meeting to Handover</h2>
           <p class="section-subtitle section-subtitle--light">
             A defined 5-step sequence keeps technical decisions visible, budgets controlled, and live client sites protected throughout construction.
@@ -457,35 +497,35 @@
         </div>
 
         <ol class="workflow-grid">
-          <li class="workflow-step">
+          <li class="workflow-step" data-reveal data-reveal-delay="0">
             <div class="workflow-step__num" aria-hidden="true">01</div>
             <div class="workflow-step__content">
               <h3>Understand the Brief &amp; Site</h3>
               <p>Align on project needs, structural/soil diagnostics, site constraints, and real conditions on the ground before quoting or mobilizing.</p>
             </div>
           </li>
-          <li class="workflow-step">
+          <li class="workflow-step" data-reveal data-reveal-delay="70">
             <div class="workflow-step__num" aria-hidden="true">02</div>
             <div class="workflow-step__content">
               <h3>Plan Scope, Budget &amp; Sequence</h3>
               <p>Establish detailed BOQ, rate analysis, CAPEX/OPEX budget, phased work sequencing, and MS Project programme prior to mobilization.</p>
             </div>
           </li>
-          <li class="workflow-step">
+          <li class="workflow-step" data-reveal data-reveal-delay="140">
             <div class="workflow-step__num" aria-hidden="true">03</div>
             <div class="workflow-step__content">
               <h3>Coordinate Design, Approvals &amp; Procurement</h3>
               <p>Bridge architects, structural consultants (BUET/CAAB), statutory compliance (BNBC/RAJUK/FSCD/DoE), and vetted material procurement.</p>
             </div>
           </li>
-          <li class="workflow-step">
+          <li class="workflow-step" data-reveal data-reveal-delay="210">
             <div class="workflow-step__num" aria-hidden="true">04</div>
             <div class="workflow-step__content">
               <h3>Build, Inspect &amp; Communicate Progress</h3>
               <p>Enforce rebar and concrete QA/QC, NDT audits, site safety toolbox talks, and transparent daily/weekly technical progress reporting.</p>
             </div>
           </li>
-          <li class="workflow-step workflow-step--final">
+          <li class="workflow-step workflow-step--final" data-reveal data-reveal-delay="280">
             <div class="workflow-step__num" aria-hidden="true">05</div>
             <div class="workflow-step__content">
               <h3>Complete Handover &amp; Closeout</h3>
@@ -494,7 +534,7 @@
           </li>
         </ol>
 
-        <div class="visibility-bar">
+        <div class="visibility-bar" data-reveal>
           <div class="visibility-bar__item">
             <strong>Regular Communication</strong>
             <span>Stakeholders stay informed as site work develops</span>
@@ -520,7 +560,7 @@
       <div class="container">
         <div class="leadership-layout">
           <!-- Principal Profile Column -->
-          <div class="principal-card">
+          <div class="principal-card" data-reveal>
             <div class="principal-card__head">
               <div class="principal-avatar">
                 <img
@@ -580,9 +620,9 @@
           </div>
 
           <!-- Compliance, Technical Stack & References Column -->
-          <div id="compliance" class="compliance-col">
+          <div id="compliance" class="compliance-col" data-reveal data-reveal-delay="100">
             <div class="section-header section-header--compact">
-              <span class="mono-label mono-label--accent">Compliance, Stack &amp; References</span>
+              <span class="mono-label mono-label--accent section-kicker">Compliance, Stack &amp; References</span>
               <h2 class="section-title">Regulatory Governance &amp; Engineering Precision</h2>
               <p class="section-subtitle">
                 Every NeerFort project is planned and documented to satisfy statutory reviews, safety protocols, and independent structural verification.
@@ -653,9 +693,9 @@
     <section id="contact" class="section section--white">
       <div class="container contact-layout">
         <!-- Direct Engineering Desk Card -->
-        <aside class="contact-desk" aria-label="NeerFort corporate contact information">
+        <aside class="contact-desk" aria-label="NeerFort corporate contact information" data-reveal>
           <div>
-            <span class="mono-label mono-label--gold">Direct Engineering Desk</span>
+            <span class="mono-label mono-label--gold section-kicker section-kicker--gold">Direct Engineering Desk</span>
             <h2 class="contact-desk__title">Let&rsquo;s Discuss What You&rsquo;re Building Next</h2>
             <p class="contact-desk__desc">
               Connect with our Managing Director and corporate team to schedule a site assessment, structural retrofitting review, turnkey build discussion, or BOQ/commercial consultation.
@@ -718,7 +758,7 @@
         </aside>
 
         <!-- Interactive Project Inquiry Form -->
-        <div class="contact-form-panel">
+        <div class="contact-form-panel" data-reveal data-reveal-delay="100">
           <h3 class="contact-form-panel__title">Submit Project Brief or Technical Inquiry</h3>
           <p class="contact-form-panel__sub">
             Complete the project parameters below to prepare a structured inquiry brief for NeerFort&rsquo;s engineering desk.
