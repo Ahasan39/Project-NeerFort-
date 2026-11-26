@@ -6,6 +6,31 @@
 (() => {
   'use strict';
 
+  // Decoupled Hero Slider Data (Laravel/JSON migration ready; 100% verified NeerFort assets)
+  const HERO_SLIDES = [
+    {
+      kicker: 'AVIATION INFRASTRUCTURE • CAAB',
+      location: 'Dhaka • Live International Airport Works',
+      title: 'HSIA Expansion — Stormwater Drainage Package',
+      description:
+        'Reinforced stormwater culverts, balancing ponds, and treatment infrastructure phased around live flight schedules.'
+    },
+    {
+      kicker: 'STRUCTURAL RETROFITTING • BUET SUPERVISED',
+      location: 'Dhaka • Occupied Government HQ',
+      title: 'BTCL Headquarters — Seismic & Structural Retrofit',
+      description:
+        'RCC column jacketing, beam strengthening, and NDT verification executed without disrupting active government operations.'
+    },
+    {
+      kicker: 'LIVE-SITE SAFETY • ZERO-DISRUPTION PROTOCOL',
+      location: 'Dhaka • Phased Structural Execution',
+      title: 'BTCL HQ — Controlled Structural Preparation',
+      description:
+        'Evening and weekend structural cutting, chipping, and core verification delivered under strict PPE and safety isolation.'
+    }
+  ];
+
   const FLAGSHIP_PROJECTS = [
     {
       id: 'btcl-hq',
@@ -450,14 +475,22 @@
     }
   });
 
-  // Mobile Drawer Controls
+  // Mobile Drawer Controls (Smooth CSS transition + accessible focusability)
+  const mobileDrawerLinks = mobileDrawer
+    ? Array.from(mobileDrawer.querySelectorAll('a, button'))
+    : [];
+
   function setDrawerOpen(open) {
     if (!mobileDrawer || !mobileMenuBtn) return;
-    mobileDrawer.hidden = !open;
+    mobileDrawer.classList.toggle('is-open', open);
+    mobileDrawer.setAttribute('aria-hidden', String(!open));
     mobileMenuBtn.setAttribute('aria-expanded', String(open));
     mobileMenuBtn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
     menuIconOpen?.classList.toggle('is-hidden', open);
     menuIconClose?.classList.toggle('is-hidden', !open);
+    mobileDrawerLinks.forEach((el) => {
+      el.setAttribute('tabindex', open ? '0' : '-1');
+    });
   }
 
   mobileMenuBtn?.addEventListener('click', () => {
@@ -471,8 +504,19 @@
     }
   });
 
+  document.addEventListener('click', (event) => {
+    if (
+      mobileDrawer &&
+      mobileDrawer.classList.contains('is-open') &&
+      siteHeader &&
+      !siteHeader.contains(event.target)
+    ) {
+      setDrawerOpen(false);
+    }
+  });
+
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 1024 && mobileDrawer && !mobileDrawer.hidden) {
+    if (window.innerWidth >= 1024 && mobileDrawer && mobileDrawer.classList.contains('is-open')) {
       setDrawerOpen(false);
     }
   });
@@ -481,12 +525,186 @@
     if (event.key === 'Escape') {
       if (modal && !modal.hidden) {
         closeModal();
-      } else if (mobileDrawer && !mobileDrawer.hidden) {
+      } else if (mobileDrawer && mobileDrawer.classList.contains('is-open')) {
         setDrawerOpen(false);
         mobileMenuBtn?.focus();
       }
     }
   });
+
+  // Cinematic Hero Slider (Accessible, lightweight, reduced-motion aware)
+  function initHeroSlider() {
+    const slider = document.getElementById('hero-slider');
+    if (!slider || HERO_SLIDES.length === 0) return;
+
+    const stageSlides = Array.from(slider.querySelectorAll('[data-hero-slide]'));
+    const bgSlides = Array.from(document.querySelectorAll('[data-hero-bg-slide]'));
+    const dots = Array.from(slider.querySelectorAll('[data-hero-dot]'));
+    const prevBtn = document.getElementById('hero-prev-btn');
+    const nextBtn = document.getElementById('hero-next-btn');
+    const pauseBtn = document.getElementById('hero-pause-btn');
+    const iconPause = document.getElementById('hero-icon-pause');
+    const iconPlay = document.getElementById('hero-icon-play');
+    const kickerEl = document.getElementById('hero-slide-kicker');
+    const counterEl = document.getElementById('hero-slide-counter');
+    const locationEl = document.getElementById('hero-slide-location');
+    const titleEl = document.getElementById('hero-slide-title');
+    const descEl = document.getElementById('hero-slide-desc');
+
+    const INTERVAL_MS = 6500;
+    let currentIndex = 0;
+    let userPaused = prefersReducedMotion.matches;
+    let hoverOrFocusPaused = false;
+    let timerId = null;
+
+    function formatSlideCounter(index) {
+      const current = String(index + 1).padStart(2, '0');
+      const total = String(HERO_SLIDES.length).padStart(2, '0');
+      return `${current} / ${total}`;
+    }
+
+    function syncPauseState() {
+      const effectivelyPaused = userPaused || hoverOrFocusPaused || document.hidden;
+      slider.classList.toggle('is-paused', effectivelyPaused);
+      if (pauseBtn) {
+        pauseBtn.setAttribute('aria-pressed', String(userPaused));
+        pauseBtn.setAttribute(
+          'aria-label',
+          userPaused ? 'Resume slide autoplay' : 'Pause slide autoplay'
+        );
+      }
+      iconPause?.classList.toggle('is-hidden', userPaused);
+      iconPlay?.classList.toggle('is-hidden', !userPaused);
+    }
+
+    function stopAutoplay() {
+      if (timerId !== null) {
+        window.clearInterval(timerId);
+        timerId = null;
+      }
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      if (userPaused || hoverOrFocusPaused || document.hidden || prefersReducedMotion.matches) {
+        syncPauseState();
+        return;
+      }
+      syncPauseState();
+      timerId = window.setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, INTERVAL_MS);
+    }
+
+    function goToSlide(nextIndex) {
+      const count = HERO_SLIDES.length;
+      currentIndex = ((nextIndex % count) + count) % count;
+      const slideData = HERO_SLIDES[currentIndex];
+
+      stageSlides.forEach((el, idx) => {
+        const active = idx === currentIndex;
+        el.classList.toggle('is-active', active);
+        el.setAttribute('aria-hidden', String(!active));
+      });
+
+      bgSlides.forEach((el, idx) => {
+        el.classList.toggle('is-active', idx === currentIndex);
+      });
+
+      dots.forEach((dot, idx) => {
+        const active = idx === currentIndex;
+        dot.classList.remove('is-active');
+        dot.setAttribute('aria-selected', String(active));
+        if (active) {
+          // Force reflow so the subtle progress bar restarts cleanly on slide change
+          void dot.offsetWidth;
+          dot.classList.add('is-active');
+        }
+      });
+
+      if (kickerEl) kickerEl.textContent = slideData.kicker;
+      if (counterEl) counterEl.textContent = formatSlideCounter(currentIndex);
+      if (locationEl) locationEl.textContent = slideData.location;
+      if (titleEl) titleEl.textContent = slideData.title;
+      if (descEl) descEl.textContent = slideData.description;
+    }
+
+    prevBtn?.addEventListener('click', () => {
+      goToSlide(currentIndex - 1);
+      startAutoplay();
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      goToSlide(currentIndex + 1);
+      startAutoplay();
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const idx = Number(dot.getAttribute('data-hero-dot'));
+        if (Number.isFinite(idx)) {
+          goToSlide(idx);
+          startAutoplay();
+        }
+      });
+    });
+
+    pauseBtn?.addEventListener('click', () => {
+      userPaused = !userPaused;
+      if (userPaused) {
+        stopAutoplay();
+        syncPauseState();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    slider.addEventListener('mouseenter', () => {
+      hoverOrFocusPaused = true;
+      stopAutoplay();
+      syncPauseState();
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      hoverOrFocusPaused = false;
+      startAutoplay();
+    });
+
+    slider.addEventListener('focusin', () => {
+      hoverOrFocusPaused = true;
+      stopAutoplay();
+      syncPauseState();
+    });
+
+    slider.addEventListener('focusout', (event) => {
+      if (!slider.contains(event.relatedTarget)) {
+        hoverOrFocusPaused = false;
+        startAutoplay();
+      }
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+        syncPauseState();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    if (typeof prefersReducedMotion.addEventListener === 'function') {
+      prefersReducedMotion.addEventListener('change', (event) => {
+        if (event.matches) {
+          userPaused = true;
+          stopAutoplay();
+          syncPauseState();
+        }
+      });
+    }
+
+    goToSlide(0);
+    startAutoplay();
+  }
 
   // Header scroll elevation, gold scroll-progress line & active nav highlight
   const navLinks = Array.from(document.querySelectorAll('.desktop-nav .nav-link'));
@@ -693,6 +911,7 @@
   });
 
   // Initial Render & Motion Setup
+  initHeroSlider();
   initMotionObservers();
   syncFilterCounts();
   renderProjects('all');

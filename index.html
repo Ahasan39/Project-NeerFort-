@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NeerFort — Shield your Build | Civil Engineering, Structural Retrofitting &amp; Turnkey Construction</title>
   <meta name="description" content="NeerFort delivers civil engineering, structural retrofitting, geotechnical stabilization, architectural facades, and turnkey construction across Bangladesh under MIEB-accredited leadership.">
-  <meta name="theme-color" content="#0B132B">
+  <meta name="theme-color" content="#101820">
   <meta property="og:title" content="NeerFort — Shield your Build | Civil Engineering &amp; Construction">
   <meta property="og:description" content="Precision civil engineering, BUET-supervised structural retrofitting, geotechnical stabilization, and turnkey execution led by Md. Saiful Haque, MIEB.">
   <meta property="og:type" content="website">
@@ -56,6 +56,7 @@
           class="brand-lockup__img brand-lockup__img--dark"
           width="178"
           height="48"
+          decoding="async"
         >
         <img
           src="assets/logo/neerfort-logo-light.png"
@@ -64,6 +65,7 @@
           class="brand-lockup__img brand-lockup__img--light"
           width="172"
           height="64"
+          decoding="async"
         >
       </a>
 
@@ -78,8 +80,8 @@
 
       <div class="header__actions">
         <a href="#contact" class="btn btn--header-cta btn--sm header__cta">
-          <span>Request Consultation</span>
-          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          <span>Discuss Your Project</span>
+          <svg class="icon-sm btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
 
         <button
@@ -102,40 +104,69 @@
     </div>
 
     <!-- RESPONSIVE MOBILE DRAWER -->
-    <div id="mobile-drawer" class="mobile-drawer" hidden>
-      <nav class="container mobile-drawer__nav" aria-label="Mobile Navigation">
-        <a href="#capabilities" class="mobile-nav-link">Capabilities</a>
-        <a href="#projects" class="mobile-nav-link">Projects</a>
-        <a href="#methodology" class="mobile-nav-link">Methodology</a>
-        <a href="#leadership" class="mobile-nav-link">Leadership</a>
-        <a href="#compliance" class="mobile-nav-link">Compliance</a>
-        <a href="#contact" class="mobile-nav-link">Contact</a>
-        <div class="mobile-drawer__footer">
-          <a href="#contact" class="btn btn--gold btn--full mobile-nav-link">
-            <span>Schedule Technical Consultation</span>
-            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-          <div class="mobile-drawer__contact">
-            <a href="tel:+8801873353827">+880 1873 353827</a>
-            <span>&bull;</span>
-            <a href="mailto:neerfort@gmail.com">neerfort@gmail.com</a>
+    <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer__panel">
+        <nav class="container mobile-drawer__nav" aria-label="Mobile Navigation">
+          <a href="#capabilities" class="mobile-nav-link" tabindex="-1">Capabilities</a>
+          <a href="#projects" class="mobile-nav-link" tabindex="-1">Projects</a>
+          <a href="#methodology" class="mobile-nav-link" tabindex="-1">Methodology</a>
+          <a href="#leadership" class="mobile-nav-link" tabindex="-1">Leadership</a>
+          <a href="#compliance" class="mobile-nav-link" tabindex="-1">Compliance</a>
+          <a href="#contact" class="mobile-nav-link" tabindex="-1">Contact</a>
+          <div class="mobile-drawer__footer">
+            <a href="#contact" class="btn btn--gold btn--full mobile-nav-link" tabindex="-1">
+              <span>Discuss Your Project</span>
+              <svg class="icon-sm btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <div class="mobile-drawer__contact">
+              <a href="tel:+8801873353827" tabindex="-1">+880 1873 353827</a>
+              <span aria-hidden="true">&bull;</span>
+              <a href="mailto:neerfort@gmail.com" tabindex="-1">neerfort@gmail.com</a>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </div>
   </header>
 
   <main id="main-content">
-    <!-- 1. FULL-BLEED ARCHITECTURAL DARK HERO -->
-    <section id="top" class="hero">
-      <div class="hero__media-bg" aria-hidden="true">
-        <img
-          src="assets/images/project-hsia-stormwater.jpg"
-          alt=""
-          loading="eager"
-          decoding="async"
-        >
+    <!-- 1. CINEMATIC ARCHITECTURAL HERO SECTION -->
+    <section id="top" class="hero" aria-label="NeerFort Engineering Overview">
+      <!-- Synchronized Full-Bleed Atmospheric Backdrop Slides -->
+      <div class="hero-backdrop" aria-hidden="true">
+        <div class="hero-backdrop__slide is-active" data-hero-bg-slide="0">
+          <img
+            src="assets/images/project-hsia-stormwater.jpg"
+            alt=""
+            width="479"
+            height="359"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          >
+        </div>
+        <div class="hero-backdrop__slide" data-hero-bg-slide="1">
+          <img
+            src="assets/images/project-btcl-strengthening.jpg"
+            alt=""
+            width="396"
+            height="297"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+        <div class="hero-backdrop__slide" data-hero-bg-slide="2">
+          <img
+            src="assets/images/project-btcl-prep.jpg"
+            alt=""
+            width="408"
+            height="306"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
       </div>
+
       <div class="hero__scrim" aria-hidden="true"></div>
       <div class="hero__grid-bg" aria-hidden="true"></div>
       <div class="hero__glow" aria-hidden="true"></div>
@@ -156,13 +187,13 @@
           </p>
 
           <div class="hero__actions">
-            <a href="#projects" class="btn btn--gold btn--lg">
-              <span>Explore Verified Projects</span>
-              <svg class="icon-sm btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </a>
-            <a href="#contact" class="btn btn--hero-outline btn--lg">
-              <span>Schedule Technical Consultation</span>
+            <a href="#contact" class="btn btn--gold btn--lg">
+              <span>Discuss Your Project</span>
               <svg class="icon-sm btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#projects" class="btn btn--hero-outline btn--lg">
+              <span>Explore Verified Projects</span>
+              <svg class="icon-sm btn__icon btn__icon--down" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </a>
           </div>
 
@@ -182,19 +213,132 @@
           </ul>
         </div>
 
-        <!-- GLASSMORPHIC ARCHITECTURAL TELEMETRY SHOWCASE -->
-        <aside class="hero-card" aria-label="NeerFort structural engineering overview" data-reveal data-reveal-delay="120">
-          <div class="hero-card__header">
-            <div class="hero-card__tag">
+        <!-- CINEMATIC ARCHITECTURAL FIELD SHOWCASE SLIDER -->
+        <aside
+          id="hero-slider"
+          class="hero-showcase"
+          aria-roledescription="carousel"
+          aria-label="Verified NeerFort engineering project highlights"
+          data-reveal
+          data-reveal-delay="120"
+        >
+          <div class="hero-showcase__header">
+            <div class="hero-showcase__tag">
               <span class="status-dot status-dot--pulse" aria-hidden="true"></span>
-              <span>STRUCTURAL ELEVATION &bull; DWG-NF-01</span>
+              <span id="hero-slide-kicker">AVIATION INFRASTRUCTURE &bull; CAAB</span>
             </div>
-            <span class="hero-card__scale">SCALE 1:100</span>
+            <span id="hero-slide-counter" class="hero-showcase__counter" aria-live="polite">01 / 03</span>
           </div>
 
-          <div class="hero-card__telemetry" aria-label="Engineering compliance telemetry">
+          <div class="hero-showcase__stage">
+            <figure class="hero-showcase__slide is-active" data-hero-slide="0" aria-hidden="false">
+              <img
+                src="assets/images/project-hsia-stormwater.jpg"
+                alt="Hazrat Shahjalal International Airport expansion reinforced stormwater culvert installation and technical supervision"
+                width="479"
+                height="359"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              >
+            </figure>
+            <figure class="hero-showcase__slide" data-hero-slide="1" aria-hidden="true">
+              <img
+                src="assets/images/project-btcl-strengthening.jpg"
+                alt="BTCL Headquarters Dhaka structural wrapping and seismic strengthening under BUET supervision"
+                width="396"
+                height="297"
+                loading="lazy"
+                decoding="async"
+              >
+            </figure>
+            <figure class="hero-showcase__slide" data-hero-slide="2" aria-hidden="true">
+              <img
+                src="assets/images/project-btcl-prep.jpg"
+                alt="BTCL Headquarters structural surface preparation under phased live-site PPE safety protocol"
+                width="408"
+                height="306"
+                loading="lazy"
+                decoding="async"
+              >
+            </figure>
+
+            <div class="hero-showcase__stage-scrim" aria-hidden="true"></div>
+            <div class="hero-showcase__caption">
+              <span id="hero-slide-location" class="hero-showcase__location">Dhaka &bull; Live International Airport Works</span>
+              <h2 id="hero-slide-title" class="hero-showcase__title">HSIA Expansion — Stormwater Drainage Package</h2>
+              <p id="hero-slide-desc" class="hero-showcase__desc">Reinforced stormwater culverts, balancing ponds, and treatment infrastructure phased around live flight schedules.</p>
+            </div>
+          </div>
+
+          <!-- Accessible Slider Controls & Progress Indicators -->
+          <div class="hero-showcase__controls">
+            <div class="hero-showcase__indicators" role="tablist" aria-label="Select featured engineering highlight">
+              <button
+                type="button"
+                role="tab"
+                class="hero-dot is-active"
+                data-hero-dot="0"
+                aria-selected="true"
+                aria-label="Slide 1: HSIA Expansion Stormwater Package"
+              >
+                <span class="hero-dot__fill" aria-hidden="true"></span>
+              </button>
+              <button
+                type="button"
+                role="tab"
+                class="hero-dot"
+                data-hero-dot="1"
+                aria-selected="false"
+                aria-label="Slide 2: BTCL Headquarters Seismic Retrofitting"
+              >
+                <span class="hero-dot__fill" aria-hidden="true"></span>
+              </button>
+              <button
+                type="button"
+                role="tab"
+                class="hero-dot"
+                data-hero-dot="2"
+                aria-selected="false"
+                aria-label="Slide 3: BTCL HQ Live-Site Structural Preparation"
+              >
+                <span class="hero-dot__fill" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="hero-showcase__nav-btns">
+              <button
+                type="button"
+                id="hero-prev-btn"
+                class="hero-ctrl-btn"
+                aria-label="Previous slide"
+              >
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <button
+                type="button"
+                id="hero-next-btn"
+                class="hero-ctrl-btn"
+                aria-label="Next slide"
+              >
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+              <button
+                type="button"
+                id="hero-pause-btn"
+                class="hero-ctrl-btn hero-ctrl-btn--toggle"
+                aria-label="Pause slide autoplay"
+                aria-pressed="false"
+              >
+                <svg id="hero-icon-pause" class="icon-xs" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+                <svg id="hero-icon-play" class="icon-xs is-hidden" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-showcase__telemetry" aria-label="Verified engineering compliance credentials">
             <div class="telemetry-cell">
-              <span class="telemetry-cell__label">Code Base</span>
+              <span class="telemetry-cell__label">Standards</span>
               <strong class="telemetry-cell__val">BNBC &bull; RAJUK</strong>
             </div>
             <div class="telemetry-cell">
@@ -202,86 +346,8 @@
               <strong class="telemetry-cell__val">BUET &bull; CAAB</strong>
             </div>
             <div class="telemetry-cell">
-              <span class="telemetry-cell__label">Principal</span>
+              <span class="telemetry-cell__label">Leadership</span>
               <strong class="telemetry-cell__val">MIEB &bull; 22+ Yrs</strong>
-            </div>
-          </div>
-
-          <div class="hero-card__blueprint">
-            <svg class="blueprint-svg" viewBox="0 0 420 265" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architectural structural elevation showing RCC jacketing, shear bracing, and anchor pile jet grouting zones">
-              <g stroke="#1C2E52" stroke-width="0.75">
-                <line x1="0" y1="38" x2="420" y2="38"/>
-                <line x1="0" y1="76" x2="420" y2="76"/>
-                <line x1="0" y1="114" x2="420" y2="114"/>
-                <line x1="0" y1="152" x2="420" y2="152"/>
-                <line x1="0" y1="190" x2="420" y2="190"/>
-                <line x1="0" y1="228" x2="420" y2="228"/>
-                <line x1="60" y1="0" x2="60" y2="265"/>
-                <line x1="120" y1="0" x2="120" y2="265"/>
-                <line x1="180" y1="0" x2="180" y2="265"/>
-                <line x1="240" y1="0" x2="240" y2="265"/>
-                <line x1="300" y1="0" x2="300" y2="265"/>
-                <line x1="360" y1="0" x2="360" y2="265"/>
-              </g>
-              <line x1="18" y1="202" x2="402" y2="202" stroke="#DDA23A" stroke-width="1.5" stroke-dasharray="6 4"/>
-              <text x="22" y="196" fill="#F0C46C" font-family="JetBrains Mono, monospace" font-size="8">GL &plusmn;0.00m / ANCHOR PILE &amp; JET GROUT ZONE</text>
-              <g stroke="#6D80A3" stroke-width="1.2">
-                <rect x="85" y="202" width="16" height="44" fill="#162647" fill-opacity="0.7"/>
-                <rect x="150" y="202" width="16" height="50" fill="#162647" fill-opacity="0.7"/>
-                <rect x="215" y="202" width="16" height="50" fill="#162647" fill-opacity="0.7"/>
-                <rect x="280" y="202" width="16" height="44" fill="#162647" fill-opacity="0.7"/>
-                <ellipse cx="93" cy="236" rx="14" ry="7" stroke="#C58B2A" stroke-dasharray="2 2"/>
-                <ellipse cx="158" cy="242" rx="14" ry="7" stroke="#C58B2A" stroke-dasharray="2 2"/>
-                <ellipse cx="223" cy="242" rx="14" ry="7" stroke="#C58B2A" stroke-dasharray="2 2"/>
-                <ellipse cx="288" cy="236" rx="14" ry="7" stroke="#C58B2A" stroke-dasharray="2 2"/>
-              </g>
-              <rect x="80" y="38" width="220" height="164" stroke="#E2E8F0" stroke-width="1.6" fill="#0B132B" fill-opacity="0.55"/>
-              <rect x="88" y="38" width="10" height="164" stroke="#DDA23A" stroke-width="1.4" fill="#DDA23A" fill-opacity="0.2"/>
-              <rect x="153" y="38" width="10" height="164" stroke="#DDA23A" stroke-width="1.4" fill="#DDA23A" fill-opacity="0.2"/>
-              <rect x="218" y="38" width="10" height="164" stroke="#DDA23A" stroke-width="1.4" fill="#DDA23A" fill-opacity="0.2"/>
-              <rect x="283" y="38" width="10" height="164" stroke="#DDA23A" stroke-width="1.4" fill="#DDA23A" fill-opacity="0.2"/>
-              <line x1="80" y1="71" x2="300" y2="71" stroke="#94A3B8" stroke-width="1.2"/>
-              <line x1="80" y1="104" x2="300" y2="104" stroke="#94A3B8" stroke-width="1.2"/>
-              <line x1="80" y1="137" x2="300" y2="137" stroke="#94A3B8" stroke-width="1.2"/>
-              <line x1="80" y1="170" x2="300" y2="170" stroke="#94A3B8" stroke-width="1.2"/>
-              <line x1="163" y1="137" x2="218" y2="170" stroke="#F0C46C" stroke-width="1.3"/>
-              <line x1="218" y1="137" x2="163" y2="170" stroke="#F0C46C" stroke-width="1.3"/>
-              <line x1="163" y1="170" x2="218" y2="202" stroke="#F0C46C" stroke-width="1.3"/>
-              <line x1="218" y1="170" x2="163" y2="202" stroke="#F0C46C" stroke-width="1.3"/>
-              <path d="M300 126L350 110L396 126V202H300V126Z" stroke="#94A3B8" stroke-width="1.3" fill="#162647" fill-opacity="0.4"/>
-              <line x1="350" y1="110" x2="350" y2="202" stroke="#64748B" stroke-width="1" stroke-dasharray="3 3"/>
-              <line x1="58" y1="38" x2="58" y2="202" stroke="#6D80A3" stroke-width="0.9"/>
-              <line x1="53" y1="38" x2="63" y2="38" stroke="#6D80A3" stroke-width="0.9"/>
-              <line x1="53" y1="202" x2="63" y2="202" stroke="#6D80A3" stroke-width="0.9"/>
-              <text x="314" y="56" fill="#CBD5E1" font-family="JetBrains Mono, monospace" font-size="8">RCC JACKETING</text>
-              <line x1="293" y1="53" x2="311" y2="53" stroke="#DDA23A" stroke-width="1"/>
-              <text x="314" y="86" fill="#CBD5E1" font-family="JetBrains Mono, monospace" font-size="8">CURTAIN WALL</text>
-              <line x1="300" y1="83" x2="311" y2="83" stroke="#DDA23A" stroke-width="1"/>
-            </svg>
-          </div>
-
-          <div class="hero-card__field-strip">
-            <figure class="field-thumb">
-              <img src="assets/images/project-btcl-strengthening.jpg" alt="BTCL Headquarters structural strengthening on site" loading="eager">
-              <figcaption>BTCL HQ Retrofit</figcaption>
-            </figure>
-            <figure class="field-thumb">
-              <img src="assets/images/project-hsia-stormwater.jpg" alt="Hazrat Shahjalal International Airport stormwater culvert works" loading="eager">
-              <figcaption>HSIA Stormwater</figcaption>
-            </figure>
-            <figure class="field-thumb">
-              <img src="assets/images/project-beza-abutment.jpg" alt="BEZA Bridge-2 abutment reconstruction at Mirsarai" loading="eager">
-              <figcaption>BEZA Bridge-2</figcaption>
-            </figure>
-          </div>
-
-          <div class="hero-card__kpi">
-            <div class="hero-card__kpi-icon" aria-hidden="true">
-              <svg class="icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            </div>
-            <div>
-              <p class="mono-label mono-label--gold">Verified Principal Track Record</p>
-              <p class="hero-card__kpi-text">22+ Years Engineering Leadership &bull; BUET-Supervised Retrofits &bull; Zero-Disruption Live-Site Execution</p>
             </div>
           </div>
         </aside>
