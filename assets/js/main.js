@@ -93,11 +93,15 @@
       photos: [
         {
           src: 'assets/images/project-btcl-strengthening.jpg',
-          caption: 'BTCL HQ — Structural wrapping & seismic strengthening execution'
+          caption: 'BTCL HQ — Structural wrapping & seismic strengthening execution',
+          width: 396,
+          height: 297
         },
         {
           src: 'assets/images/project-btcl-prep.jpg',
-          caption: 'BTCL HQ — Surface chipping & structural preparation under site PPE protocol'
+          caption: 'BTCL HQ — Surface chipping & structural preparation under site PPE protocol',
+          width: 408,
+          height: 306
         }
       ]
     },
@@ -123,7 +127,9 @@
       photos: [
         {
           src: 'assets/images/project-hsia-stormwater.jpg',
-          caption: 'HSIA Expansion — Reinforced stormwater culvert installation & technical supervision'
+          caption: 'HSIA Expansion — Reinforced stormwater culvert installation & technical supervision',
+          width: 479,
+          height: 359
         }
       ]
     },
@@ -149,11 +155,15 @@
       photos: [
         {
           src: 'assets/images/project-beza-abutment.jpg',
-          caption: 'BEZA Bridge-2, Mirsarai — Bridge abutment structure & substructure rehabilitation zone'
+          caption: 'BEZA Bridge-2, Mirsarai — Bridge abutment structure & substructure rehabilitation zone',
+          width: 226,
+          height: 301
         },
         {
           src: 'assets/images/project-beza-jetgrout.jpg',
-          caption: 'BEZA Bridge-2 — Ground improvement & piling rig mobilized on site'
+          caption: 'BEZA Bridge-2 — Ground improvement & piling rig mobilized on site',
+          width: 226,
+          height: 169
         }
       ]
     },
@@ -179,7 +189,9 @@
       photos: [
         {
           src: 'assets/images/project-mayors-residence-rc4.jpg',
-          caption: 'Mayor’s Residence — Active RCC column jacketing (RC4) with site crew under PPE'
+          caption: 'Mayor’s Residence — Active RCC column jacketing (RC4) with site crew under PPE',
+          width: 230,
+          height: 306
         }
       ]
     },
@@ -387,6 +399,8 @@
                       <img
                         src="${escapeHtml(photo.src)}"
                         alt="${escapeHtml(photo.caption)}"
+                        ${photo.width ? `width="${photo.width}"` : ''}
+                        ${photo.height ? `height="${photo.height}"` : ''}
                         loading="lazy"
                         decoding="async"
                       >
@@ -399,10 +413,13 @@
             <span class="media-photo-tag">${project.photos.length} Verified Site Photos</span>
           `;
         } else if (hasPhotos) {
+          const leadPhoto = project.photos[0];
           mediaHtml = `
             <img
-              src="${escapeHtml(project.photos[0].src)}"
-              alt="${escapeHtml(project.photos[0].caption)}"
+              src="${escapeHtml(leadPhoto.src)}"
+              alt="${escapeHtml(leadPhoto.caption)}"
+              ${leadPhoto.width ? `width="${leadPhoto.width}"` : ''}
+              ${leadPhoto.height ? `height="${leadPhoto.height}"` : ''}
               class="project-card__img${isPortraitSingle ? ' project-card__img--portrait' : ''}"
               loading="lazy"
               decoding="async"
@@ -546,7 +563,13 @@
             .map(
               (photo) => `
                 <figure class="modal-photo">
-                  <img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.caption)}">
+                  <img
+                    src="${escapeHtml(photo.src)}"
+                    alt="${escapeHtml(photo.caption)}"
+                    ${photo.width ? `width="${photo.width}"` : ''}
+                    ${photo.height ? `height="${photo.height}"` : ''}
+                    decoding="async"
+                  >
                   <figcaption>${escapeHtml(photo.caption)}</figcaption>
                 </figure>
               `
@@ -693,6 +716,28 @@
       } else if (mobileDrawer && mobileDrawer.classList.contains('is-open')) {
         setDrawerOpen(false, { restoreFocus: true });
       }
+      return;
+    }
+
+    if (event.key === 'Tab' && modal && !modal.hidden) {
+      const focusables = Array.from(
+        modal.querySelectorAll(
+          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => el.offsetParent !== null);
+
+      if (focusables.length === 0) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (event.shiftKey && (document.activeElement === first || !modal.contains(document.activeElement))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !modal.contains(document.activeElement))) {
+        event.preventDefault();
+        first.focus();
+      }
     }
   });
 
@@ -832,6 +877,14 @@
         event.preventDefault();
         goToSlide(currentIndex + 1);
         startAutoplay();
+      } else if (event.key === 'Home') {
+        event.preventDefault();
+        goToSlide(0);
+        startAutoplay();
+      } else if (event.key === 'End') {
+        event.preventDefault();
+        goToSlide(HERO_SLIDES.length - 1);
+        startAutoplay();
       }
     });
 
@@ -897,9 +950,26 @@
       });
     });
 
-    buttons.forEach((btn) => {
+    buttons.forEach((btn, idx) => {
       const key = btn.getAttribute('data-location-btn');
       btn.addEventListener('click', () => selectLocation(key));
+      btn.addEventListener('keydown', (event) => {
+        if (
+          event.key === 'ArrowRight' ||
+          event.key === 'ArrowDown' ||
+          event.key === 'ArrowLeft' ||
+          event.key === 'ArrowUp'
+        ) {
+          event.preventDefault();
+          const dir = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
+          const nextIdx = (idx + dir + buttons.length) % buttons.length;
+          const nextBtn = buttons[nextIdx];
+          if (nextBtn) {
+            nextBtn.focus();
+            selectLocation(nextBtn.getAttribute('data-location-btn'));
+          }
+        }
+      });
     });
   }
 
