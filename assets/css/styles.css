@@ -20,7 +20,7 @@
   --gold-300: #E4CD9F;
   --gold-400: #D7B983;
   --gold-500: var(--color-gold);
-  --gold-600: #9A7942;
+  --gold-600: #785D2F;
   --gold-700: #785D2F;
 
   /* Surfaces & Borders */
@@ -691,6 +691,7 @@ button, input, select, textarea {
   background-color: var(--color-navy);
   color: var(--ink-on-dark);
   min-height: 420px;
+  height: clamp(420px, 61vh, 580px);
   height: clamp(420px, 61svh, 580px);
   max-height: 580px;
   padding-top: calc(var(--header-height) + env(safe-area-inset-top, 0px) + 0.5rem);
@@ -2509,6 +2510,7 @@ button, input, select, textarea {
   border-radius: 5px;
   background-color: rgba(16, 24, 32, 0.88);
   border: 1px solid rgba(201, 166, 107, 0.38);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   color: var(--gold-300);
   font-family: var(--font-mono);
@@ -3960,6 +3962,7 @@ button, input, select, textarea {
   justify-content: center;
   padding: 1rem;
   background-color: rgba(6, 12, 27, 0.78);
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
 
@@ -3970,6 +3973,7 @@ button, input, select, textarea {
 .modal-dialog {
   width: 100%;
   max-width: 720px;
+  max-height: 90vh;
   max-height: 90dvh;
   overflow-y: auto;
   background-color: var(--bg-surface);
@@ -4729,6 +4733,7 @@ button, input, select, textarea {
   }
   .utility-bar { display: block; }
   .hero {
+    height: calc(100vh - var(--utility-height));
     height: calc(100svh - var(--utility-height));
     min-height: 580px;
     max-height: 864px;
