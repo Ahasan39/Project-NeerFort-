@@ -613,10 +613,15 @@ button, input, select, textarea {
 
 /* Smooth Animated Mobile Navigation Drawer */
 .mobile-drawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   background-color: rgba(16, 24, 32, 0.98);
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
@@ -633,6 +638,7 @@ button, input, select, textarea {
   grid-template-rows: 1fr;
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   border-top-color: rgba(255, 255, 255, 0.1);
   border-bottom-color: rgba(201, 166, 107, 0.28);
 }
@@ -655,6 +661,10 @@ button, input, select, textarea {
 .mobile-drawer__nav {
   display: flex;
   flex-direction: column;
+  max-height: calc(100vh - var(--header-height));
+  max-height: calc(100dvh - var(--header-height));
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding-block: 1rem 1.45rem;
   gap: 0.2rem;
 }
@@ -4052,15 +4062,14 @@ button, input, select, textarea {
     border-bottom-color: transparent;
   }
 
-  /* Menu open over the Hero: the drawer pushes the photo down, so give the bar the
-     drawer's navy instead of letting the off-white page show behind the white/gold logo */
+  /* Menu open over the Hero: match header bar to the overlay drawer's navy */
   .site-header.is-menu-open:not(.is-scrolled) {
     background-color: var(--color-navy);
   }
 
-  /* Header box also includes 1px bottom border + 2px closed-drawer borders */
+  /* Header box includes its 1px bottom border (drawer is out of flow) */
   .site-header {
-    margin-bottom: calc((var(--header-height) + 3px) * -1);
+    margin-bottom: calc((var(--header-height) + 1px) * -1);
   }
 
   .header__inner {

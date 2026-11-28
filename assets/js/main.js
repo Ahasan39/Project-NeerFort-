@@ -597,8 +597,26 @@
     ? Array.from(mobileDrawer.querySelectorAll('a, button'))
     : [];
 
-  function setDrawerOpen(open) {
+  function getHeaderScrollOffset() {
+    const scrollPadding = Number.parseFloat(
+      window.getComputedStyle(document.documentElement).scrollPaddingTop
+    );
+    if (Number.isFinite(scrollPadding) && scrollPadding > 0) {
+      return scrollPadding;
+    }
+    const headerHeight = siteHeader ? siteHeader.getBoundingClientRect().height : 64;
+    return headerHeight + 16;
+  }
+
+  function setDrawerOpen(open, { restoreFocus = false } = {}) {
     if (!mobileDrawer || !mobileMenuBtn) return;
+    if (!open && mobileDrawer.contains(document.activeElement)) {
+      if (restoreFocus) {
+        mobileMenuBtn.focus();
+      } else if (typeof document.activeElement.blur === 'function') {
+        document.activeElement.blur();
+      }
+    }
     mobileDrawer.classList.toggle('is-open', open);
     siteHeader?.classList.toggle('is-menu-open', open);
     mobileDrawer.setAttribute('aria-hidden', String(!open));
@@ -609,6 +627,9 @@
     mobileDrawerLinks.forEach((el) => {
       el.setAttribute('tabindex', open ? '0' : '-1');
     });
+    if (!open && restoreFocus) {
+      mobileMenuBtn.focus();
+    }
   }
 
   mobileMenuBtn?.addEventListener('click', () => {
@@ -617,9 +638,35 @@
   });
 
   mobileDrawer?.addEventListener('click', (event) => {
-    if (event.target.closest('.mobile-nav-link')) {
-      setDrawerOpen(false);
+    const navLink = event.target.closest('.mobile-nav-link');
+    if (!navLink) return;
+
+    const href = navLink.getAttribute('href') || '';
+    if (href.startsWith('#') && href.length > 1) {
+      const target = document.querySelector(href);
+      if (target) {
+        event.preventDefault();
+        setDrawerOpen(false);
+
+        window.requestAnimationFrame(() => {
+          const offset = getHeaderScrollOffset();
+          const targetTop = Math.max(
+            0,
+            Math.round(target.getBoundingClientRect().top + window.scrollY - offset)
+          );
+          window.scrollTo({
+            top: targetTop,
+            behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
+          });
+          if (window.location.hash !== href && typeof window.history.pushState === 'function') {
+            window.history.pushState(null, '', href);
+          }
+        });
+        return;
+      }
     }
+
+    setDrawerOpen(false);
   });
 
   document.addEventListener('click', (event) => {
@@ -644,8 +691,7 @@
       if (modal && !modal.hidden) {
         closeModal();
       } else if (mobileDrawer && mobileDrawer.classList.contains('is-open')) {
-        setDrawerOpen(false);
-        mobileMenuBtn?.focus();
+        setDrawerOpen(false, { restoreFocus: true });
       }
     }
   });
