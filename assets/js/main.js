@@ -78,7 +78,7 @@
       timeline: 'Jul 2025 – Present',
       category: 'retrofitting',
       categoryLabel: 'Retrofitting & Govt',
-      disciplineOption: 'Structural Retrofitting & Strengthening',
+      disciplineOption: 'Structural Retrofitting',
       affiliation: 'BUET Supervised • Occupied Govt HQ',
       role: 'Project In-Charge (BUET Dept. of Civil Engineering Supervision)',
       metric: 'Active Govt HQ • Zero Disruption',
@@ -108,7 +108,7 @@
       timeline: 'Sep 2021 – Jun 2022',
       category: 'infrastructure',
       categoryLabel: 'Infra & Geo',
-      disciplineOption: 'Geotechnical & Ground Engineering',
+      disciplineOption: 'Civil Infrastructure',
       affiliation: 'Desh Contractors & Developers Ltd. • CAAB',
       role: 'Project Manager (Primary Contact with CAAB & Consultants)',
       metric: 'Live International Airport Works',
@@ -134,7 +134,7 @@
       timeline: 'Economic Zone Infrastructure',
       category: 'infrastructure',
       categoryLabel: 'Infra & Geo',
-      disciplineOption: 'Geotechnical & Ground Engineering',
+      disciplineOption: 'Geotechnical Engineering',
       affiliation: 'EIMS Ltd. • BEZA Client',
       role: 'Project Manager (Geotechnical & Substructure)',
       metric: 'Jet Grouting & Anchor Piling • On Budget',
@@ -164,7 +164,7 @@
       timeline: 'BUET-Approved Structural Retrofit',
       category: 'retrofitting',
       categoryLabel: 'Retrofitting & Govt',
-      disciplineOption: 'Structural Retrofitting & Strengthening',
+      disciplineOption: 'Structural Retrofitting',
       affiliation: 'EIMS Ltd. • BUET Structural Consultants',
       role: 'Project Manager',
       metric: '6-Storey BUET-Verified Retrofit',
@@ -190,7 +190,7 @@
       timeline: 'Completed in 6 Months',
       category: 'retrofitting',
       categoryLabel: 'Retrofitting & Govt',
-      disciplineOption: 'Structural Retrofitting & Strengthening',
+      disciplineOption: 'Structural Retrofitting',
       affiliation: 'EIMS Ltd.',
       role: 'Project Manager',
       metric: '17 Storeys Strengthened in 6 Months',
@@ -211,7 +211,7 @@
       timeline: '2022 – 2025',
       category: 'industrial',
       categoryLabel: 'Industrial & EPZ',
-      disciplineOption: 'Industrial & Turnkey Construction',
+      disciplineOption: 'Industrial Construction',
       affiliation: 'Fortis Group Ltd.',
       role: 'Manager – Engineering & Maintenance',
       metric: '164,000 + 26,000 Sq. Ft. Built Area',
@@ -232,7 +232,7 @@
       timeline: 'Multi-Site Industrial Program',
       category: 'industrial',
       categoryLabel: 'Industrial & EPZ',
-      disciplineOption: 'Structural Retrofitting & Strengthening',
+      disciplineOption: 'Structural Retrofitting',
       affiliation: 'EIMS Ltd. • Export Industrial Zones',
       role: 'Project Manager',
       metric: '17 Garment Buildings (33 Stairs) + 6 EPZ Plants',
@@ -253,7 +253,7 @@
       timeline: 'High-Rise Envelope Execution',
       category: 'commercial',
       categoryLabel: 'Commercial Facade',
-      disciplineOption: 'Architectural Facade & Glazing',
+      disciplineOption: 'Architectural Facades',
       affiliation: 'Housing & Technology Ltd.',
       role: 'Senior Project Engineer (Drawings, Estimation & Supervision)',
       metric: '50,000 Sqm Glazing + 16,000 Sqm ACP',
@@ -1026,51 +1026,261 @@
 
   closeToastBtn?.addEventListener('click', hideToast);
 
-  // Consultation Form Validation & Mailto Dispatch Preparation
-  form?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!form) return;
+  // Simplified 4-Field Consultation Form Validation & Persistent Inquiry Ready Panel
+  const inquiryReadyPanel = document.getElementById('inquiry-ready-panel');
+  const inquiryPreviewText = document.getElementById('inquiry-preview-text');
+  const inquiryStaleBadge = document.getElementById('inquiry-stale-badge');
+  const dispatchEmailBtn = document.getElementById('dispatch-email-btn');
+  const dispatchWhatsappBtn = document.getElementById('dispatch-whatsapp-btn');
+  const copyBriefBtn = document.getElementById('copy-brief-btn');
+  const copyBriefLabel = document.getElementById('copy-brief-label');
+  const editInquiryBtn = document.getElementById('edit-inquiry-btn');
+  const clearInquiryBtn = document.getElementById('clear-inquiry-btn');
 
-    const name = form.elements.namedItem('name')?.value.trim() || '';
-    const organization = form.elements.namedItem('organization')?.value.trim() || '';
-    const contact = form.elements.namedItem('contact')?.value.trim() || '';
-    const location = form.elements.namedItem('location')?.value.trim() || '';
-    const projectType = form.elements.namedItem('projectType')?.value || '';
-    const message = form.elements.namedItem('message')?.value.trim() || '';
+  const COMPANY_EMAIL = 'neerfort@gmail.com';
+  const COMPANY_WHATSAPP_DIGITS = '8801552353827';
 
-    if (!name || !organization || !contact || !location || !message) {
-      if (formError) {
-        formError.textContent = 'Please complete all required fields (*) before submitting your technical inquiry.';
-        formError.hidden = false;
+  let lastPreparedBrief = '';
+  let copyFeedbackTimer = null;
+
+  function isValidBangladeshPhone(rawValue) {
+    const cleaned = rawValue.replace(/[\s\-().]/g, '');
+    return /^(?:(?:\+?880|00880)1[3-9]\d{8}|01[3-9]\d{8})$/.test(cleaned);
+  }
+
+  function formatNormalizedPhone(rawValue) {
+    const cleaned = rawValue.replace(/[\s\-().]/g, '');
+    if (/^01[3-9]\d{8}$/.test(cleaned)) {
+      return `+88${cleaned}`;
+    }
+    if (/^8801[3-9]\d{8}$/.test(cleaned)) {
+      return `+${cleaned}`;
+    }
+    if (/^008801[3-9]\d{8}$/.test(cleaned)) {
+      return `+${cleaned.slice(2)}`;
+    }
+    return cleaned.startsWith('+') ? cleaned : rawValue.trim();
+  }
+
+  function setFieldValidation(inputEl, errorMessage) {
+    if (!inputEl) return;
+    const errorId = inputEl.getAttribute('aria-describedby');
+    const errorEl = errorId ? document.getElementById(errorId) : null;
+    if (errorMessage) {
+      inputEl.setAttribute('aria-invalid', 'true');
+      if (errorEl) {
+        errorEl.textContent = errorMessage;
+        errorEl.hidden = false;
       }
-      return;
+    } else {
+      inputEl.removeAttribute('aria-invalid');
+      if (errorEl) {
+        errorEl.textContent = '';
+        errorEl.hidden = true;
+      }
+    }
+  }
+
+  function validateInquiryField(inputEl) {
+    if (!inputEl) return '';
+    const value = inputEl.value.trim();
+    switch (inputEl.name) {
+      case 'name':
+        if (!value) return 'Please enter your full name.';
+        if (value.length < 2) return 'Please enter at least 2 characters for your name.';
+        return '';
+      case 'phone':
+        if (!value) return 'Please enter your mobile number.';
+        if (!isValidBangladeshPhone(value)) {
+          return 'Enter a valid Bangladesh mobile number (e.g., 015XXXXXXXX or +880 15XXXXXXXX).';
+        }
+        return '';
+      case 'projectType':
+        if (!value) return 'Please select a project type.';
+        return '';
+      case 'message':
+        if (!value) return 'Please enter your project details.';
+        return '';
+      default:
+        return '';
+    }
+  }
+
+  function buildFormattedBrief(data) {
+    const lines = [
+      'NEERFORT — ENGINEERING CONSULTATION INQUIRY',
+      '-------------------------------------------',
+      `Full Name: ${data.name}`,
+      `Mobile Number: ${formatNormalizedPhone(data.phone)}`,
+      `Project Type: ${data.projectType}`,
+      '',
+      'Project Details:',
+      data.message
+    ];
+    return lines.join('\n');
+  }
+
+  if (form) {
+    const validatedFieldNames = ['name', 'phone', 'projectType', 'message'];
+
+    validatedFieldNames.forEach((fieldName) => {
+      const inputEl = form.elements.namedItem(fieldName);
+      if (!inputEl) return;
+      const eventName = inputEl.tagName === 'SELECT' ? 'change' : 'input';
+      inputEl.addEventListener(eventName, () => {
+        if (inputEl.getAttribute('aria-invalid') === 'true') {
+          const msg = validateInquiryField(inputEl);
+          setFieldValidation(inputEl, msg);
+        }
+        if (inquiryReadyPanel && !inquiryReadyPanel.hidden && inquiryStaleBadge) {
+          inquiryStaleBadge.hidden = false;
+        }
+      });
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      let firstInvalid = null;
+      let errorCount = 0;
+
+      validatedFieldNames.forEach((fieldName) => {
+        const inputEl = form.elements.namedItem(fieldName);
+        if (!inputEl) return;
+        const msg = validateInquiryField(inputEl);
+        setFieldValidation(inputEl, msg);
+        if (msg) {
+          errorCount += 1;
+          if (!firstInvalid) firstInvalid = inputEl;
+        }
+      });
+
+      if (errorCount > 0) {
+        if (formError) {
+          formError.textContent =
+            errorCount === 1
+              ? 'Please correct the highlighted field before preparing your inquiry brief.'
+              : `Please review and correct the ${errorCount} highlighted fields before preparing your inquiry brief.`;
+          formError.hidden = false;
+        }
+        firstInvalid?.focus();
+        return;
+      }
+
+      if (formError) {
+        formError.hidden = true;
+        formError.textContent = '';
+      }
+
+      const data = {
+        name: form.elements.namedItem('name')?.value.trim() || '',
+        phone: form.elements.namedItem('phone')?.value.trim() || '',
+        projectType: form.elements.namedItem('projectType')?.value || '',
+        message: form.elements.namedItem('message')?.value.trim() || ''
+      };
+
+      const formattedBrief = buildFormattedBrief(data);
+      lastPreparedBrief = formattedBrief;
+
+      const subjectText = `NeerFort Inquiry: ${data.projectType} — ${data.name}`;
+      const mailtoHref = `mailto:${COMPANY_EMAIL}?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(formattedBrief)}`;
+      const whatsappHref = `https://wa.me/${COMPANY_WHATSAPP_DIGITS}?text=${encodeURIComponent(formattedBrief)}`;
+
+      if (inquiryPreviewText) {
+        inquiryPreviewText.textContent = formattedBrief;
+      }
+      if (dispatchEmailBtn) {
+        dispatchEmailBtn.setAttribute('href', mailtoHref);
+      }
+      if (dispatchWhatsappBtn) {
+        dispatchWhatsappBtn.setAttribute('href', whatsappHref);
+      }
+      if (inquiryStaleBadge) {
+        inquiryStaleBadge.hidden = true;
+      }
+      if (inquiryReadyPanel) {
+        inquiryReadyPanel.hidden = false;
+        inquiryReadyPanel.scrollIntoView({
+          behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+          block: 'nearest'
+        });
+      }
+
+      showToast(
+        'Your inquiry brief is formatted locally below. Complete sending via Email, WhatsApp, or Copy.',
+        mailtoHref
+      );
+    });
+  }
+
+  async function copyFormattedBrief() {
+    if (!lastPreparedBrief) return;
+    let copied = false;
+
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      try {
+        await navigator.clipboard.writeText(lastPreparedBrief);
+        copied = true;
+      } catch {
+        copied = false;
+      }
     }
 
+    if (!copied) {
+      const tempArea = document.createElement('textarea');
+      tempArea.value = lastPreparedBrief;
+      tempArea.setAttribute('readonly', '');
+      tempArea.style.position = 'fixed';
+      tempArea.style.opacity = '0';
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      try {
+        copied = document.execCommand('copy');
+      } catch {
+        copied = false;
+      }
+      document.body.removeChild(tempArea);
+    }
+
+    if (copied) {
+      if (copyBriefLabel) copyBriefLabel.textContent = 'Copied to Clipboard';
+      window.clearTimeout(copyFeedbackTimer);
+      copyFeedbackTimer = window.setTimeout(() => {
+        if (copyBriefLabel) copyBriefLabel.textContent = 'Copy Formatted Brief';
+      }, 3000);
+      showToast('Formatted project brief copied to clipboard. You can paste it into any email or message.');
+    } else {
+      showToast('Automatic copy was blocked by the browser. Please select and copy the brief text directly.');
+    }
+  }
+
+  copyBriefBtn?.addEventListener('click', copyFormattedBrief);
+
+  editInquiryBtn?.addEventListener('click', () => {
+    const nameInput = document.getElementById('client-name');
+    nameInput?.focus();
+    nameInput?.scrollIntoView({
+      behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+      block: 'center'
+    });
+  });
+
+  clearInquiryBtn?.addEventListener('click', () => {
+    if (!form) return;
+    form.reset();
+    lastPreparedBrief = '';
+    form.querySelectorAll('[aria-invalid]').forEach((el) => setFieldValidation(el, ''));
     if (formError) {
       formError.hidden = true;
       formError.textContent = '';
     }
-
-    const subject = encodeURIComponent(`NeerFort Inquiry: ${projectType} — ${organization}`);
-    const body = encodeURIComponent(
-      [
-        `Name: ${name}`,
-        `Organization: ${organization}`,
-        `Contact: ${contact}`,
-        `Project Location: ${location}`,
-        `Discipline: ${projectType}`,
-        '',
-        'Project Brief:',
-        message
-      ].join('\n')
-    );
-    const mailtoHref = `mailto:neerfort@gmail.com?cc=engr.mdsaifulhaque@gmail.com&subject=${subject}&body=${body}`;
-
-    showToast(
-      `Thank you, ${name} (${organization}). Your brief for ${projectType} (${location}) is ready to dispatch to NeerFort.`,
-      mailtoHref
-    );
-    form.reset();
+    if (inquiryReadyPanel) {
+      inquiryReadyPanel.hidden = true;
+    }
+    if (inquiryStaleBadge) {
+      inquiryStaleBadge.hidden = true;
+    }
+    document.getElementById('client-name')?.focus();
   });
 
   // Initial Render & Interactive Module Bootstrap
