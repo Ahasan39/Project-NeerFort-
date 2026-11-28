@@ -69,10 +69,11 @@
     }
   };
 
-  // 3. Verified Flagship Projects Dataset
+  // 3. Verified Flagship Projects Dataset (Tier 1 Spotlight, Tier 2 Verified Site Photos, Tier 3 Technical Dossiers)
   const FLAGSHIP_PROJECTS = [
     {
       id: 'btcl-hq',
+      tier: 'spotlight',
       title: 'BTCL Headquarters: Structural & Seismic Retrofitting',
       location: 'Dhaka',
       timeline: 'Jul 2025 – Present',
@@ -82,6 +83,7 @@
       affiliation: 'BUET Supervised • Occupied Govt HQ',
       role: 'Project In-Charge (BUET Dept. of Civil Engineering Supervision)',
       metric: 'Active Govt HQ • Zero Disruption',
+      keyFigures: ['Occupied Govt HQ', 'BUET Supervised', 'Off-Hour Phasing'],
       summary:
         'Full-scope seismic and structural strengthening of an occupied government telecommunications headquarters under direct BUET supervision.',
       scope:
@@ -94,21 +96,36 @@
         {
           src: 'assets/images/project-btcl-strengthening.jpg',
           webp: 'assets/images/project-btcl-strengthening.webp',
-          caption: 'BTCL HQ — Structural wrapping & seismic strengthening execution',
+          caption: 'BTCL HQ — Completed structural FRP wrapping & seismic strengthening grid',
           width: 396,
           height: 297
         },
         {
           src: 'assets/images/project-btcl-prep.jpg',
           webp: 'assets/images/project-btcl-prep.webp',
-          caption: 'BTCL HQ — Surface chipping & structural preparation under site PPE protocol',
+          caption: 'BTCL HQ — Surface chipping & structural preparation under PPE protocol',
           width: 408,
           height: 306
+        },
+        {
+          src: 'assets/images/project-btcl-crew-wrap.jpg',
+          webp: 'assets/images/project-btcl-crew-wrap.webp',
+          caption: 'BTCL HQ — Site crew applying horizontal & vertical strengthening strips',
+          width: 219,
+          height: 292
+        },
+        {
+          src: 'assets/images/project-btcl-review.jpg',
+          webp: 'assets/images/project-btcl-review.webp',
+          caption: 'BTCL HQ — On-site technical drawing verification against strengthened structure',
+          width: 225,
+          height: 300
         }
       ]
     },
     {
       id: 'hsia-stormwater',
+      tier: 'verified',
       title: 'HSIA Expansion — Stormwater Treatment & Drainage Package',
       location: 'Dhaka',
       timeline: 'Sep 2021 – Jun 2022',
@@ -118,6 +135,7 @@
       affiliation: 'Desh Contractors & Developers Ltd. • CAAB',
       role: 'Project Manager (Primary Contact with CAAB & Consultants)',
       metric: 'Live International Airport Works',
+      keyFigures: ['Active International Airport', 'CAAB Coordinated', 'Night-Window Execution'],
       summary:
         'Stormwater drainage networks, balancing/retention ponds, and water treatment/discharge infrastructure for the Hazrat Shahjalal International Airport expansion.',
       scope:
@@ -133,11 +151,26 @@
           caption: 'HSIA Expansion — Reinforced stormwater culvert installation & technical supervision',
           width: 479,
           height: 359
+        },
+        {
+          src: 'assets/images/project-hsia-formwork.jpg',
+          webp: 'assets/images/project-hsia-formwork.webp',
+          caption: 'HSIA Expansion — Concrete pouring into reinforced stormwater drainage formwork',
+          width: 214,
+          height: 380
+        },
+        {
+          src: 'assets/images/project-hsia-channel.jpg',
+          webp: 'assets/images/project-hsia-channel.webp',
+          caption: 'HSIA Expansion — Excavated drainage channel base preparation under site PPE rules',
+          width: 214,
+          height: 380
         }
       ]
     },
     {
       id: 'beza-bridge-2',
+      tier: 'verified',
       title: 'BEZA Bridge-2 Abutment Stabilization & Reconstruction',
       location: 'Mirsarai, Chattogram',
       timeline: 'Economic Zone Infrastructure',
@@ -147,6 +180,7 @@
       affiliation: 'EIMS Ltd. • BEZA Client',
       role: 'Project Manager (Geotechnical & Substructure)',
       metric: 'Jet Grouting & Anchor Piling • On Budget',
+      keyFigures: ['BEZA Economic Zone', 'Jet Grouting + Anchor Piles', 'Delivered On Budget'],
       summary:
         'Sub-soil improvement via high-pressure jet grouting, deep anchor piling, and full bridge abutment wall reconstruction at Bangabandhu Economic Zone.',
       scope:
@@ -157,11 +191,11 @@
       archiveNote: 'Detailed contract value and duration record maintained in project archive (available on request).',
       photos: [
         {
-          src: 'assets/images/project-beza-abutment.jpg',
-          webp: 'assets/images/project-beza-abutment.webp',
-          caption: 'BEZA Bridge-2, Mirsarai — Bridge abutment structure & substructure rehabilitation zone',
+          src: 'assets/images/project-beza-rehab.jpg',
+          webp: 'assets/images/project-beza-rehab.webp',
+          caption: 'BEZA Bridge-2, Mirsarai — Bridge abutment wall rehabilitation works on site',
           width: 226,
-          height: 301
+          height: 169
         },
         {
           src: 'assets/images/project-beza-jetgrout.jpg',
@@ -169,11 +203,19 @@
           caption: 'BEZA Bridge-2 — Ground improvement & piling rig mobilized on site',
           width: 226,
           height: 169
+        },
+        {
+          src: 'assets/images/project-beza-abutment.jpg',
+          webp: 'assets/images/project-beza-abutment.webp',
+          caption: 'BEZA Bridge-2, Mirsarai — Bridge abutment structure & substructure piers over channel',
+          width: 226,
+          height: 301
         }
       ]
     },
     {
       id: 'mayors-residence',
+      tier: 'verified',
       title: 'DNCC Mayor’s Residence (Islam Group) Retrofitting',
       location: 'Dhaka',
       timeline: 'BUET-Approved Structural Retrofit',
@@ -183,6 +225,7 @@
       affiliation: 'EIMS Ltd. • BUET Structural Consultants',
       role: 'Project Manager',
       metric: '6-Storey BUET-Verified Retrofit',
+      keyFigures: ['6-Storey Executive Residence', 'BUET-Approved Design', 'Zero Deviation'],
       summary:
         'High-specification RCC structural strengthening and foundation retrofitting of a 6-storey executive residence executed strictly to BUET-approved drawings.',
       scope:
@@ -198,11 +241,19 @@
           caption: 'Mayor’s Residence — Active RCC column jacketing (RC4) with site crew under PPE',
           width: 230,
           height: 306
+        },
+        {
+          src: 'assets/images/project-mayors-residence-rb4.jpg',
+          webp: 'assets/images/project-mayors-residence-rb4.webp',
+          caption: 'Mayor’s Residence — Structural beam/column reinforcement cage & jacketing formwork (RB4)',
+          width: 218,
+          height: 290
         }
       ]
     },
     {
       id: 'sikder-center',
+      tier: 'dossier',
       title: 'Sikder Center: 17-Storey Tower Foundation Strengthening',
       location: 'Banani 11, Dhaka',
       timeline: 'Completed in 6 Months',
@@ -212,6 +263,7 @@
       affiliation: 'EIMS Ltd.',
       role: 'Project Manager',
       metric: '17 Storeys Strengthened in 6 Months',
+      keyFigures: ['17 Storeys', 'Completed in 6 Months', 'Urban Anchor Piling'],
       summary:
         'Foundation underpinning via anchor piling and RCC beam/column retrofitting for a 17-storey commercial-cum-residential tower in dense Banani.',
       scope:
@@ -219,11 +271,21 @@
       challenge:
         'Operated piling and structural strengthening equipment within a congested urban footprint with severely restricted working space, completing the entire scope within a 6-month schedule.',
       skills: ['Anchor Piling', 'RCC Beam & Column Retrofit', 'Urban Site Logistics', 'Accelerated Schedule Control'],
-      archiveNote: 'Site photography & contract documentation reserved for verified tender archive (media slot ready).',
-      photos: []
+      archiveNote: 'Site photography & contract documentation reserved for verified tender archive.',
+      photos: [],
+      conceptVisual: {
+        src: 'assets/images/concept-sikder-tower.jpg',
+        webp640: 'assets/images/concept-sikder-tower-640.webp',
+        webp1200: 'assets/images/concept-sikder-tower-1200.webp',
+        alt: 'Illustrative architectural concept of a multi-storey reinforced-concrete urban commercial tower representing high-rise foundation and structural retrofitting',
+        caption: 'Architectural concept visual illustrating the engineering category — does not depict the actual completed site.',
+        width: 1200,
+        height: 675
+      }
     },
     {
       id: 'rapida-factory',
+      tier: 'dossier',
       title: 'Rapida Shoes & Bags Ltd. — Industrial Factory Complex',
       location: 'Gazipur',
       timeline: '2022 – 2025',
@@ -233,6 +295,7 @@
       affiliation: 'Fortis Group Ltd.',
       role: 'Manager – Engineering & Maintenance',
       metric: '164,000 + 26,000 Sq. Ft. Built Area',
+      keyFigures: ['164,000 Sq. Ft. Factory', '26,000 Sq. Ft. Shade', 'On-Schedule Delivery'],
       summary:
         'End-to-end delivery of a 164,000 sq. ft. footwear & bags manufacturing complex plus a 26,000 sq. ft. printing shade and utility buildings.',
       scope:
@@ -240,11 +303,21 @@
       challenge:
         'Navigated raw-material price fluctuations during peak construction by leveraging vetted supplier relationships and strict daily site progress monitoring, delivering the full complex on schedule.',
       skills: ['Industrial Turnkey Construction', 'Supplier Management', 'CAPEX Cost Control', 'Schedule Delivery'],
-      archiveNote: 'Site photography & detailed contract ledger available in Fortis-period portfolio archive (media slot ready).',
-      photos: []
+      archiveNote: 'Site photography & detailed contract ledger available in Fortis-period portfolio archive.',
+      photos: [],
+      conceptVisual: {
+        src: 'assets/images/concept-rapida-factory.jpg',
+        webp640: 'assets/images/concept-rapida-factory-640.webp',
+        webp1200: 'assets/images/concept-rapida-factory-1200.webp',
+        alt: 'Illustrative architectural concept of a large modern multi-bay industrial manufacturing factory complex and utility annex',
+        caption: 'Architectural concept visual illustrating the engineering category — does not depict the actual completed site.',
+        width: 1200,
+        height: 675
+      }
     },
     {
       id: 'epz-urm-retrofits',
+      tier: 'dossier',
       title: 'EPZ Factory Retrofits & Sinha Spinning Mill URM Program',
       location: 'Adamjee EPZ, DEPZ, CEPZ, Kanchpur & Manikganj',
       timeline: 'Multi-Site Industrial Program',
@@ -254,6 +327,7 @@
       affiliation: 'EIMS Ltd. • Export Industrial Zones',
       role: 'Project Manager',
       metric: '17 Garment Buildings (33 Stairs) + 6 EPZ Plants',
+      keyFigures: ['17 Buildings / 33 Stairs', '6 Active EPZ Plants', 'Steel Plate & URM Mesh'],
       summary:
         'Steel plate, micro-concrete, and un-reinforced masonry (URM) steel-mesh strengthening across major export garment, dyeing, and spinning factories.',
       scope:
@@ -261,11 +335,21 @@
       challenge:
         'Delivered heavy civil and steel strengthening inside active export factories that could not halt production through phased work plans and regular safety toolbox talks. Where existing rebar differed from drawings, structural designers were consulted immediately to revise details safely.',
       skills: ['Steel Plate Retrofitting', 'URM Steel-Mesh Walls', 'Live-Factory Safety', 'Micro-Concrete'],
-      archiveNote: 'Multi-site before/after photo documentation reserved for client archive (media slot ready).',
-      photos: []
+      archiveNote: 'Multi-site technical documentation reserved for verified client archive.',
+      photos: [],
+      conceptVisual: {
+        src: 'assets/images/concept-epz-retrofit.jpg',
+        webp640: 'assets/images/concept-epz-retrofit-640.webp',
+        webp1200: 'assets/images/concept-epz-retrofit-1200.webp',
+        alt: 'Illustrative structural engineering concept showing steel H-columns, bolted gusset rafter reinforcement, and reinforced industrial bays',
+        caption: 'Architectural concept visual illustrating the engineering category — does not depict the actual completed site.',
+        width: 1200,
+        height: 675
+      }
     },
     {
       id: 'abdul-monem-facade',
+      tier: 'dossier',
       title: 'Abdul Monem Business District — 16-Storey Commercial Facade',
       location: 'Dhaka',
       timeline: 'High-Rise Envelope Execution',
@@ -275,6 +359,7 @@
       affiliation: 'Housing & Technology Ltd.',
       role: 'Senior Project Engineer (Drawings, Estimation & Supervision)',
       metric: '50,000 Sqm Glazing + 16,000 Sqm ACP',
+      keyFigures: ['50,000 Sqm Glazing', '16,000 Sqm ACP', '1,000 Sqm Point-Fixing'],
       summary:
         'Large-scale architectural building envelope spanning 50,000 sqm stick-system curtain wall glazing, 16,000 sqm ACP cladding, and 1,000 sqm point-fixing glazing.',
       scope:
@@ -282,8 +367,17 @@
       challenge:
         'Enforced strict wind-load compliance, waterproofing sealant integrity, and alignment precision across 67,000 sqm of combined high-elevation commercial facade systems.',
       skills: ['Stick Curtain Wall', 'ACP Cladding', 'Point-Fixing Glazing', 'Estimation & Shop Drawings'],
-      archiveNote: 'Facade shop drawing & archive photography slot ready for final client media upload.',
-      photos: []
+      archiveNote: 'Facade shop drawing & archive records available upon formal pre-qualification request.',
+      photos: [],
+      conceptVisual: {
+        src: 'assets/images/concept-abdul-monem-facade.jpg',
+        webp640: 'assets/images/concept-abdul-monem-facade-640.webp',
+        webp1200: 'assets/images/concept-abdul-monem-facade-1200.webp',
+        alt: 'Illustrative architectural concept of a modern corporate commercial tower featuring glass curtain wall glazing, ACP cladding, and point-fixing atrium glass',
+        caption: 'Architectural concept visual illustrating the engineering category — does not depict the actual completed site.',
+        width: 1200,
+        height: 675
+      }
     }
   ];
 
@@ -309,6 +403,7 @@
   const modalLocation = document.getElementById('modal-location');
   const modalRole = document.getElementById('modal-role');
   const modalMetric = document.getElementById('modal-metric');
+  const modalOverview = document.getElementById('modal-overview');
   const modalScope = document.getElementById('modal-scope');
   const modalChallenge = document.getElementById('modal-challenge');
   const modalSkills = document.getElementById('modal-skills');
@@ -322,6 +417,14 @@
   const toastMessage = document.getElementById('toast-message');
   const toastActions = document.getElementById('toast-actions');
   const closeToastBtn = document.getElementById('close-toast-btn');
+
+  const whatsappWidget = document.getElementById('whatsapp-widget');
+  const whatsappLauncher = document.getElementById('whatsapp-launcher');
+  const whatsappChatDialog = document.getElementById('whatsapp-chat-dialog');
+  const whatsappChatClose = document.getElementById('whatsapp-chat-close');
+  const whatsappChatForm = document.getElementById('whatsapp-chat-form');
+  const whatsappChatInput = document.getElementById('whatsapp-chat-input');
+  const whatsappChatError = document.getElementById('whatsapp-chat-error');
 
   const yearEl = document.getElementById('current-year');
   if (yearEl) {
@@ -359,151 +462,282 @@
     });
   }
 
-  // Render Selected Engineering Project Cards (Sprint 3 Asymmetric Editorial Portfolio)
-  function getEditorialSpanClass(index, total) {
-    if (total === 1) return 'project-card--span-12';
-    if (total === 2) return index === 0 ? 'project-card--span-7' : 'project-card--span-5';
-    if (total === 3) {
-      if (index === 0) return 'project-card--span-7';
-      if (index === 1) return 'project-card--span-5';
-      return 'project-card--span-12';
+  // Render Selected Engineering Project Portfolio (Phase 7.3C Tiered Architecture)
+  const PROJECT_INDEX_MAP = new Map(
+    FLAGSHIP_PROJECTS.map((project, idx) => [project.id, String(idx + 1).padStart(2, '0')])
+  );
+
+  function renderProjectMedia(project, variant = 'standard') {
+    const hasPhotos = Array.isArray(project.photos) && project.photos.length > 0;
+    const useDiptych =
+      hasPhotos &&
+      project.photos.length >= 2 &&
+      (variant === 'spotlight' ||
+        project.id === 'beza-bridge-2' ||
+        project.id === 'mayors-residence');
+
+    if (useDiptych) {
+      const pair = project.photos.slice(0, 2);
+      const photoTagLabel =
+        project.photos.length > 1
+          ? `Verified Site Photos (${project.photos.length})`
+          : 'Verified Site Photo';
+
+      return `
+        <div class="project-card__diptych">
+          ${pair
+            .map(
+              (photo) => `
+                <div class="project-card__diptych-cell">
+                  <picture>
+                    ${photo.webp ? `<source srcset="${escapeHtml(photo.webp)}" type="image/webp">` : ''}
+                    <img
+                      src="${escapeHtml(photo.src)}"
+                      alt="${escapeHtml(photo.caption)}"
+                      ${photo.width ? `width="${photo.width}"` : ''}
+                      ${photo.height ? `height="${photo.height}"` : ''}
+                      loading="lazy"
+                      decoding="async"
+                    >
+                  </picture>
+                </div>
+              `
+            )
+            .join('')}
+        </div>
+        <span class="media-badge">${escapeHtml(project.categoryLabel)}</span>
+        <span class="media-photo-tag media-photo-tag--verified">${photoTagLabel}</span>
+      `;
     }
-    // Default 8-item asymmetric cadence: (7 + 5), (5 + 7), (7 + 5), (5 + 7)
-    const row = Math.floor(index / 2);
-    const isFirstInRow = index % 2 === 0;
-    if (row % 2 === 0) {
-      return isFirstInRow ? 'project-card--span-7' : 'project-card--span-5';
+
+    if (hasPhotos) {
+      const leadPhoto = project.photos[0];
+      const photoTagLabel =
+        project.photos.length > 1
+          ? `Verified Site Photos (${project.photos.length})`
+          : 'Verified Site Photo';
+
+      return `
+        <picture>
+          ${leadPhoto.webp ? `<source srcset="${escapeHtml(leadPhoto.webp)}" type="image/webp">` : ''}
+          <img
+            src="${escapeHtml(leadPhoto.src)}"
+            alt="${escapeHtml(leadPhoto.caption)}"
+            ${leadPhoto.width ? `width="${leadPhoto.width}"` : ''}
+            ${leadPhoto.height ? `height="${leadPhoto.height}"` : ''}
+            class="project-card__img"
+            loading="lazy"
+            decoding="async"
+          >
+        </picture>
+        <span class="media-badge">${escapeHtml(project.categoryLabel)}</span>
+        <span class="media-photo-tag media-photo-tag--verified">${photoTagLabel}</span>
+      `;
     }
-    return isFirstInRow ? 'project-card--span-5' : 'project-card--span-7';
+
+    if (project.conceptVisual) {
+      const cv = project.conceptVisual;
+      const webpSrcset = [
+        cv.webp640 ? `${escapeHtml(cv.webp640)} 640w` : '',
+        cv.webp1200 ? `${escapeHtml(cv.webp1200)} 1200w` : ''
+      ]
+        .filter(Boolean)
+        .join(', ');
+
+      return `
+        <picture>
+          ${
+            webpSrcset
+              ? `<source srcset="${webpSrcset}" sizes="(max-width: 767px) 100vw, 50vw" type="image/webp">`
+              : ''
+          }
+          <img
+            src="${escapeHtml(cv.src)}"
+            alt="${escapeHtml(cv.alt)}"
+            width="${cv.width || 1200}"
+            height="${cv.height || 675}"
+            class="project-card__img"
+            loading="lazy"
+            decoding="async"
+          >
+        </picture>
+        <span class="media-badge">${escapeHtml(project.categoryLabel)}</span>
+        <span class="media-photo-tag media-photo-tag--illustrative">Illustrative Project Visual</span>
+      `;
+    }
+
+    return `
+      <div class="project-card__placeholder">
+        <div class="placeholder-grid-mark">
+          <span>${escapeHtml(project.categoryLabel)}</span>
+          <span>VERIFIED RECORD</span>
+        </div>
+        <div class="placeholder-center">
+          <span class="placeholder-center__role">${escapeHtml(project.role)}</span>
+          <strong>${escapeHtml(project.metric)}</strong>
+          <span>Technical dossier &amp; scope verified &bull; Client archive record</span>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderSpotlightCard(project) {
+    const caseNumber = PROJECT_INDEX_MAP.get(project.id) || '01';
+    const figuresHtml = (project.keyFigures || [])
+      .map((item) => `<span class="project-spotlight__figure">${escapeHtml(item)}</span>`)
+      .join('');
+    const previewSkills = (project.skills || [])
+      .slice(0, 4)
+      .map((skill) => `<span class="project-card__tag">${escapeHtml(skill)}</span>`)
+      .join('');
+
+    return `
+      <article class="project-card project-spotlight" data-reveal>
+        <div class="project-card__media project-spotlight__media">
+          ${renderProjectMedia(project, 'spotlight')}
+        </div>
+        <div class="project-spotlight__body">
+          <div class="project-card__top">
+            <div class="project-card__meta">
+              <span class="project-card__index">${caseNumber}</span>
+              <span class="project-spotlight__kicker">Flagship Spotlight</span>
+              <span class="project-card__loc">${escapeHtml(project.location)}</span>
+              <span class="project-card__time">${escapeHtml(project.timeline)}</span>
+            </div>
+            <h3 class="project-spotlight__title">${escapeHtml(project.title)}</h3>
+            <div class="project-card__metric">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>${escapeHtml(project.metric)}</span>
+            </div>
+            <p class="project-card__summary">${escapeHtml(project.summary)}</p>
+            ${figuresHtml ? `<div class="project-spotlight__figures" aria-label="Key project highlights">${figuresHtml}</div>` : ''}
+            <div class="project-card__tags" aria-label="Key technical methods">${previewSkills}</div>
+          </div>
+          <div class="project-card__footer">
+            <span class="project-card__org">${escapeHtml(project.affiliation)}</span>
+            <button
+              type="button"
+              class="project-specs-btn project-specs-btn--spotlight"
+              data-project-id="${escapeHtml(project.id)}"
+              aria-haspopup="dialog"
+            >
+              <span>Inspect Case Sheet</span>
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderProjectCard(project, index, extraClass = '') {
+    const caseNumber = PROJECT_INDEX_MAP.get(project.id) || String(index + 1).padStart(2, '0');
+    const delayMs = Math.min((index % 3) * 60, 120);
+    const hasPhotos = Array.isArray(project.photos) && project.photos.length > 0;
+    const previewSkills = (project.skills || [])
+      .slice(0, 3)
+      .map((skill) => `<span class="project-card__tag">${escapeHtml(skill)}</span>`)
+      .join('');
+
+    const cardClasses = [
+      'project-card',
+      hasPhotos ? 'project-card--verified' : 'project-card--dossier',
+      extraClass
+    ]
+      .filter(Boolean)
+      .join(' ');
+
+    return `
+      <article class="${cardClasses}" data-reveal data-reveal-delay="${delayMs}">
+        <div class="project-card__media">${renderProjectMedia(project, hasPhotos ? 'verified' : 'dossier')}</div>
+        <div class="project-card__body">
+          <div class="project-card__top">
+            <div class="project-card__meta">
+              <span class="project-card__index">${caseNumber}</span>
+              <span class="project-card__loc">${escapeHtml(project.location)}</span>
+              <span class="project-card__time">${escapeHtml(project.timeline)}</span>
+            </div>
+            <h3 class="project-card__title">${escapeHtml(project.title)}</h3>
+            <div class="project-card__metric">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>${escapeHtml(project.metric)}</span>
+            </div>
+            <p class="project-card__summary">${escapeHtml(project.summary)}</p>
+            <div class="project-card__tags" aria-label="Key technical methods">${previewSkills}</div>
+          </div>
+          <div class="project-card__footer">
+            <span class="project-card__org">${escapeHtml(project.affiliation)}</span>
+            <button
+              type="button"
+              class="project-specs-btn"
+              data-project-id="${escapeHtml(project.id)}"
+              aria-haspopup="dialog"
+            >
+              <span>Inspect Case Sheet</span>
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    `;
   }
 
   function renderProjects(filter = 'all') {
     if (!projectsGrid) return;
-    const list =
-      filter === 'all'
-        ? FLAGSHIP_PROJECTS
-        : FLAGSHIP_PROJECTS.filter((project) => project.category === filter);
 
-    projectsGrid.innerHTML = list
-      .map((project, index) => {
-        const hasPhotos = project.photos && project.photos.length > 0;
-        const isDiptych = hasPhotos && project.photos.length >= 2;
-        const isPortraitSingle = project.id === 'mayors-residence';
-        const spanClass = getEditorialSpanClass(index, list.length);
-        const caseNumber = String(index + 1).padStart(2, '0');
-        const delayMs = Math.min((index % 3) * 65, 150);
+    if (filter === 'all') {
+      const spotlight = FLAGSHIP_PROJECTS.find((p) => p.tier === 'spotlight') || FLAGSHIP_PROJECTS[0];
+      const verified = FLAGSHIP_PROJECTS.filter((p) => p.tier === 'verified');
+      const dossiers = FLAGSHIP_PROJECTS.filter((p) => p.tier === 'dossier');
 
-        let mediaHtml = '';
-        if (isDiptych) {
-          mediaHtml = `
-            <div class="project-card__diptych">
-              ${project.photos
-                .slice(0, 2)
-                .map(
-                  (photo) => `
-                    <div class="project-card__diptych-cell">
-                      <picture>
-                        ${photo.webp ? `<source srcset="${escapeHtml(photo.webp)}" type="image/webp">` : ''}
-                        <img
-                          src="${escapeHtml(photo.src)}"
-                          alt="${escapeHtml(photo.caption)}"
-                          ${photo.width ? `width="${photo.width}"` : ''}
-                          ${photo.height ? `height="${photo.height}"` : ''}
-                          loading="lazy"
-                          decoding="async"
-                        >
-                      </picture>
-                    </div>
-                  `
-                )
-                .join('')}
+      projectsGrid.innerHTML = `
+        <div class="projects-tiers">
+          <div class="projects-tier projects-tier--spotlight">
+            <div class="projects-tier__head">
+              <span class="projects-tier__eyebrow">Tier 01 &bull; Flagship Engineering Spotlight</span>
+              <span class="projects-tier__note">BUET Supervision &bull; 4 Verified Site Photos</span>
             </div>
-            <span class="media-badge">${escapeHtml(project.categoryLabel)}</span>
-            <span class="media-photo-tag">${project.photos.length} Verified Site Photos</span>
-          `;
-        } else if (hasPhotos) {
-          const leadPhoto = project.photos[0];
-          mediaHtml = `
-            <picture>
-              ${leadPhoto.webp ? `<source srcset="${escapeHtml(leadPhoto.webp)}" type="image/webp">` : ''}
-              <img
-                src="${escapeHtml(leadPhoto.src)}"
-                alt="${escapeHtml(leadPhoto.caption)}"
-                ${leadPhoto.width ? `width="${leadPhoto.width}"` : ''}
-                ${leadPhoto.height ? `height="${leadPhoto.height}"` : ''}
-                class="project-card__img${isPortraitSingle ? ' project-card__img--portrait' : ''}"
-                loading="lazy"
-                decoding="async"
-              >
-            </picture>
-            <span class="media-badge">${escapeHtml(project.categoryLabel)}</span>
-            <span class="media-photo-tag">Verified Site Photo</span>
-          `;
-        } else {
-          mediaHtml = `
-            <div class="project-card__placeholder">
-              <div class="placeholder-grid-mark">
-                <span>CASE ${caseNumber} &bull; ${escapeHtml(project.categoryLabel)}</span>
-                <span>VERIFIED RECORD</span>
-              </div>
-              <div class="placeholder-center">
-                <span class="placeholder-center__role">${escapeHtml(project.role)}</span>
-                <strong>${escapeHtml(project.metric)}</strong>
-                <span>Technical dossier &amp; scope verified &bull; Client archive record</span>
-              </div>
+            ${spotlight ? renderSpotlightCard(spotlight) : ''}
+          </div>
+
+          <div class="projects-tier projects-tier--verified">
+            <div class="projects-tier__head">
+              <span class="projects-tier__eyebrow">Tier 02 &bull; Verified Site-Photo Projects</span>
+              <span class="projects-tier__note">Authentic Field Execution Documentation</span>
             </div>
-          `;
-        }
-
-        const previewSkills = (project.skills || [])
-          .slice(0, 3)
-          .map((skill) => `<span class="project-card__tag">${escapeHtml(skill)}</span>`)
-          .join('');
-
-        const cardLayoutClass = [
-          'project-card',
-          spanClass,
-          hasPhotos ? 'project-card--has-media' : 'project-card--dossier',
-          isPortraitSingle ? 'project-card--portrait-split' : ''
-        ]
-          .filter(Boolean)
-          .join(' ');
-
-        return `
-          <article class="${cardLayoutClass}" data-reveal data-reveal-delay="${delayMs}">
-            <div class="project-card__media">${mediaHtml}</div>
-            <div class="project-card__body">
-              <div class="project-card__top">
-                <div class="project-card__meta">
-                  <span class="project-card__index">${caseNumber}</span>
-                  <span class="project-card__loc">${escapeHtml(project.location)}</span>
-                  <span class="project-card__time">${escapeHtml(project.timeline)}</span>
-                </div>
-                <h3 class="project-card__title">${escapeHtml(project.title)}</h3>
-                <div class="project-card__metric">
-                  <span class="status-dot" aria-hidden="true"></span>
-                  <span>${escapeHtml(project.metric)}</span>
-                </div>
-                <p class="project-card__summary">${escapeHtml(project.summary)}</p>
-                <div class="project-card__tags" aria-label="Key technical methods">${previewSkills}</div>
-              </div>
-              <div class="project-card__footer">
-                <span class="project-card__org">${escapeHtml(project.affiliation)}</span>
-                <button
-                  type="button"
-                  class="project-specs-btn"
-                  data-project-id="${escapeHtml(project.id)}"
-                  aria-haspopup="dialog"
-                >
-                  <span>Case Study</span>
-                  <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </button>
-              </div>
+            <div class="projects-grid projects-grid--verified">
+              ${verified.map((project, idx) => renderProjectCard(project, idx)).join('')}
             </div>
-          </article>
+          </div>
+
+          <div class="projects-tier projects-tier--dossiers">
+            <div class="projects-tier__head">
+              <span class="projects-tier__eyebrow">Tier 03 &bull; Technical Project Dossiers</span>
+              <span class="projects-tier__note">Verified Scope &bull; Illustrative Category Visuals</span>
+            </div>
+            <div class="projects-grid projects-grid--dossiers">
+              ${dossiers.map((project, idx) => renderProjectCard(project, idx)).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      const list = FLAGSHIP_PROJECTS.filter((project) => project.category === filter);
+      if (list.length === 1) {
+        projectsGrid.innerHTML = `
+          <div class="projects-grid projects-grid--filtered projects-grid--single">
+            ${renderProjectCard(list[0], 0, 'project-card--wide')}
+          </div>
         `;
-      })
-      .join('');
+      } else {
+        const countClass = list.length === 3 ? 'projects-grid--count-3' : 'projects-grid--count-2';
+        projectsGrid.innerHTML = `
+          <div class="projects-grid projects-grid--filtered ${countClass}">
+            ${list.map((project, idx) => renderProjectCard(project, idx)).join('')}
+          </div>
+        `;
+      }
+    }
 
     observeRevealElements(projectsGrid.querySelectorAll('[data-reveal]'));
   }
@@ -546,9 +780,52 @@
     });
   }
 
+  function renderModalPhotoStage(project, photoIndex) {
+    const photo = project.photos[photoIndex] || project.photos[0];
+    if (!photo) return;
+    const frameEl = modalMedia?.querySelector('.modal-gallery__frame');
+    const captionEl = modalMedia?.querySelector('.modal-gallery__caption');
+    const counterEl = modalMedia?.querySelector('.modal-gallery__counter');
+
+    if (frameEl) {
+      frameEl.innerHTML = `
+        <picture>
+          ${photo.webp ? `<source srcset="${escapeHtml(photo.webp)}" type="image/webp">` : ''}
+          <img
+            src="${escapeHtml(photo.src)}"
+            alt="${escapeHtml(photo.caption)}"
+            ${photo.width ? `width="${photo.width}"` : ''}
+            ${photo.height ? `height="${photo.height}"` : ''}
+            decoding="async"
+          >
+        </picture>
+      `;
+    }
+    if (captionEl) captionEl.textContent = photo.caption;
+    if (counterEl) counterEl.textContent = `${photoIndex + 1} / ${project.photos.length}`;
+
+    modalMedia?.querySelectorAll('.modal-gallery__thumb').forEach((btn, idx) => {
+      const isCurrent = idx === photoIndex;
+      btn.classList.toggle('is-active', isCurrent);
+      btn.setAttribute('aria-pressed', String(isCurrent));
+    });
+  }
+
+  modalMedia?.addEventListener('click', (event) => {
+    const thumbBtn = event.target.closest('.modal-gallery__thumb[data-photo-index]');
+    if (!thumbBtn || !activeProject || !activeProject.photos?.length) return;
+    const idx = Number(thumbBtn.getAttribute('data-photo-index'));
+    if (Number.isInteger(idx) && idx >= 0 && idx < activeProject.photos.length) {
+      renderModalPhotoStage(activeProject, idx);
+    }
+  });
+
   function openModal(projectId) {
     const project = FLAGSHIP_PROJECTS.find((p) => p.id === projectId);
     if (!project || !modal) return;
+    if (whatsappChatDialog && !whatsappChatDialog.hidden) {
+      closeWhatsappChat({ restoreFocus: false });
+    }
     activeProject = project;
 
     modalCategory.textContent = `${project.categoryLabel} • ${project.timeline}`;
@@ -556,6 +833,7 @@
     modalLocation.textContent = project.location;
     modalRole.textContent = project.role;
     modalMetric.textContent = project.metric;
+    if (modalOverview) modalOverview.textContent = project.summary;
     modalScope.textContent = project.scope;
     modalChallenge.textContent = project.challenge;
     modalArchiveNote.textContent = project.archiveNote;
@@ -565,31 +843,96 @@
       .join('');
 
     if (project.photos && project.photos.length > 0) {
-      const galleryClass =
+      const firstPhoto = project.photos[0];
+      const thumbsHtml =
         project.photos.length > 1
-          ? 'modal-media__gallery modal-media__gallery--two'
-          : 'modal-media__gallery';
-      modalMedia.innerHTML = `
-        <div class="${galleryClass}">
-          ${project.photos
-            .map(
-              (photo) => `
-                <figure class="modal-photo">
-                  <picture>
-                    ${photo.webp ? `<source srcset="${escapeHtml(photo.webp)}" type="image/webp">` : ''}
-                    <img
-                      src="${escapeHtml(photo.src)}"
-                      alt="${escapeHtml(photo.caption)}"
-                      ${photo.width ? `width="${photo.width}"` : ''}
-                      ${photo.height ? `height="${photo.height}"` : ''}
-                      decoding="async"
+          ? `
+            <div class="modal-gallery__thumbs" role="group" aria-label="Select verified site photograph">
+              ${project.photos
+                .map(
+                  (photo, idx) => `
+                    <button
+                      type="button"
+                      class="modal-gallery__thumb${idx === 0 ? ' is-active' : ''}"
+                      data-photo-index="${idx}"
+                      aria-pressed="${idx === 0 ? 'true' : 'false'}"
+                      aria-label="View photo ${idx + 1} of ${project.photos.length}: ${escapeHtml(photo.caption)}"
                     >
-                  </picture>
-                  <figcaption>${escapeHtml(photo.caption)}</figcaption>
-                </figure>
-              `
-            )
-            .join('')}
+                      <picture>
+                        ${photo.webp ? `<source srcset="${escapeHtml(photo.webp)}" type="image/webp">` : ''}
+                        <img
+                          src="${escapeHtml(photo.src)}"
+                          alt=""
+                          ${photo.width ? `width="${photo.width}"` : ''}
+                          ${photo.height ? `height="${photo.height}"` : ''}
+                          loading="lazy"
+                          decoding="async"
+                        >
+                      </picture>
+                    </button>
+                  `
+                )
+                .join('')}
+            </div>
+          `
+          : '';
+
+      modalMedia.innerHTML = `
+        <div class="modal-gallery">
+          <div class="modal-gallery__stage">
+            <div class="modal-gallery__topbar">
+              <span class="modal-gallery__badge">Verified Site Photo</span>
+              <span class="modal-gallery__counter">1 / ${project.photos.length}</span>
+            </div>
+            <div class="modal-gallery__frame">
+              <picture>
+                ${firstPhoto.webp ? `<source srcset="${escapeHtml(firstPhoto.webp)}" type="image/webp">` : ''}
+                <img
+                  src="${escapeHtml(firstPhoto.src)}"
+                  alt="${escapeHtml(firstPhoto.caption)}"
+                  ${firstPhoto.width ? `width="${firstPhoto.width}"` : ''}
+                  ${firstPhoto.height ? `height="${firstPhoto.height}"` : ''}
+                  decoding="async"
+                >
+              </picture>
+            </div>
+            <p class="modal-gallery__caption">${escapeHtml(firstPhoto.caption)}</p>
+          </div>
+          ${thumbsHtml}
+        </div>
+      `;
+    } else if (project.conceptVisual) {
+      const cv = project.conceptVisual;
+      const webpSrcset = [
+        cv.webp640 ? `${escapeHtml(cv.webp640)} 640w` : '',
+        cv.webp1200 ? `${escapeHtml(cv.webp1200)} 1200w` : ''
+      ]
+        .filter(Boolean)
+        .join(', ');
+
+      modalMedia.innerHTML = `
+        <div class="modal-concept">
+          <div class="modal-concept__frame">
+            <picture>
+              ${
+                webpSrcset
+                  ? `<source srcset="${webpSrcset}" sizes="(max-width: 767px) 92vw, 680px" type="image/webp">`
+                  : ''
+              }
+              <img
+                src="${escapeHtml(cv.src)}"
+                alt="${escapeHtml(cv.alt)}"
+                width="${cv.width || 1200}"
+                height="${cv.height || 675}"
+                decoding="async"
+              >
+            </picture>
+            <span class="media-photo-tag media-photo-tag--illustrative">Illustrative Project Visual</span>
+          </div>
+          <p class="modal-concept-disclosure">
+            <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v-4m0-4h.01"/></svg>
+            <span>${escapeHtml(cv.caption)}</span>
+          </p>
         </div>
       `;
     } else {
@@ -648,6 +991,9 @@
 
   function setDrawerOpen(open, { restoreFocus = false } = {}) {
     if (!mobileDrawer || !mobileMenuBtn) return;
+    if (open && whatsappChatDialog && !whatsappChatDialog.hidden) {
+      closeWhatsappChat({ restoreFocus: false });
+    }
     if (!open && mobileDrawer.contains(document.activeElement)) {
       if (restoreFocus) {
         mobileMenuBtn.focus();
@@ -707,6 +1053,101 @@
     setDrawerOpen(false);
   });
 
+  // In-Page Floating WhatsApp Chat Popup Controller (Phase 7.3C Interaction Upgrade)
+  function clearWhatsappError() {
+    if (whatsappChatInput) {
+      whatsappChatInput.removeAttribute('aria-invalid');
+    }
+    if (whatsappChatError) {
+      whatsappChatError.textContent = '';
+      whatsappChatError.hidden = true;
+    }
+  }
+
+  function openWhatsappChat() {
+    if (!whatsappChatDialog || !whatsappLauncher) return;
+    if (mobileDrawer && mobileDrawer.classList.contains('is-open')) {
+      setDrawerOpen(false);
+    }
+    clearWhatsappError();
+    whatsappChatDialog.hidden = false;
+    whatsappLauncher.setAttribute('aria-expanded', 'true');
+    whatsappLauncher.setAttribute('aria-label', 'Close NeerFort WhatsApp chat window');
+    window.requestAnimationFrame(() => {
+      whatsappChatInput?.focus({ preventScroll: true });
+    });
+  }
+
+  function closeWhatsappChat({ restoreFocus = false } = {}) {
+    if (!whatsappChatDialog || whatsappChatDialog.hidden) return;
+    whatsappChatDialog.hidden = true;
+    clearWhatsappError();
+    if (whatsappLauncher) {
+      whatsappLauncher.setAttribute('aria-expanded', 'false');
+      whatsappLauncher.setAttribute('aria-label', 'Open NeerFort WhatsApp chat window');
+      if (restoreFocus && typeof whatsappLauncher.focus === 'function') {
+        whatsappLauncher.focus({ preventScroll: true });
+      }
+    }
+  }
+
+  whatsappLauncher?.addEventListener('click', () => {
+    if (!whatsappChatDialog) return;
+    if (whatsappChatDialog.hidden) {
+      openWhatsappChat();
+    } else {
+      closeWhatsappChat({ restoreFocus: true });
+    }
+  });
+
+  whatsappChatClose?.addEventListener('click', () => {
+    closeWhatsappChat({ restoreFocus: true });
+  });
+
+  whatsappChatInput?.addEventListener('input', () => {
+    if (whatsappChatInput.getAttribute('aria-invalid') === 'true' && whatsappChatInput.value.trim()) {
+      clearWhatsappError();
+    }
+  });
+
+  whatsappChatInput?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      if (whatsappChatForm && typeof whatsappChatForm.requestSubmit === 'function') {
+        whatsappChatForm.requestSubmit();
+      } else if (whatsappChatForm) {
+        whatsappChatForm.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+      }
+    }
+  });
+
+  whatsappChatForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!whatsappChatInput) return;
+    const messageText = whatsappChatInput.value.trim();
+
+    if (!messageText) {
+      whatsappChatInput.setAttribute('aria-invalid', 'true');
+      if (whatsappChatError) {
+        whatsappChatError.textContent = 'Please enter a message before opening WhatsApp.';
+        whatsappChatError.hidden = false;
+      }
+      whatsappChatInput.focus({ preventScroll: true });
+      return;
+    }
+
+    clearWhatsappError();
+    const whatsappUrl = `https://wa.me/${COMPANY_WHATSAPP_DIGITS}?text=${encodeURIComponent(messageText)}`;
+    const newTab = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    if (newTab) {
+      try {
+        newTab.opener = null;
+      } catch {
+        // Ignore cross-origin opener assignment restrictions
+      }
+    }
+  });
+
   document.addEventListener('click', (event) => {
     if (
       mobileDrawer &&
@@ -715,6 +1156,15 @@
       !siteHeader.contains(event.target)
     ) {
       setDrawerOpen(false);
+    }
+
+    if (
+      whatsappChatDialog &&
+      !whatsappChatDialog.hidden &&
+      whatsappWidget &&
+      !whatsappWidget.contains(event.target)
+    ) {
+      closeWhatsappChat({ restoreFocus: false });
     }
   });
 
@@ -728,6 +1178,9 @@
     if (event.key === 'Escape') {
       if (modal && !modal.hidden) {
         closeModal();
+      } else if (whatsappChatDialog && !whatsappChatDialog.hidden) {
+        event.preventDefault();
+        closeWhatsappChat({ restoreFocus: true });
       } else if (mobileDrawer && mobileDrawer.classList.contains('is-open')) {
         setDrawerOpen(false, { restoreFocus: true });
       }
@@ -750,6 +1203,28 @@
         event.preventDefault();
         last.focus();
       } else if (!event.shiftKey && (document.activeElement === last || !modal.contains(document.activeElement))) {
+        event.preventDefault();
+        first.focus();
+      }
+      return;
+    }
+
+    if (event.key === 'Tab' && whatsappChatDialog && !whatsappChatDialog.hidden) {
+      const focusables = Array.from(
+        whatsappChatDialog.querySelectorAll(
+          'button:not([disabled]), textarea:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => el.offsetParent !== null);
+
+      if (focusables.length === 0) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (event.shiftKey && (document.activeElement === first || !whatsappChatDialog.contains(document.activeElement))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !whatsappChatDialog.contains(document.activeElement))) {
         event.preventDefault();
         first.focus();
       }
@@ -1411,8 +1886,74 @@
     document.getElementById('client-name')?.focus();
   });
 
+  // Industry Exposure & Organization Logo Marquee Controller (Phase 7.3B)
+  function initExposureMarquee() {
+    const marquee = document.getElementById('exposure-marquee');
+    const pauseBtn = document.getElementById('exposure-pause-btn');
+    const iconPause = document.getElementById('exposure-icon-pause');
+    const iconPlay = document.getElementById('exposure-icon-play');
+    const pauseLabel = document.getElementById('exposure-pause-label');
+    if (!marquee || !pauseBtn) return;
+
+    let userPaused = prefersReducedMotion.matches;
+
+    function syncMarqueeState() {
+      marquee.classList.toggle('is-paused', userPaused);
+      pauseBtn.setAttribute('aria-pressed', String(userPaused));
+      pauseBtn.setAttribute(
+        'aria-label',
+        userPaused ? 'Resume organization logo slider' : 'Pause organization logo slider'
+      );
+      iconPause?.classList.toggle('is-hidden', userPaused);
+      iconPlay?.classList.toggle('is-hidden', !userPaused);
+      if (pauseLabel) {
+        pauseLabel.textContent = userPaused ? 'Resume Slider' : 'Pause Slider';
+      }
+    }
+
+    pauseBtn.addEventListener('click', () => {
+      userPaused = !userPaused;
+      syncMarqueeState();
+    });
+
+    if (typeof prefersReducedMotion.addEventListener === 'function') {
+      prefersReducedMotion.addEventListener('change', (event) => {
+        if (event.matches) {
+          userPaused = true;
+          syncMarqueeState();
+        }
+      });
+    }
+
+    // Eagerly hydrate horizontally clipped marquee logos once user nears the section
+    // (keeps initial above-the-fold payload lean while preventing late pop-in during marquee motion)
+    const hydrateMarqueeLogos = () => {
+      marquee.querySelectorAll('img[loading="lazy"]').forEach((img) => {
+        img.loading = 'eager';
+      });
+    };
+
+    if ('IntersectionObserver' in window) {
+      const marqueeObs = new IntersectionObserver(
+        (entries, obs) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            hydrateMarqueeLogos();
+            obs.disconnect();
+          }
+        },
+        { rootMargin: '400px 0px' }
+      );
+      marqueeObs.observe(marquee);
+    } else {
+      hydrateMarqueeLogos();
+    }
+
+    syncMarqueeState();
+  }
+
   // Initial Render & Interactive Module Bootstrap
   initHeroSlider();
+  initExposureMarquee();
   initLocationsMap();
   initMotionObservers();
   syncFilterCounts();
