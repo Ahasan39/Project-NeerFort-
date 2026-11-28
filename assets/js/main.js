@@ -93,12 +93,14 @@
       photos: [
         {
           src: 'assets/images/project-btcl-strengthening.jpg',
+          webp: 'assets/images/project-btcl-strengthening.webp',
           caption: 'BTCL HQ — Structural wrapping & seismic strengthening execution',
           width: 396,
           height: 297
         },
         {
           src: 'assets/images/project-btcl-prep.jpg',
+          webp: 'assets/images/project-btcl-prep.webp',
           caption: 'BTCL HQ — Surface chipping & structural preparation under site PPE protocol',
           width: 408,
           height: 306
@@ -127,6 +129,7 @@
       photos: [
         {
           src: 'assets/images/project-hsia-stormwater.jpg',
+          webp: 'assets/images/project-hsia-stormwater.webp',
           caption: 'HSIA Expansion — Reinforced stormwater culvert installation & technical supervision',
           width: 479,
           height: 359
@@ -155,12 +158,14 @@
       photos: [
         {
           src: 'assets/images/project-beza-abutment.jpg',
+          webp: 'assets/images/project-beza-abutment.webp',
           caption: 'BEZA Bridge-2, Mirsarai — Bridge abutment structure & substructure rehabilitation zone',
           width: 226,
           height: 301
         },
         {
           src: 'assets/images/project-beza-jetgrout.jpg',
+          webp: 'assets/images/project-beza-jetgrout.webp',
           caption: 'BEZA Bridge-2 — Ground improvement & piling rig mobilized on site',
           width: 226,
           height: 169
@@ -189,6 +194,7 @@
       photos: [
         {
           src: 'assets/images/project-mayors-residence-rc4.jpg',
+          webp: 'assets/images/project-mayors-residence-rc4.webp',
           caption: 'Mayor’s Residence — Active RCC column jacketing (RC4) with site crew under PPE',
           width: 230,
           height: 306
@@ -396,14 +402,17 @@
                 .map(
                   (photo) => `
                     <div class="project-card__diptych-cell">
-                      <img
-                        src="${escapeHtml(photo.src)}"
-                        alt="${escapeHtml(photo.caption)}"
-                        ${photo.width ? `width="${photo.width}"` : ''}
-                        ${photo.height ? `height="${photo.height}"` : ''}
-                        loading="lazy"
-                        decoding="async"
-                      >
+                      <picture>
+                        ${photo.webp ? `<source srcset="${escapeHtml(photo.webp)}" type="image/webp">` : ''}
+                        <img
+                          src="${escapeHtml(photo.src)}"
+                          alt="${escapeHtml(photo.caption)}"
+                          ${photo.width ? `width="${photo.width}"` : ''}
+                          ${photo.height ? `height="${photo.height}"` : ''}
+                          loading="lazy"
+                          decoding="async"
+                        >
+                      </picture>
                     </div>
                   `
                 )
@@ -415,15 +424,18 @@
         } else if (hasPhotos) {
           const leadPhoto = project.photos[0];
           mediaHtml = `
-            <img
-              src="${escapeHtml(leadPhoto.src)}"
-              alt="${escapeHtml(leadPhoto.caption)}"
-              ${leadPhoto.width ? `width="${leadPhoto.width}"` : ''}
-              ${leadPhoto.height ? `height="${leadPhoto.height}"` : ''}
-              class="project-card__img${isPortraitSingle ? ' project-card__img--portrait' : ''}"
-              loading="lazy"
-              decoding="async"
-            >
+            <picture>
+              ${leadPhoto.webp ? `<source srcset="${escapeHtml(leadPhoto.webp)}" type="image/webp">` : ''}
+              <img
+                src="${escapeHtml(leadPhoto.src)}"
+                alt="${escapeHtml(leadPhoto.caption)}"
+                ${leadPhoto.width ? `width="${leadPhoto.width}"` : ''}
+                ${leadPhoto.height ? `height="${leadPhoto.height}"` : ''}
+                class="project-card__img${isPortraitSingle ? ' project-card__img--portrait' : ''}"
+                loading="lazy"
+                decoding="async"
+              >
+            </picture>
             <span class="media-badge">${escapeHtml(project.categoryLabel)}</span>
             <span class="media-photo-tag">Verified Site Photo</span>
           `;
@@ -563,13 +575,16 @@
             .map(
               (photo) => `
                 <figure class="modal-photo">
-                  <img
-                    src="${escapeHtml(photo.src)}"
-                    alt="${escapeHtml(photo.caption)}"
-                    ${photo.width ? `width="${photo.width}"` : ''}
-                    ${photo.height ? `height="${photo.height}"` : ''}
-                    decoding="async"
-                  >
+                  <picture>
+                    ${photo.webp ? `<source srcset="${escapeHtml(photo.webp)}" type="image/webp">` : ''}
+                    <img
+                      src="${escapeHtml(photo.src)}"
+                      alt="${escapeHtml(photo.caption)}"
+                      ${photo.width ? `width="${photo.width}"` : ''}
+                      ${photo.height ? `height="${photo.height}"` : ''}
+                      decoding="async"
+                    >
+                  </picture>
                   <figcaption>${escapeHtml(photo.caption)}</figcaption>
                 </figure>
               `
@@ -759,10 +774,32 @@
     const titleEl = document.getElementById('hero-slide-title');
 
     const INTERVAL_MS = 6500;
+    const PREWARM_LEAD_MS = 1500;
     let currentIndex = 0;
     let userPaused = prefersReducedMotion.matches;
     let focusPaused = false;
     let timerId = null;
+    let prewarmTimerId = null;
+
+    function ensureSlideLoaded(index) {
+      const count = slides.length;
+      if (count === 0) return;
+      const safeIndex = ((index % count) + count) % count;
+      const img = slides[safeIndex]?.querySelector('img[data-src]');
+      if (!img) return;
+      if (img.dataset.sizes) {
+        img.sizes = img.dataset.sizes;
+        img.removeAttribute('data-sizes');
+      }
+      if (img.dataset.srcset) {
+        img.srcset = img.dataset.srcset;
+        img.removeAttribute('data-srcset');
+      }
+      if (img.dataset.src) {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      }
+    }
 
     function formatSlideCounter(index) {
       return `${String(index + 1).padStart(2, '0')} / ${String(HERO_SLIDES.length).padStart(2, '0')}`;
@@ -787,6 +824,23 @@
         window.clearInterval(timerId);
         timerId = null;
       }
+      if (prewarmTimerId !== null) {
+        window.clearTimeout(prewarmTimerId);
+        prewarmTimerId = null;
+      }
+    }
+
+    function scheduleNextSlidePrewarm() {
+      if (prewarmTimerId !== null) {
+        window.clearTimeout(prewarmTimerId);
+        prewarmTimerId = null;
+      }
+      if (userPaused || focusPaused || document.hidden || prefersReducedMotion.matches) {
+        return;
+      }
+      prewarmTimerId = window.setTimeout(() => {
+        ensureSlideLoaded(currentIndex + 1);
+      }, Math.max(0, INTERVAL_MS - PREWARM_LEAD_MS));
     }
 
     function startAutoplay() {
@@ -796,8 +850,10 @@
         return;
       }
       syncPauseState();
+      scheduleNextSlidePrewarm();
       timerId = window.setInterval(() => {
         goToSlide(currentIndex + 1);
+        scheduleNextSlidePrewarm();
       }, INTERVAL_MS);
     }
 
@@ -805,6 +861,8 @@
       const count = HERO_SLIDES.length;
       currentIndex = ((nextIndex % count) + count) % count;
       const slideData = HERO_SLIDES[currentIndex];
+
+      ensureSlideLoaded(currentIndex);
 
       slides.forEach((el, idx) => {
         el.classList.toggle('is-active', idx === currentIndex);

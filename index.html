@@ -23,7 +23,13 @@
   <meta name="twitter:image" content="https://ahasan39.github.io/Project-NeerFort-/assets/images/hero-industrial-engineering.webp">
 
   <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
-  <link rel="preload" as="image" href="assets/images/hero-industrial-engineering.webp" fetchpriority="high">
+  <link
+    rel="preload"
+    as="image"
+    imagesrcset="assets/images/hero-industrial-engineering-960.webp 960w, assets/images/hero-industrial-engineering-1600.webp 1600w, assets/images/hero-industrial-engineering.webp 2400w"
+    imagesizes="100vw"
+    fetchpriority="high"
+  >
 
   <!-- Refined Architectural Typography with Graceful System Fallbacks -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,23 +110,30 @@
   <header id="site-header" class="site-header">
     <div class="container header__inner">
       <a href="#top" class="brand-lockup" aria-label="NeerFort — Shield your Build Home">
-        <img
-          src="assets/logo/neerfort-logo-dark.png"
-          alt="NeerFort — Shield your Build"
-          class="brand-lockup__img brand-lockup__img--dark"
-          width="178"
-          height="48"
-          decoding="async"
-        >
-        <img
-          src="assets/logo/neerfort-logo-light.png"
-          alt=""
-          aria-hidden="true"
-          class="brand-lockup__img brand-lockup__img--light"
-          width="172"
-          height="64"
-          decoding="async"
-        >
+        <picture>
+          <source srcset="assets/logo/neerfort-logo-dark.webp" type="image/webp">
+          <img
+            src="assets/logo/neerfort-logo-dark.png"
+            alt="NeerFort — Shield your Build"
+            class="brand-lockup__img brand-lockup__img--dark"
+            width="178"
+            height="48"
+            decoding="async"
+          >
+        </picture>
+        <picture>
+          <source srcset="assets/logo/neerfort-logo-light.webp" type="image/webp">
+          <img
+            src="assets/logo/neerfort-logo-light.png"
+            alt=""
+            aria-hidden="true"
+            class="brand-lockup__img brand-lockup__img--light"
+            width="172"
+            height="64"
+            fetchpriority="low"
+            decoding="async"
+          >
+        </picture>
       </a>
 
       <nav class="desktop-nav" aria-label="Primary Navigation">
@@ -197,7 +210,9 @@
       <div class="hero-stage" aria-hidden="true">
         <div class="hero-stage__slide hero-stage__slide--industrial is-active" data-hero-slide="0">
           <img
-            src="assets/images/hero-industrial-engineering.webp"
+            src="assets/images/hero-industrial-engineering-1600.webp"
+            srcset="assets/images/hero-industrial-engineering-960.webp 960w, assets/images/hero-industrial-engineering-1600.webp 1600w, assets/images/hero-industrial-engineering.webp 2400w"
+            sizes="100vw"
             alt=""
             width="2400"
             height="1350"
@@ -208,21 +223,23 @@
         </div>
         <div class="hero-stage__slide hero-stage__slide--structural" data-hero-slide="1">
           <img
-            src="assets/images/hero-structural-retrofitting.webp"
+            data-src="assets/images/hero-structural-retrofitting-1600.webp"
+            data-srcset="assets/images/hero-structural-retrofitting-960.webp 960w, assets/images/hero-structural-retrofitting-1600.webp 1600w, assets/images/hero-structural-retrofitting.webp 2400w"
+            data-sizes="100vw"
             alt=""
             width="2400"
             height="1350"
-            loading="lazy"
             decoding="async"
           >
         </div>
         <div class="hero-stage__slide hero-stage__slide--infrastructure" data-hero-slide="2">
           <img
-            src="assets/images/hero-infrastructure-architecture.webp"
+            data-src="assets/images/hero-infrastructure-architecture-1600.webp"
+            data-srcset="assets/images/hero-infrastructure-architecture-960.webp 960w, assets/images/hero-infrastructure-architecture-1600.webp 1600w, assets/images/hero-infrastructure-architecture.webp 2400w"
+            data-sizes="100vw"
             alt=""
             width="2400"
             height="1350"
-            loading="lazy"
             decoding="async"
           >
         </div>
@@ -372,28 +389,34 @@
               <span class="mono-label mono-label--gold">Verified Field Execution</span>
               <span class="about-photo__ref">CASE REF &bull; BTCL HQ, DHAKA</span>
             </div>
-            <img
-              src="assets/images/project-btcl-strengthening.jpg"
-              alt="BTCL Headquarters structural seismic strengthening and wrapping executed under BUET supervision"
-              width="396"
-              height="297"
-              loading="lazy"
-              decoding="async"
-            >
+            <picture>
+              <source srcset="assets/images/project-btcl-strengthening.webp" type="image/webp">
+              <img
+                src="assets/images/project-btcl-strengthening.jpg"
+                alt="BTCL Headquarters structural seismic strengthening and wrapping executed under BUET supervision"
+                width="396"
+                height="297"
+                loading="lazy"
+                decoding="async"
+              >
+            </picture>
             <figcaption class="about-photo__caption">
               <strong>BTCL Headquarters — BUET-Supervised Seismic Strengthening, Dhaka</strong>
               <span>Occupied national telecommunications facility retrofitted with zero operational downtime.</span>
             </figcaption>
           </figure>
           <div class="about-inset">
-            <img
-              src="assets/images/project-mayors-residence-rc4.jpg"
-              alt="Active RCC column jacketing RC4 by NeerFort site team under PPE protocol"
-              width="230"
-              height="306"
-              loading="lazy"
-              decoding="async"
-            >
+            <picture>
+              <source srcset="assets/images/project-mayors-residence-rc4.webp" type="image/webp">
+              <img
+                src="assets/images/project-mayors-residence-rc4.jpg"
+                alt="Active RCC column jacketing RC4 by NeerFort site team under PPE protocol"
+                width="230"
+                height="306"
+                loading="lazy"
+                decoding="async"
+              >
+            </picture>
             <div class="about-inset__body">
               <div class="about-inset__meta">
                 <span class="mono-label mono-label--accent">Field QA/QC Verification</span>
@@ -494,14 +517,17 @@
               </div>
             </div>
             <figure class="service-row__media">
-              <img
-                src="assets/images/project-btcl-strengthening.jpg"
-                alt="Structural seismic strengthening and wrapping execution"
-                width="396"
-                height="297"
-                loading="lazy"
-                decoding="async"
-              >
+              <picture>
+                <source srcset="assets/images/project-btcl-strengthening.webp" type="image/webp">
+                <img
+                  src="assets/images/project-btcl-strengthening.jpg"
+                  alt="Structural seismic strengthening and wrapping execution"
+                  width="396"
+                  height="297"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
               <figcaption class="service-row__caption">
                 <span>01 / Structural Strengthening &amp; Construction</span>
               </figcaption>
@@ -533,14 +559,17 @@
               </div>
             </div>
             <figure class="service-row__media">
-              <img
-                src="assets/images/project-beza-jetgrout.jpg"
-                alt="Geotechnical ground improvement and anchor piling rig on site"
-                width="226"
-                height="169"
-                loading="lazy"
-                decoding="async"
-              >
+              <picture>
+                <source srcset="assets/images/project-beza-jetgrout.webp" type="image/webp">
+                <img
+                  src="assets/images/project-beza-jetgrout.jpg"
+                  alt="Geotechnical ground improvement and anchor piling rig on site"
+                  width="226"
+                  height="169"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
               <figcaption class="service-row__caption">
                 <span>02 / Ground Improvement &amp; Sub-Soil Engineering</span>
               </figcaption>
@@ -571,14 +600,17 @@
               </div>
             </div>
             <figure class="service-row__media">
-              <img
-                src="assets/images/project-hsia-stormwater.jpg"
-                alt="Reinforced stormwater culvert civil infrastructure installation"
-                width="479"
-                height="359"
-                loading="lazy"
-                decoding="async"
-              >
+              <picture>
+                <source srcset="assets/images/project-hsia-stormwater.webp" type="image/webp">
+                <img
+                  src="assets/images/project-hsia-stormwater.jpg"
+                  alt="Reinforced stormwater culvert civil infrastructure installation"
+                  width="479"
+                  height="359"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
               <figcaption class="service-row__caption">
                 <span>03 / Civil Works &amp; Building Envelope Systems</span>
               </figcaption>
@@ -609,14 +641,17 @@
               </div>
             </div>
             <figure class="service-row__media">
-              <img
-                src="assets/images/project-mayors-residence-rc4.jpg"
-                alt="Interior structural execution and site engineering supervision"
-                width="230"
-                height="306"
-                loading="lazy"
-                decoding="async"
-              >
+              <picture>
+                <source srcset="assets/images/project-mayors-residence-rc4.webp" type="image/webp">
+                <img
+                  src="assets/images/project-mayors-residence-rc4.jpg"
+                  alt="Interior structural execution and site engineering supervision"
+                  width="230"
+                  height="306"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
               <figcaption class="service-row__caption">
                 <span>04 / Interior Fit-Outs &amp; Commercial Controls</span>
               </figcaption>
@@ -951,14 +986,17 @@
           <article class="principal-card" data-reveal>
             <div class="principal-card__head">
               <div class="principal-avatar">
-                <img
-                  src="assets/images/saiful-haque-portrait.jpg"
-                  alt="Md. Saiful Haque, MIEB — Managing Director &amp; Principal Civil Engineer"
-                  width="337"
-                  height="412"
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                  <source srcset="assets/images/saiful-haque-portrait.webp" type="image/webp">
+                  <img
+                    src="assets/images/saiful-haque-portrait.jpg"
+                    alt="Md. Saiful Haque, MIEB — Managing Director &amp; Principal Civil Engineer"
+                    width="337"
+                    height="412"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </picture>
               </div>
               <div class="principal-card__identity">
                 <div class="principal-card__badges">
@@ -1476,15 +1514,18 @@
       <div class="footer-grid">
         <!-- Column 1: Brand & Social -->
         <div class="footer-brand">
-          <img
-            src="assets/logo/neerfort-logo-dark.png"
-            alt="NeerFort"
-            class="footer-brand__logo"
-            width="178"
-            height="48"
-            loading="lazy"
-            decoding="async"
-          >
+          <picture>
+            <source srcset="assets/logo/neerfort-logo-dark.webp" type="image/webp">
+            <img
+              src="assets/logo/neerfort-logo-dark.png"
+              alt="NeerFort"
+              class="footer-brand__logo"
+              width="178"
+              height="48"
+              loading="lazy"
+              decoding="async"
+            >
+          </picture>
           <p class="footer-brand__tagline">Shield your Build.</p>
           <p class="footer-brand__desc">
             Civil engineering, structural retrofitting, geotechnical stabilization, and turnkey construction across Bangladesh.
