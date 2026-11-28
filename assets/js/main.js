@@ -38,10 +38,10 @@
         'Rapida Shoes & Bags Ltd. 164,000 sq. ft. manufacturing complex plus 26,000 sq. ft. printing shade and utility buildings, alongside Arabi Fashion display room interiors.'
     },
     chattogram: {
-      name: 'Mirsarai (BEZA) & Chattogram (CEPZ)',
-      sector: 'Geotechnical Stabilization & Export Facilities',
+      name: 'Chattogram (GEC Circle, CEPZ) & Mirsarai (BEZA)',
+      sector: 'Chittagong Office • Geotechnical & Export Facilities',
       projects:
-        'BEZA Bridge-2 abutment reconstruction with high-pressure jet grouting and deep anchor piling at Mirsarai; structural retrofits for YNA Youngone (5-storey) and Kenpark inside CEPZ.'
+        'NeerFort Chittagong Office (#613, Shah Niketon, 5th Floor, GEC Circle); BEZA Bridge-2 abutment reconstruction with high-pressure jet grouting and deep anchor piling at Mirsarai; structural retrofits for YNA Youngone (5-storey) and Kenpark inside CEPZ.'
     },
     narayanganj: {
       name: 'Adamjee EPZ, Kanchpur & Shanarpar',
@@ -1951,8 +1951,99 @@
     syncMarqueeState();
   }
 
+  // Engineering Services Catalogue: Accessible Scope Disclosure & Inquiry Preselection (Phase 7.3F)
+  function initServicesCatalogue() {
+    const servicesSection = document.getElementById('services');
+    if (!servicesSection) return;
+
+    function setServiceDrawerState(toggleBtn, expanded) {
+      const targetId = toggleBtn.getAttribute('aria-controls');
+      const drawer = targetId ? document.getElementById(targetId) : null;
+      const card = toggleBtn.closest('.service-module');
+      const labelEl = toggleBtn.querySelector('.service-scope-toggle__label');
+      const iconEl = toggleBtn.querySelector('.service-scope-toggle__icon');
+      if (!drawer) return;
+
+      toggleBtn.setAttribute('aria-expanded', String(expanded));
+      drawer.hidden = !expanded;
+      card?.classList.toggle('is-expanded', expanded);
+
+      if (labelEl) {
+        const openText = labelEl.getAttribute('data-open-text') || 'View Full Scope';
+        const closeText = labelEl.getAttribute('data-close-text') || 'Hide Scope';
+        labelEl.textContent = expanded ? closeText : openText;
+      }
+      if (iconEl) {
+        iconEl.textContent = expanded ? '\u2212' : '+';
+      }
+    }
+
+    servicesSection.addEventListener('click', (event) => {
+      const toggleBtn = event.target.closest('[data-service-toggle]');
+      if (toggleBtn) {
+        const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        setServiceDrawerState(toggleBtn, !isExpanded);
+        return;
+      }
+
+      const inquireLink = event.target.closest('[data-service-inquire]');
+      if (inquireLink) {
+        const discipline = inquireLink.getAttribute('data-service-inquire') || '';
+        const contactSection = document.getElementById('contact');
+
+        if (projectTypeSelect && discipline) {
+          projectTypeSelect.value = discipline;
+          setFieldValidation(projectTypeSelect, '');
+          if (inquiryReadyPanel && !inquiryReadyPanel.hidden && inquiryStaleBadge) {
+            inquiryStaleBadge.hidden = false;
+          }
+        }
+
+        if (contactSection) {
+          event.preventDefault();
+          const offset = getHeaderScrollOffset();
+          const targetTop = Math.max(
+            0,
+            Math.round(contactSection.getBoundingClientRect().top + window.scrollY - offset)
+          );
+          window.scrollTo({
+            top: targetTop,
+            behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
+          });
+          if (window.location.hash !== '#contact' && typeof window.history.pushState === 'function') {
+            window.history.pushState(null, '', '#contact');
+          }
+          const nameInput = document.getElementById('client-name');
+          const messageInput = document.getElementById('project-message');
+          const focusTarget =
+            nameInput && !nameInput.value.trim()
+              ? nameInput
+              : messageInput || projectTypeSelect;
+          window.setTimeout(() => {
+            focusTarget?.focus({ preventScroll: true });
+          }, prefersReducedMotion.matches ? 0 : 420);
+        }
+      }
+    });
+
+    servicesSection.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      const openDrawer = event.target.closest('.service-module__drawer:not([hidden])');
+      if (!openDrawer || !openDrawer.id) return;
+      const toggleBtn = servicesSection.querySelector(
+        `[data-service-toggle][aria-controls="${openDrawer.id}"]`
+      );
+      if (toggleBtn) {
+        event.preventDefault();
+        setServiceDrawerState(toggleBtn, false);
+        toggleBtn.focus();
+      }
+    });
+  }
+
   // Initial Render & Interactive Module Bootstrap
   initHeroSlider();
+  initServicesCatalogue();
   initExposureMarquee();
   initLocationsMap();
   initMotionObservers();
